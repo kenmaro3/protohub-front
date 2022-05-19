@@ -1,0 +1,25 @@
+.postListContainer {
+  flex-basis: 50%;
+  margin: 40px 40px;
+  height: calc(100vh - 210px);
+  // overflow-y: scroll;
+  
+  .postList {
+    padding: 40px 40px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    height: 100%;
+
+    .noPosts {
+      font-size: 25px;
+      color: gray;
+      text-align: center;
+    }
+  }
+
+  .listLoader {
+    position: absolute;
+    top: 50%;
+  }
+
+}

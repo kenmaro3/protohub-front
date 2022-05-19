@@ -1,0 +1,32 @@
+.searchUserListContainer {
+    margin-left: 80px;
+    margin-top: 10px;
+    flex-basis: 50%;
+
+    .searchUserListHeader{
+        margin-left: 10px;
+        margin-bottom: 10px;
+        font-size: 25px;
+        font-weight: 600;
+        border-bottom: 1px solid #a2a2a2;
+        padding-bottom: 20px;
+    }
+
+    .userList {
+        margin-top: 40px;
+        margin-bottom: 40px;
+        margin-left: 0px;
+
+        .noPosts {
+            font-size: 25px;
+            color: gray;
+            text-align: center;
+        }
+    }
+
+    .listLoader {
+        position: absolute;
+        top: 50%;
+    }
+
+}

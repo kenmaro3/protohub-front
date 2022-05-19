@@ -1,0 +1,94 @@
+.-padding-4 {
+  padding: 4px;
+}
+
+.profileMenu {
+  list-style-type: none;
+  position: relative;
+  z-index: 102;
+}
+
+.profileMenu.-active .profileMenu__icon path {
+  fill: #0b3895;
+}
+
+
+.profileMenu.-active .containerOutside {
+  transform: scale(1);
+}
+
+.containerOutside {
+  position: absolute;
+  top: 20%;
+  left: -100%;
+  width: 220px;
+  margin-top: 30px;
+  z-index: 101;
+  padding: 0;
+  border-radius: 8px;
+  background-color: rgb(241, 241, 241);
+  transition: 0.01s ease all;
+  transform: scale(0);
+  transform-origin: 0 1;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 4px 2px rgba(0, 0, 0, 0.02);
+
+}
+
+.containerInside {
+
+  .menuHeader {
+    border-bottom: 1px solid #a0a0a0;
+
+    .menuHeaderTitle {
+      padding-left: 20px;
+      padding-top: 20px;
+      padding-right: 20px;
+      padding-bottom: 0px;
+
+    }
+
+    .menuHeaderUsername {
+      margin-bottom: 5px;
+      padding-left: 20px;
+      padding-top: 10px;
+      padding-right: 20px;
+      padding-bottom: 20px;
+    }
+  }
+
+  .itemContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+
+    .itemButtonContainer {
+      transition: 0.2s;
+      &:hover {
+        background-color: #bababa;
+
+      }
+
+      .itemButton {
+        padding: 12px;
+        background: transparent;
+        border: none;
+
+
+        .itemTitle {
+          padding: 4px;
+          display: inline-block;
+          white-space: pre;
+          font-size: 16px;
+          font-weight: 500;
+          cursor: pointer;
+        }
+      }
+
+    }
+
+
+
+  }
+}

@@ -1,0 +1,392 @@
+.forkContainer {
+    background-color: white;
+    height: fit-content;
+
+    .forkHeader {
+        display: flex;
+        height: 160px;
+        background-color: hsl(0, 0%, 92%);
+        border-bottom: 1px solid #bfbfbf;
+        box-shadow: 0.5px 0.3px 0.5px 0.5px rgba(0, 0, 0, 0.2);
+        margin-bottom: 20px;
+
+        .forkHeaderLeft {
+            margin-left: 40px;
+            margin-top: 40px;
+
+            .headerLeftTitle {
+                display: flex;
+
+                .username {
+                    font-size: 24px;
+                }
+
+                .separation {
+                    font-size: 24px;
+                    margin-left: 5px;
+                    margin-right: 5px;
+                }
+
+                .title {
+                    font-size: 24px;
+                }
+
+
+            }
+
+            .userInfo {
+                display: flex;
+                align-items: center;
+                margin-top: 20px;
+
+                img {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                }
+
+                .username {
+                    margin-left: 20px;
+                }
+
+                .forkedDate {
+                    margin-left: 20px;
+                }
+
+            }
+
+        }
+
+        .forkHeaderRight {
+            margin-left: auto;
+            margin-right: 100px;
+            margin-top: 40px;
+
+            .forkActionsInfo {
+                display: flex;
+                align-items: center;
+
+                .forkLike {
+                    display: flex;
+                    align-items: center;
+                    border: 1px solid #bfbfbf;
+                    box-shadow: 0.1px 0.1px 0.2px 0.2px rgba(0, 0, 0, 0.2);
+                    padding: 4px 20px;
+                    border-radius: 8px;
+
+                    .count {
+                        font-size: 20px;
+                        margin-left: 10px;
+                    }
+                }
+
+                .forkComment {
+                    margin-left: 20px;
+                    display: flex;
+                    align-items: center;
+                    border: 1px solid #bfbfbf;
+                    box-shadow: 0.1px 0.1px 0.2px 0.2px rgba(0, 0, 0, 0.2);
+                    padding: 4px 20px;
+                    border-radius: 8px;
+
+                    .count {
+                        font-size: 20px;
+                        margin-left: 10px;
+                    }
+                }
+
+                .forkFork {
+                    margin-right: 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: 1px solid #bfbfbf;
+                    box-shadow: 0.1px 0.1px 0.2px 0.2px rgba(0, 0, 0, 0.2);
+                    padding: 4px 20px;
+                    border-radius: 8px;
+                    cursor: pointer;
+
+                    .actionTitle {
+                        font-size: 20px;
+                        font-weight: 500;
+                        margin-left: 10px;
+                    }
+
+                    .count {
+                        font-size: 20px;
+                        margin-left: 10px;
+                    }
+                }
+
+            }
+
+
+        }
+    }
+
+    .forkBody {
+        width: 50%;
+        margin-right: 25%;
+        margin-left: 25%;
+        margin-top: 40px;
+        background-color: white;
+
+        .forkBodyHeader {
+            padding-bottom: 20px;
+            border-bottom: 1px solid #bfbfbf;
+
+            .title {
+                font-size: 28px;
+                font-weight: 500;
+                color: #323232;
+
+            }
+
+            .body {
+                margin-top: 10px;
+                font-size: 18px;
+                font-weight: 400;
+                color: #464646;
+
+                .italic {
+                    font-style: italic;
+                }
+
+            }
+        }
+
+        .forkBodyMain {
+            margin-top: 40px;
+
+            .originalContainer {
+                display: flex;
+                align-items: center;
+
+                h2 {
+                    margin-top: 32px;
+                    font-weight: 700;
+                    color: #414141;
+                }
+
+                .pathContainer {
+                    margin-left: 40px;
+
+                    .title {
+                        display: flex;
+                        font-size: 20px;
+                        font-weight: 600;
+                        color: #464646;
+                        width: 400px;
+
+                        .owner {
+                            width: 55%;
+
+                        }
+
+                        .postName {
+                            width: 50%;
+
+                        }
+                    }
+
+                    .value {
+                        margin-top: 10px;
+                        display: flex;
+                        font-size: 20px;
+                        font-weight: 600;
+                        color: #464646;
+                        width: 400px;
+                        height: 30px;
+                        align-items: center;
+
+                        .userInfo {
+                            border: 1px solid #f7f7f7;
+                            background-color: #ededed;
+                            padding: 4px 15px;
+                            border-radius: 4px;
+                            display: flex;
+                            align-items: center;
+
+                            img {
+                                width: 20px;
+                                border-radius: 50%;
+
+                            }
+
+                            .owner {
+                                font-size: 18px;
+                                margin-left: 10px;
+                                width: 50%;
+
+                            }
+
+                        }
+
+                        .seperation {
+                            font-size: 24px;
+                            margin: 0 5px;
+                            padding: 4px 4px;
+                        }
+
+                        .postName {
+                            width: fit-content;
+                            border: 1px solid #f7f7f7;
+                            background-color: #ededed;
+                            margin-left: 4px;
+                            border-radius: 4px;
+                            padding: 4px 15px;
+
+                        }
+                    }
+
+                }
+
+            }
+
+            .destinationContainer {
+                margin-top: 20px;
+                display: flex;
+                align-items: center;
+
+                h2 {
+                    margin-top: 32px;
+                    font-weight: 700;
+                    color: #414141;
+                }
+
+                .pathContainer {
+                    margin-left: 75px;
+
+                    .title {
+                        display: flex;
+                        font-size: 20px;
+                        font-weight: 600;
+                        color: #464646;
+                        width: 400px;
+
+                        .owner {
+                            width: 55%;
+
+                        }
+
+                        .postName {
+                            width: 50%;
+
+                        }
+                    }
+
+                    .value {
+                        margin-top: 10px;
+                        display: flex;
+                        font-size: 20px;
+                        font-weight: 600;
+                        color: #464646;
+                        width: 400px;
+                        height: 30px;
+                        align-items: center;
+
+                        .userInfo {
+                            border: 1px solid #f7f7f7;
+                            background-color: #ededed;
+                            padding: 4px 15px;
+                            border-radius: 4px;
+                            display: flex;
+                            align-items: center;
+
+                            img {
+                                width: 20px;
+                                border-radius: 50%;
+
+                            }
+
+                            .owner {
+                                font-size: 18px;
+                                margin-left: 10px;
+                                width: fit-content;
+
+                            }
+
+                        }
+
+                        .seperation {
+                            font-size: 24px;
+                            margin: 0 5px;
+                            padding: 4px 4px;
+                        }
+
+                        .postName {
+                            width: fit-content;
+                            border: 1px solid #f7f7f7;
+                            background-color: #ededed;
+                            margin-left: 4px;
+                            border-radius: 4px;
+                            padding: 4px 15px;
+
+                        }
+                    }
+
+                }
+            }
+
+            .explanation {
+                margin-top: 20px;
+                font-size: 18px;
+                font-weight: 500;
+                color: #464646;
+                padding-bottom: 20px;
+                border-bottom: 1px solid #d1d1d1;
+            }
+
+            .customDescription {
+                padding-bottom: 20px;
+                border-bottom: 1px solid #d1d1d1;
+                margin-top: 40px;
+
+                .title {
+                    font-size: 20px;
+                    font-weight: 600;
+                    color: #464646;
+
+                    .optional {
+                        font-size: 20px;
+                        color: #828282;
+                    }
+                }
+
+                .form {
+                    margin-top: 10px;
+                    width: 50%;
+                }
+            }
+        }
+
+        .forkBodyFooter {
+            margin-top: 20px;
+            margin-bottom: 20px;
+
+            .button {
+                height: 40px;
+                width: 100px;
+                border: 1px solid #000;
+                border-radius: 5px;
+                background: none;
+                cursor: pointer;
+                transition: 0.2s;
+                
+                &:hover {
+                background-color: #56535c;
+                color: white;
+                }
+            }
+        }
+
+    }
+
+
+
+
+
+
+
+
+}

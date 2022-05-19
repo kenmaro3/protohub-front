@@ -1,0 +1,49 @@
+.searchLeftListContainer {
+    flex-basis: 15%;
+    background-color: #f9f9f9;
+    border: solid 1px #e2e2e2;
+    border-radius: 8px;
+
+    .listRowContainer {
+        border-bottom: 1px solid #e2e2e2;
+        transition: 0.2s;
+
+        &:hover {
+            background-color: #f1f1f1;
+        }
+
+        .listRow {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border: none;
+            background: transparent;
+
+
+
+            .listRowValue {
+                margin-left: auto;
+                font-size: 14px;
+                width: 16px;
+                height: 16px;
+                background-color: #cacaca;
+                padding: 10px;
+                border-radius: 50%;
+                text-align: center;
+                font-weight: 400;
+
+            }
+
+            .nonZero {
+                background-color: #757575;
+                font-weight: 600;
+                color: #f9f9f9;
+            }
+        }
+    }
+
+}

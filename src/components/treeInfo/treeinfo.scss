@@ -1,0 +1,46 @@
+.treeInfoContainer{
+    margin-top: 30px;
+    margin-left: 20px;
+    padding-bottom: 40px;
+
+    border-bottom: 1.7px solid #a3a3a3;
+    h3{
+        font-size: 22px;
+    }
+
+    .parentInfo{
+        margin-top: 10px;
+        .header{
+
+        }
+        .fromUser{
+            margin-left: 10px;
+
+        }
+        .separation{
+            margin-left: 10px;
+
+        }
+        .fromPost{
+
+        }
+        .title{
+
+        }
+    }
+
+    .childInfo{
+        margin-top: 10px;
+        .title{
+
+        }
+        .separation{
+            margin-left: 10px;
+
+        }
+        .number{
+            margin-left: 10px;
+
+        }
+    }
+}

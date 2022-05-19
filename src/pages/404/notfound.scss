@@ -1,0 +1,31 @@
+.notFound{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+  h1{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  .globalLink {
+    button {
+      height: 40px;
+      width: 200px;
+      border: 1px solid #000;
+      border-radius: 5px;
+      background: none;
+      cursor: pointer;
+      transition: 0.2s;
+      
+      &:hover {
+        background-color: #56535c;
+        color: white;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,113 @@
+.authorInfoSide {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 0 0 10px 0;
+
+  .profileImage {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+
+  .authorDescription {
+    display: flex;
+    flex-direction: column;
+
+    .itemListHeader {
+      .authorName {
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      .authorAction {
+        font-size: 16px;
+        font-weight: 500;
+        margin-left: 10px;
+      }
+
+    }
+
+
+  }
+
+  .postTitle {
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      color: #56535c;
+    }
+  }
+}
+
+
+.postItem {
+  width: 90%;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-bottom: 40px;
+  margin-left: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+
+
+  .postImg {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height: 100px;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: 40px;
+  }
+
+  .previewInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+    padding: 20px 20px 10px 20px;
+
+  }
+
+  .postInfoTitle {
+    word-break: break-word;
+    padding: 10px 0 10px 20px;
+
+    h2 {
+      cursor: pointer;
+      transition: 0.2s;
+
+      &:hover {
+        color: #56535c;
+      }
+    }
+  }
+
+  .postReactions {
+    padding: 0 20px 20px 20px;
+    display: flex;
+    margin-top: 10px;
+    gap: 30px;
+    font-size: 13px;
+    color: gray;
+
+    .postReactionsInfo {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      .postReactionsIcon {
+        font-size: 17px;
+        color: black;
+      }
+    }
+  }
+}

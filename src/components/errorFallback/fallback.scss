@@ -1,0 +1,45 @@
+.fallback{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .fallbackButton{
+    margin: 0 auto;
+    width: 30%;
+
+    button {
+      height: 40px;
+      width: 100px;
+      border: 1px solid #000;
+      border-radius: 5px;
+      background: none;
+      cursor: pointer;
+      transition: 0.2s;
+      
+      &:hover {
+        background-color: #56535c;
+        color: white;
+      }
+    }
+  }
+
+  .fallbackMessage{
+    background-color: rgba(255, 0, 0, 0.22);
+    color: rgba(255, 0, 0, 0.63);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    p{
+      &:first-child{
+        font-weight: 600;
+        font-size: 20px;
+      }
+      &:last-child{
+        font-size: 15px;
+        margin-top: 10px;
+      }
+    }
+  }
+}

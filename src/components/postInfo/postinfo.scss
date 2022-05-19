@@ -1,0 +1,32 @@
+.postInfoContainer{
+    margin-top: 20px;
+    margin-left: 20px;
+
+    h3{
+        font-size: 22px;
+    }
+
+    .shortDescription{
+        margin-top: 10px;
+        font-size: 20px;
+        inline-size: 400px;
+        overflow-wrap: break-word;
+    }
+    .infoList{
+        margin-top: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1.4px solid #bebebe;
+        box-shadow: 0px 1px 0px #bebebe;
+        .infoItem{
+            display: flex;
+            margin-top: 10px;
+            color: rgb(30, 30, 30);
+            .count{
+                margin-left: 15px;
+            }
+            .title{
+                margin-left: 6px;
+            }
+        }
+    }
+}

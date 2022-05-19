@@ -1,0 +1,74 @@
+.commentForm{
+  padding-right: 30px;
+
+  .selectContainerWhole{
+    display: flex;
+    margin-bottom: 10px;
+    .selectContainer{
+      margin-right: 40px;
+      .reproducibilitySelect{
+        width: 200px;
+      }
+      .timeCostSelect{
+        width: 200px;
+      }
+    }
+
+  }
+  .commentValidationError{
+    font-size: 12px;
+    background-color: rgba(255, 0, 0, 0.18);
+    padding: 3px 6px 3px 6px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    color: rgba(255, 0, 0, 0.71);
+    width: max-content;
+
+  }
+  .commentValidationSuccess{
+    font-size: 12px;
+    background-color: rgba(0, 128, 0, 0.24);
+    padding: 3px 6px 3px 6px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    color: rgba(0, 128, 0, 0.77);
+    width: max-content;
+  }
+  .commentFormArea{
+    width: 100%;
+    height: 60px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    padding: 10px;
+    font-size: 15px;
+    resize: none;
+
+    &:disabled{
+      background-color: inherit;
+    }
+
+    &:focus{
+      outline: 1px solid #56535c;
+    }
+  }
+  .sendButton{
+    margin-top: 10px;
+    width: 100px;
+  }
+
+  .sendButton > button{
+    height: 40px;
+    width: 100px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background: none;
+    cursor: pointer;
+    transition: 0.2s;
+    
+    &:hover {
+      background-color: #56535c;
+      color: white;
+    }
+  }
+
+}

@@ -32,5 +32,22 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    button {
+      border: 1px solid #56535c;
+      border-radius: 5px;
+      background: none;
+      padding: 5px 10px;
+      font-size: 17px;
+      color: #56535c;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s;
+
+      &:hover {
+        background-color: #56535c;
+        color: white;
+      }
+    }
   }
 }

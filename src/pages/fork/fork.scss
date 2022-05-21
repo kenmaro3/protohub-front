@@ -1,6 +1,6 @@
 .forkContainer {
     background-color: white;
-    height: fit-content;
+    height: calc(100vh - 130px);
 
     .forkHeader {
         display: flex;
@@ -33,7 +33,6 @@
 
 
             }
-
             .userInfo {
                 display: flex;
                 align-items: center;
@@ -125,10 +124,8 @@
     }
 
     .forkBody {
-        width: 50%;
-        margin-right: 25%;
-        margin-left: 25%;
-        margin-top: 40px;
+        width: 80%;
+        margin: 0 auto;
         background-color: white;
 
         .forkBodyHeader {
@@ -145,7 +142,7 @@
             .body {
                 margin-top: 10px;
                 font-size: 18px;
-                font-weight: 400;
+                font-weight: 500;
                 color: #464646;
 
                 .italic {
@@ -158,94 +155,9 @@
         .forkBodyMain {
             margin-top: 40px;
 
-            .originalContainer {
-                display: flex;
-                align-items: center;
-
-                h2 {
-                    margin-top: 32px;
-                    font-weight: 700;
-                    color: #414141;
-                }
-
-                .pathContainer {
-                    margin-left: 40px;
-
-                    .title {
-                        display: flex;
-                        font-size: 20px;
-                        font-weight: 600;
-                        color: #464646;
-                        width: 400px;
-
-                        .owner {
-                            width: 55%;
-
-                        }
-
-                        .postName {
-                            width: 50%;
-
-                        }
-                    }
-
-                    .value {
-                        margin-top: 10px;
-                        display: flex;
-                        font-size: 20px;
-                        font-weight: 600;
-                        color: #464646;
-                        width: 400px;
-                        height: 30px;
-                        align-items: center;
-
-                        .userInfo {
-                            border: 1px solid #f7f7f7;
-                            background-color: #ededed;
-                            padding: 4px 15px;
-                            border-radius: 4px;
-                            display: flex;
-                            align-items: center;
-
-                            img {
-                                width: 20px;
-                                border-radius: 50%;
-
-                            }
-
-                            .owner {
-                                font-size: 18px;
-                                margin-left: 10px;
-                                width: 50%;
-
-                            }
-
-                        }
-
-                        .seperation {
-                            font-size: 24px;
-                            margin: 0 5px;
-                            padding: 4px 4px;
-                        }
-
-                        .postName {
-                            width: fit-content;
-                            border: 1px solid #f7f7f7;
-                            background-color: #ededed;
-                            margin-left: 4px;
-                            border-radius: 4px;
-                            padding: 4px 15px;
-
-                        }
-                    }
-
-                }
-
-            }
-
             .destinationContainer {
                 margin-top: 20px;
-                display: flex;
+                // display: flex;
                 align-items: center;
 
                 h2 {
@@ -255,43 +167,27 @@
                 }
 
                 .pathContainer {
-                    margin-left: 75px;
+                    // margin: 0 10px;
+                    display: flex;
+                    align-items: flex-end;
 
-                    .title {
-                        display: flex;
-                        font-size: 20px;
-                        font-weight: 600;
-                        color: #464646;
-                        width: 400px;
-
-                        .owner {
-                            width: 55%;
-
+                    .owner {
+                        p {
+                            margin-bottom: 6px;
+                            font-size: 20px;
+                            font-weight: 600;
+                            color: #464646;
                         }
-
-                        .postName {
-                            width: 50%;
-
-                        }
-                    }
-
-                    .value {
-                        margin-top: 10px;
-                        display: flex;
-                        font-size: 20px;
-                        font-weight: 600;
-                        color: #464646;
-                        width: 400px;
-                        height: 30px;
-                        align-items: center;
 
                         .userInfo {
                             border: 1px solid #f7f7f7;
-                            background-color: #ededed;
+                            // background-color: #ededed;
                             padding: 4px 15px;
-                            border-radius: 4px;
+                            border: 1px solid #464646;
+                            border-radius: 6px;
                             display: flex;
                             align-items: center;
+                            height: 40px;
 
                             img {
                                 width: 20px;
@@ -303,28 +199,63 @@
                                 font-size: 18px;
                                 margin-left: 10px;
                                 width: fit-content;
-
                             }
-
-                        }
-
-                        .seperation {
-                            font-size: 24px;
-                            margin: 0 5px;
-                            padding: 4px 4px;
-                        }
-
-                        .postName {
-                            width: fit-content;
-                            border: 1px solid #f7f7f7;
-                            background-color: #ededed;
-                            margin-left: 4px;
-                            border-radius: 4px;
-                            padding: 4px 15px;
 
                         }
                     }
 
+                    .seperation {
+                        font-size: 40px;
+                        margin: 0 8px;
+                        padding-top: 24px;
+                        color: #464646;
+                    }
+
+                    .title {
+                        p {
+                            margin-bottom: 6px;
+                            font-size: 20px;
+                            font-weight: 600;
+                            color: #464646;
+                        }
+
+                        .postName {
+                            width: 500px;
+                            border: 1px solid #f7f7f7;
+                            // background-color: #ededed;
+                            margin-left: 4px;
+                            border: 1px solid #464646;
+                            border-radius: 6px;
+                            padding: 4px 15px;
+                            height: 40px;
+                            display: flex;
+                            align-items: center;
+                            font-size: 18px;
+                        }
+                    }
+
+                }
+
+                .descriptionContainer {
+                    margin-top: 20px;
+                    // margin-left: 10px;
+
+                    p {
+                        margin-bottom: 6px;
+                        font-size: 20px;
+                        font-weight: 600;
+                        color: #464646;
+                    }
+
+                    input {
+                        margin-right: 10px;
+                        padding: 4px 15px;
+                        font-size: 18px;
+                        width: 100%;
+                        height: 40px;
+                        border: 1px solid #464646;
+                        border-radius: 6px;
+                    }
                 }
             }
 

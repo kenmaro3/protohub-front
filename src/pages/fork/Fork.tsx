@@ -26,6 +26,7 @@ hljs.registerLanguage('javascript', javascript);
 
 const Fork = () => {
     const [description, setDescription] = useState<string>("")
+    const [title, setTitle] = useState<string>("")
     const { register, handleSubmit, formState: { errors } } = useForm()
     const { post_id } = useParams()
     const dispatch = useDispatch()
@@ -47,7 +48,7 @@ const Fork = () => {
             const response = await PostService.getById(Number(post_id))
             setDescription(response.data.description)
             setPostShown(response.data)
-
+            setTitle(response.data.title)
         })()
         //hljs.initHighlighting.called = false;
     }, [])
@@ -79,7 +80,6 @@ const Fork = () => {
         } finally {
         }
     }
-
 
     return (
         <div className={'forkContainer'}>
@@ -150,64 +150,44 @@ const Fork = () => {
                     <div className="body"><span className='italic'>A fork</span> is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original post.</div>
                 </div>
                 <div className="forkBodyMain">
-                    <div className="originalContainer">
-                        <h2>From</h2>
-                        <div className="pathContainer">
-                            <div className="title">
-                                <div className="owner">Owner</div>
-                                <div className="postName">Post</div>
-                            </div>
-                            <div className="value">
-                                <div className="userInfo">
-                                    <img className='profileImage' src={postShown?.user.profile_picture} alt="avatar" />
-                                    <div className="owner">{postShown?.user.user_name}</div>
-
-                                </div>
-                                <div className="seperation">/</div>
-                                <div className="postName">{postShown?.title}</div>
-                            </div>
-
-                        </div>
-                    </div>
                     <div className="destinationContainer">
-                        <h2>To</h2>
+                        {/* <h2>To</h2> */}
                         <div className="pathContainer">
-                            <div className="title">
-                                <div className="owner">Owner</div>
-                                <div className="postName">Post</div>
-                            </div>
-                            <div className="value">
+                            <div className="owner">
+                                <p>Owner</p>
                                 <div className="userInfo">
                                     <img className='profileImage' src={user.profile_picture} alt="avatar" />
                                     <div className="owner">{user.user_name}</div>
-
                                 </div>
-                                <div className="seperation">/</div>
-                                <div className="postName">{postShown?.title}</div>
                             </div>
-
+                            <div className="seperation">/</div>
+                            <div className="title">
+                                <p>Title</p>
+                                {/* <div className="postName">{postShown?.title}</div> */}
+                                <input
+                                name={'title'}
+                                value={title}
+                                onChange={(event) => setTitle(event.target.value)}
+                                className="postName"
+                                required
+                            />
+                            </div>
+                            
                         </div>
+                        <div className={"descriptionContainer"}>
+                            <p>Description</p>
+                            <input
+                                name={'description'}
+                                value={description}
+                                onChange={(event) => setDescription(event.target.value)}
+                                className="field__input"
+                            />
+                        </div>
+                        
                     </div>
                     <div className="explanation">
                         By default, forks are named the same as their parent post.
                     </div>
-
-                    {true ?
-                        <></>
-                        :
-                        <div className="customDescription">
-                            <div className="title">New Description <span className='optional'>(optional)</span></div>
-                            <div className="form">
-                                <input
-                                    name={'description'}
-                                    value={description}
-                                    onChange={(event) => setDescription(event.target.value)}
-                                    className="field__input"
-                                />
-                            </div>
-                        </div>
-
-                    }
 
                 </div>
                 <div className="forkBodyFooter">

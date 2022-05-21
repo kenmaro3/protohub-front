@@ -17,13 +17,14 @@ import DraftService from '../../services/draft-service';
 import PostService from '../../services/post-service';
 import { DraftSortActions } from '../../store/reducers/draft/types';
 import { useAppSelector } from "../../hooks";
-
+import Card from "../../components/common/card/Card";
 
 const UpdateDraft: FC = () => {
     const { register, watch, handleSubmit, formState: { errors }, setValue } = useForm()
     const [file, setFile] = useState<any>(null)
     const { user } = useSelector((state: RootState) => state.auth)
     const [isError, setIsError] = useState<string>('')
+    const [errMessages, setErrMessages] = useState<string[]>([])
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const [mdValue, setMdValue] = useState<string>("")
@@ -70,6 +71,7 @@ const UpdateDraft: FC = () => {
             if (Array.isArray(response)) setIsError(response[0])
             else setIsError(response)
             console.log(e.response)
+            setErrMessages(e.response.data.message);
         } finally {
             setIsLoading(false)
         }
@@ -91,29 +93,31 @@ const UpdateDraft: FC = () => {
             if (Array.isArray(response)) setIsError(response[0])
             else setIsError(response)
             console.log(e.response)
+            setErrMessages(e.response.data.message);
         } finally {
             setIsLoading(false)
         }
     }
 
+    const cardClick = () => {
+        setIsError("");
+    };
+
     return (
         <div className={'createDraftContainer'}>
+            {isError && <Card messages={errMessages} handleClick={cardClick} className="alertCard"></Card>}
             <div className="header">
                 <div className="actionContainer">
                     <div className={'buttonContainer'}>
                         <button className='draftButton' onClick={handleSubmit(onDraftSubmit)}>
                             Update Draft{isLoading && <CircularProgress style={{ color: 'white' }} size={20} />}
                         </button>
-                        {isError && <div className={'alert danger'}>{isError}</div>}
-                        {isError && <div className={'alert danger'}>{isError}</div>}
                     </div>
                     <div className={'buttonContainer'}>
                         <button className='updateButton' onClick={handleSubmit(onSubmit)}>
                             Create Post{isLoading && <CircularProgress style={{ color: 'white' }} size={20} />}
                         </button>
-                        {isError && <div className={'alert danger'}>{isError}</div>}
                     </div>
-
 
                 </div>
 

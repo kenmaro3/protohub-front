@@ -1,0 +1,35 @@
+.cardContainer {
+    display: flex;
+    border: 1px solid #FEEEED;
+    border-radius: 6px;
+    padding: 20px;
+    background-color: #FEEEED;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    z-index: 99;
+
+    .messages {
+        color: #E66B58;
+        font-size: 18px;
+        margin-right: 20px;
+
+        p {
+            line-height: 36px;
+        }
+    }
+
+    .close {
+        font-size: 24px;
+        color: #E66B58;
+        background-color: #FEEEED;
+        border: #FEEEED;
+    }
+}
+
+.none {
+    display: none;
+}

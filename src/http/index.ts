@@ -1,7 +1,7 @@
 import axios from "axios";
 import {AuthResponse} from "../types/auth-response";
 
-export const API_URL = `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}`
+export const API_URL = `http://${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}`
 
 const api = axios.create({
     withCredentials: true,

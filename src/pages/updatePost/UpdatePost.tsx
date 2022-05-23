@@ -49,6 +49,7 @@ const UpdatePost: FC = () => {
     const onSubmit = async (data: any) => {
         setIsLoading(true)
         try {
+            console.log(typeof user.id);
             const response = await PostService.updatePost(file, String(post_id), data['title'], mdValue, user.id, data["description"])
             dispatch(setAddPost(response.data))
             dispatch(fetchTodayPosts(5))

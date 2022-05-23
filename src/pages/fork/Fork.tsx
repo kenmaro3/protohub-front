@@ -74,7 +74,7 @@ const Fork = () => {
             if (description == null) {
                 setDescription("")
             }
-            const response = await PostService.createFork(postShown.id, postShown.user.id, user.id)
+            const response = await PostService.createFork(postShown.id, postShown.user.id, user.id, title, description)
             console.log("response", response)
         } catch (e: any) {
         } finally {

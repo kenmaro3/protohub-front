@@ -8,6 +8,7 @@ import { logout, setIsAuth } from "../../store/reducers/auth/action-creators";
 import { useAppSelector } from "../../hooks";
 import SearchBar from '../searchBar/SearchBar';
 import ProfileMenu from '../profileMenu/ProfileMenu';
+import logoPng from "../../images/nav_logo.png";
 
 const Navbar: FC = () => {
     const navigate = useNavigate()
@@ -39,7 +40,7 @@ const Navbar: FC = () => {
         <div className={'navbar'}>
             <div className={'left'}>
                 <Link to={'/'} className={'globalLink'}>
-                    <NewspaperIcon className={'icon'} />
+                    <img src={logoPng} alt="" width="100px"/>
                 </Link>
                 {/* <h1 className={'title'}>ProtoHub</h1> */}
                 <SearchBar placeholder='Search or jump to...' />

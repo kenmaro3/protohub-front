@@ -12,6 +12,7 @@ const FileUpload: FC<FileUploadProps> = ({ handleFile, displayImage }) => {
     const hiddenFileInput = useRef<HTMLInputElement>(null)
 
     const handleClick = () => {
+        console.log("here1")
         hiddenFileInput.current?.click()
     }
 
@@ -27,7 +28,7 @@ const FileUpload: FC<FileUploadProps> = ({ handleFile, displayImage }) => {
             <div className={'uploadFile'}>
                 <div className="buttonContainer">
                     <AddIcon />
-                    <button onClick={handleClick}>Add Header Image</button>
+                    <button onClick={handleClick}>Add Image</button>
                 </div>
             </div>
             <input

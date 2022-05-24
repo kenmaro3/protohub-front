@@ -1,13 +1,15 @@
-.profileWrapper{
+.profileWrapper {
   padding-bottom: 20px;
   height: 100%;
   overflow-y: scroll;
   box-sizing: border-box;
-  h1{
+
+  h1 {
     font-weight: 800;
     text-align: center;
   }
-  .profile{
+
+  .profile {
     width: 70%;
     margin: 20px auto 20px auto;
     padding: 40px;
@@ -15,24 +17,28 @@
     border-radius: 5px;
     border: 1px solid rgba(211, 211, 211, 0.51);
 
-    .profileInfo{
+    .profileInfo {
       display: flex;
+      width: 60%;
+      margin-left: 10%;
       margin-top: 40px;
 
-      .profileLeft{
-        flex: 1;
+
+      .profileLeft {
         display: flex;
         flex-direction: column;
-        gap: 30px;
         align-self: center;
+        margin-left: 40px;
+        padding: 20px 40px 20px 40px;
 
 
-        .profileImage{
+
+        .profileImage {
           width: 120px;
           height: 120px;
           margin: 0 auto;
 
-          img{
+          img {
             width: 120px;
             height: 120px;
             border-radius: 50%;
@@ -42,18 +48,134 @@
 
       }
 
-      .profileRight{
-        flex: 2;
-        h3{
-          text-align: center;
-          margin-bottom: 20px;
+      .profileRight {
+        margin-left: 20px;
+        color: #2c2c2c;
+
+
+        .mainContainer {
+          .name {
+            font-size: 26px;
+            font-weight: 600;
+
+          }
+
+          .description {
+            margin-top: 16px;
+            font-size: 18px;
+            font-weight: 400;
+
+          }
+
         }
 
+        .countContainer {
+          margin-top: 20px;
+
+          .number {
+            font-weight: 600;
+          }
+
+          .title {
+            margin-left: 6px;
+            color: #717171;
+            font-weight: 600;
+          }
+        }
+
+        .snsContainer {
+          display: flex;
+          align-items: center;
+          margin-top: 30px;
+
+          .github {
+            .innerContainer {
+              display: flex;
+              align-items: center;
+              text-decoration: none;
+
+              .MuiSvgIcon-root {
+                color: #666666;
+                width: 30px;
+              }
+
+              .value {
+                margin-left: 6px;
+                font-size: 14px;
+                color: #474747;
+              }
+            }
+
+          }
+
+          .twitter {
+            margin-left: 10px;
+
+            .innerContainer {
+              display: flex;
+              align-items: center;
+              text-decoration: none;
+
+              .MuiSvgIcon-root {
+                color: #1DA1F2;
+                width: 30px;
+              }
+
+              .value {
+                margin-left: 6px;
+                font-size: 14px;
+                color: #474747;
+              }
+            }
+
+          }
+
+        }
+
+        .webContainer {
+          margin-top: 20px;
+
+          .innerContainer {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+
+            .MuiSvgIcon-root {
+              color: #5f5f5f;
+              width: 30px;
+            }
+
+            .value {
+              margin-left: 6px;
+              font-size: 14px;
+              color: #474747;
+            }
+          }
+
+        }
+
+      }
+
+      .editButtonContainer{
+        margin-left: auto;
+        button{
+          padding: 6px 12px 6px 12px;
+          border: 1px solid #808080;
+          background: none;
+          border-radius: 8px;
+          box-shadow: 1 1 1 1 #808080;
+          cursor: pointer;
+          transition: 0.2s;
+          &:hover{
+            background-color: #e2e2e2;
+
+          }
+        }
       }
     }
   }
 
-  .userPosts{
+  .userPosts {
     width: 70%;
     margin: 20px auto 0 auto;
     padding: 40px;
@@ -61,7 +183,7 @@
     border-radius: 5px;
     border: 1px solid rgba(211, 211, 211, 0.51);
 
-    h3{
+    h3 {
       text-align: center;
       margin-bottom: 40px;
     }

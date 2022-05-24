@@ -28,6 +28,13 @@ import { IPost } from '../../types/post-type';
 import { IUser } from '../../types/user-type';
 import MDEditor from "@uiw/react-md-editor";
 
+import {
+    FacebookIcon,
+    FacebookShareButton,
+    TwitterIcon,
+    TwitterShareButton,
+} from "react-share";
+
 
 hljs.registerLanguage('javascript', javascript);
 
@@ -233,16 +240,16 @@ const Post = () => {
             const myLike = post.user_likes.filter(like => {
                 return like.user.id == user.id
             })
-            if(myLike.length == 0){
+            if (myLike.length == 0) {
 
             }
-            else{
+            else {
                 dispatch(unLikePost(user.id, myLike[0].id))
             }
         }
     }
 
-    
+
 
     return (
         <div className={'postContainer'}>
@@ -332,7 +339,25 @@ const Post = () => {
                             <h1 className="title">
                                 {post.title}
                             </h1>
-                            {user.id === post.user.id && 
+                            <div className="postShareContainer">
+                                <div className="item">
+                                    <FacebookShareButton url={`https://protohub.tech/posts/${post.id}`} title={`Sharing the post 【${post.title}】from @protohub`}>
+                                        <FacebookIcon size={30} round />
+                                    </FacebookShareButton>
+                                </div>
+
+                                <div className="item">
+                                    <TwitterShareButton
+                                        url={`https://protohub.tech/posts/${post.id}`}
+                                        title={`Sharing the post 【${post.title}】from @protohub`}
+                                        via={post.user.user_name}
+                                    >
+                                        <TwitterIcon size={30} round />
+                                    </TwitterShareButton>
+
+                                </div>
+                            </div>
+                            {user.id === post.user.id &&
                                 <div className="right">
                                     <PostMenu user={user} functions={functionsForPostMenu}>
                                         <div className="postAction">

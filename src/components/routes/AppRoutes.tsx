@@ -14,6 +14,7 @@ import { motion } from "framer-motion";
 import Search from '../../pages/search/Search';
 import Fork from '../../pages/fork/Fork';
 import Draft from '../../pages/draft/Draft';
+import ProfileEdit from "../../pages/profileEdit/ProfileEdit";
 
 const AppRoutes: FC = () => {
     const { pathname } = useLocation()
@@ -32,6 +33,7 @@ const AppRoutes: FC = () => {
                 <Route element={<RequireAuth />}>
                     <Route path={'create'} element={<CreatePost />} />
                     <Route path={'profile'} element={<Profile />} />
+                    <Route path={'profile/edit'} element={<ProfileEdit/>} />
                     <Route path={'drafts'} element={<Draft />} />
                     <Route path={'posts/:post_id/fork'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><Fork /></motion.div>} />
                     <Route path={'posts/:post_id/edit'} element={<motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}><UpdatePost /></motion.div>} />

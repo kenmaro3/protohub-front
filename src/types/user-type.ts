@@ -5,6 +5,10 @@ export interface IUser{
     user_name: string;
     email: string;
     role: string;
+    description: string;
     profile_picture: string;
+    github: string;
+    twitter: string;
+    website: string;
     posts: IPost[];
 }

@@ -84,6 +84,10 @@
       margin-right: 100px;
       margin-top: 40px;
 
+      .postShareContainer{
+        display: flex;
+      }
+
       .postActionsInfo {
         display: flex;
         align-items: center;
@@ -188,8 +192,18 @@
             font-size: 36px;
           }
 
-          .right {
+          .postShareContainer{
+            display: flex;
+            align-items: center;
             margin-left: auto;
+            margin-right: 60px;
+
+            .item{
+              margin-left: 20px;
+            }
+          }
+
+          .right {
 
             .postAction {
               margin-right: 60px;

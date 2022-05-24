@@ -17,7 +17,6 @@ const SearchBar: FC<SearchBarProps> = ({ placeholder }) => {
 
   const searchClicked = async() => {
       navigate(`/search?q=${keyword}&type=posts`)
-
   }
 
   const handleFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,6 +44,14 @@ const SearchBar: FC<SearchBarProps> = ({ placeholder }) => {
           placeholder={placeholder}
           value={keyword}
           onChange={handleFilter}
+          onKeyPress={e =>{
+            if (e.key == 'Enter') {
+              e.preventDefault()
+              searchClicked()
+            }
+          }
+          }
+          
         />
         <IconButton onClick={searchClicked} className="searchIcon">
             <SearchIcon />

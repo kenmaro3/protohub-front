@@ -1,13 +1,14 @@
 .latestList {
   flex-basis: 20%;
   height: fit-content;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-right: 40px;
   margin-left: 40px;
   background-color: #fdfdfd;
   border-radius: 5px;
 
   border: 1px solid rgba(211, 211, 211, 0.51);
+  border: none;
 
   .latestTitle {
     padding: 10px;
@@ -25,7 +26,7 @@
         align-items: center;
         gap: 2px;
         justify-content: space-between;
-        border-top: 1px solid lightgray;
+        border-top: 0.5px solid rgb(239, 239, 239);
         padding: 10px 7px 10px 7px;
 
         span {

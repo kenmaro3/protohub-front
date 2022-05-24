@@ -1,6 +1,5 @@
 .authorInfo {
   display: flex;
-  gap: 10px;
   align-items: center;
   padding: 0 0 10px 0;
 
@@ -11,10 +10,12 @@
   }
 
   .authorDescription {
-    display: flex;
-    flex-direction: column;
+    margin-left: 20px;
 
-    .itemListHeader{
+    .itemListHeader {
+      display: flex;
+      align-items: center;
+      
       .authorName {
         font-size: 18px;
         font-weight: 700;
@@ -28,11 +29,12 @@
 
     }
 
+  }
 
-    .postDate {
-      font-size: 11px;
-      color: #7c7b7b;
-    }
+  .postDate {
+    font-size: 14px;
+    color: #7c7b7b;
+    margin-left: 10px;
   }
 }
 
@@ -41,16 +43,15 @@
   width: 90%;
   background-color: white;
   border: 1px solid lightgray;
-  border-radius: 5px;
+  border: none;
+  border-radius: 8px;
   margin-bottom: 40px;
   margin-left: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  .postItemContainer {
-    
-  }
+  .postItemContainer {}
 
   .postImg {
     border-top-right-radius: 5px;

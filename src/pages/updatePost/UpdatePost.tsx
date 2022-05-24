@@ -13,13 +13,14 @@ import { useTitle } from "../../hooks";
 import MDEditor from "@uiw/react-md-editor";
 import rehypeSanitize from "rehype-sanitize";
 import DraftService from '../../services/draft-service';
-
+import Card from "../../components/common/card/Card";
 
 const UpdatePost: FC = () => {
     const { register, watch, handleSubmit, formState: { errors }, setValue } = useForm()
     const [file, setFile] = useState<any>(null)
     const { user } = useSelector((state: RootState) => state.auth)
     const [isError, setIsError] = useState<string>('')
+    const [errMessages, setErrMessages] = useState<string[]>([])
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const [mdValue, setMdValue] = useState<string>("")
@@ -48,6 +49,7 @@ const UpdatePost: FC = () => {
     const onSubmit = async (data: any) => {
         setIsLoading(true)
         try {
+            console.log(typeof user.id);
             const response = await PostService.updatePost(file, String(post_id), data['title'], mdValue, user.id, data["description"])
             dispatch(setAddPost(response.data))
             dispatch(fetchTodayPosts(5))
@@ -57,6 +59,7 @@ const UpdatePost: FC = () => {
             if (Array.isArray(response)) setIsError(response[0])
             else setIsError(response)
             console.log(e.response)
+            setErrMessages(e.response.data.message);
         } finally {
             setIsLoading(false)
         }
@@ -72,6 +75,7 @@ const UpdatePost: FC = () => {
             if (Array.isArray(response)) setIsError(response[0])
             else setIsError(response)
             console.log(e.response)
+            setErrMessages(e.response.data.message);
         } finally {
             setIsLoading(false)
         }
@@ -89,25 +93,25 @@ const UpdatePost: FC = () => {
         navigate(`/posts/${post_id}`);
     }
 
+    const cardClick = () => {
+        setIsError("");
+    };
+
     return (
         <div className={'createPostContainer'}>
+            {isError && <Card messages={errMessages} handleClick={cardClick} className="alertCard"></Card>}
             <div className="header">
                 <div className="actionContainer">
                     <div className={'buttonContainer'}>
                         <button className='draftButton' onClick={handleSubmit(onDraftSubmit)}>
                             Save as Draft{isLoading && <CircularProgress style={{ color: 'white' }} size={20} />}
                         </button>
-                        {isError && <div className={'alert danger'}>{isError}</div>}
-                        {isError && <div className={'alert danger'}>{isError}</div>}
                     </div>
                     <div className={'buttonContainer'}>
                         <button className='updateButton' onClick={handleSubmit(onSubmit)}>
                             Update Post  {isLoading && <CircularProgress style={{ color: 'white' }} size={20} />}
                         </button>
-                        {isError && <div className={'alert danger'}>{isError}</div>}
                     </div>
-
-
                 </div>
 
             </div>

@@ -17,7 +17,7 @@ export default class PostService{
         return api.post<IPost>('/posts/create', formData)
     }
     
-    static async createFork(original_post_id: number, original_user_id: number, destination_user_id: number){
+    static async createFork(original_post_id: number, original_user_id: number, destination_user_id: number, title: string, description:string){
         // TODO why didn't this work?
         // const formData = new FormData()
         // formData.append('original_user_id', original_user_id.toString())
@@ -25,7 +25,7 @@ export default class PostService{
         // formData.append('destination_user_id', destination_user_id.toString())
         // return api.post<IPost>('/posts/fork', formData)
 
-        return api.post<IPost>('/posts/fork', {original_post_id, original_user_id, destination_user_id})
+        return api.post<IPost>('/posts/fork', {original_post_id, original_user_id, destination_user_id, title, description})
     }
 
     static async updatePost(picture: any, post_id: string, title: string, text: string, user_id: number, description: string){

@@ -6,7 +6,7 @@ import SidebarRight from "../../components/sidebarRight/SidebarRight"
 
 const Home: FC = () => {
     return (
-        <div className={'home'}>
+        <div className={'homeContainer'}>
             <Sidebar/>
             <PostList/>
             <SidebarRight/>

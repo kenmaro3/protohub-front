@@ -1,18 +1,13 @@
-.layout {
+.layoutContainer {
   max-width: 100%;
   height: 100vh;
+  overflow: scroll;
 
-  //position: relative;
   .main {
     background-color: #f9f9f9;
     border-top: 1px solid lightgray;
     // min-height: calc(100vh - 101px);
-    height: calc(100vh - 130px);
+    //height: calc(100vh - 130px);
 
-    .mainWrapper {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-    }
   }
 }

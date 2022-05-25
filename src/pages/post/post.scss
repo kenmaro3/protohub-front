@@ -1,12 +1,12 @@
 .postContainer {
-  background-color: white;
+  background-color: var(--main-bg-color);
   // height: fit-content;
   // height: calc(100vh - 130px);
 
   .postHeader {
     display: flex;
     height: 160px;
-    background-color: hsl(0, 0%, 92%);
+    background-color: var(--sub-bg-color);
     border-bottom: 1px solid #bfbfbf;
     box-shadow: 0.5px 0.3px 0.5px 0.5px rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
@@ -35,21 +35,23 @@
 
 
       }
-      .forkInfo{
+
+      .forkInfo {
         display: flex;
         align-items: center;
         margin-top: 20px;
 
-        .header{
+        .header {}
 
-        }
-        .fromUser{
+        .fromUser {
           margin-left: 10px;
         }
-        .separation{
+
+        .separation {
           margin-left: 10px;
         }
-        .fromPost{
+
+        .fromPost {
           margin-left: 10px;
         }
 
@@ -60,7 +62,7 @@
         align-items: center;
         margin-top: 20px;
 
-        .image{
+        .image {
           width: 24px;
           height: 24px;
           border-radius: 50%;
@@ -83,7 +85,7 @@
       margin-right: 100px;
       margin-top: 40px;
 
-      .postShareContainer{
+      .postShareContainer {
         display: flex;
       }
 
@@ -94,13 +96,28 @@
         .postLike {
           display: flex;
           align-items: center;
-          border: 1px solid #bfbfbf;
-          box-shadow: 0.1px 0.1px 0.2px 0.2px rgba(0, 0, 0, 0.2);
-          padding: 4px 20px;
+          border: 0.5px solid var(--botton-border-black);
+          -moz-box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.1);
+          -webkit-box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.1);
+          -ms-box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.1);
+          padding: 8px 24px;
           border-radius: 8px;
+          cursor: pointer;
+          transition: 0.2s;
+
+          &:hover{
+            background-color: var(--botton-bg-whitegray);
+          }
+
+          .MuiSvgIcon-root{
+            font-size: 20px;
+
+          }
 
           .count {
-            font-size: 20px;
+            font-size: 15px;
+            font-weight: 300;
             margin-left: 10px;
           }
         }
@@ -109,13 +126,28 @@
           margin-left: 20px;
           display: flex;
           align-items: center;
-          border: 1px solid #bfbfbf;
-          box-shadow: 0.1px 0.1px 0.2px 0.2px rgba(0, 0, 0, 0.2);
-          padding: 4px 20px;
+          border: 0.5px solid var(--botton-border-black);
+          -moz-box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.1);
+          -webkit-box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.1);
+          -ms-box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.1);
+          padding: 8px 24px;
           border-radius: 8px;
+          cursor: pointer;
+          transition: 0.2s;
+
+          &:hover{
+            background-color: var(--botton-bg-whitegray);
+          }
+
+          .MuiSvgIcon-root{
+            font-size: 20px;
+
+          }
 
           .count {
-            font-size: 20px;
+            font-size: 15px;
+            font-weight: 300;
             margin-left: 10px;
           }
         }
@@ -125,19 +157,30 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          border: 1px solid #bfbfbf;
-          box-shadow: 0.1px 0.1px 0.2px 0.2px rgba(0, 0, 0, 0.2);
-          padding: 4px 20px;
+          border: 0.5px solid var(--botton-border-black);
+          -moz-box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.1);
+          -webkit-box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.1);
+          -ms-box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.1);
+          padding: 8px 24px;
           border-radius: 8px;
           cursor: pointer;
+          transition: 0.2s;
+
+          &:hover{
+            background-color: var(--botton-bg-whitegray);
+          }
+
 
           .actionTitle {
-            font-size: 20px;
-            font-weight: 500;
+            font-size: 15px;
+            font-weight: 300;
             margin-left: 10px;
           }
-          .count{
-            font-size: 20px;
+
+          .count {
+            font-size: 15px;
+            font-weight: 300;
             margin-left: 10px;
           }
         }
@@ -149,30 +192,36 @@
   }
 
   .postBody {
-    width: 90%;
-    margin-right: 2.5%;
-    margin-left: 2.5%;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 60px;
     display: flex;
-    background-color: white;
+    border: none;
+    border-radius: 20px;
     // border: 1px solid;
 
     .postBodyRight {
       margin-left: 2.5%;
       flex-basis: 30%;
       margin-bottom: 100px;
+      background-color: white;
+      border-radius: 20px;
+      padding: 10px 10px 10px 10px;
+
 
     }
 
     .postBodyLeft {
       display: flex;
       flex-direction: column;
-      background-color: white;
       flex-basis: 70%;
       position: relative;
 
+
       .postBodyMain {
-        border: 1px solid lightgray;
-        border-radius: 5px;
+        border-radius: 20px;
+        background-color: white;
+        padding-bottom: 30px;
 
         img {
           margin-top: 20px;
@@ -191,13 +240,13 @@
             font-size: 36px;
           }
 
-          .postShareContainer{
+          .postShareContainer {
             display: flex;
             align-items: center;
             margin-left: auto;
             margin-right: 60px;
 
-            .item{
+            .item {
               margin-left: 20px;
             }
           }
@@ -225,12 +274,33 @@
         }
       }
 
-    }
-
     .postComments {
-      margin-top: 40px;
+      margin: 60px 0 60px 0;
+      background-color: white;
+      border-radius: 20px;
+      padding: 40px 50px 50px 50px;
 
+
+      h2 {
+        margin-bottom: 20px;
+        color: var(--font-black);
+      }
+
+      .commentsList {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        .noComments {
+          font-size: 20px;
+          color: lightgray;
+          text-align: center;
+        }
+      }
     }
+    }
+
 
 
 
@@ -250,30 +320,6 @@
     }
 
 
-    .postComments {
-      margin: 20px 0 0 0;
-      background-color: white;
-      border-radius: 5px;
-      border: 1px solid lightgray;
-      padding: 20px 50px 50px 50px;
-
-      h2 {
-        margin-bottom: 20px;
-      }
-
-      .commentsList {
-        margin-top: 30px;
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-
-        .noComments {
-          font-size: 20px;
-          color: lightgray;
-          text-align: center;
-        }
-      }
-    }
   }
 
 }

@@ -8,7 +8,7 @@ const LatestList: FC = () => {
     const { todayPosts } = useAppSelector(state => state.posts)
 
     return (
-        <div className={'latestList'}>
+        <div className={'latestListContainer'}>
             <div className={'latestTitle'}>
                 <h3>Latest</h3>
             </div>

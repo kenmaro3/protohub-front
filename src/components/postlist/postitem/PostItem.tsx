@@ -18,7 +18,7 @@ interface PostItemProps {
 const PostItem: FC<PostItemProps> = ({ post, displayImage }) => {
 
     return (
-        <>
+        <div className="postItemContainer">
             <div className={'authorInfo'}>
                 <img className='profileImage' src={post.user.profile_picture} alt="avatar" />
                 <div className={'authorDescription'}>
@@ -87,7 +87,8 @@ const PostItem: FC<PostItemProps> = ({ post, displayImage }) => {
                 </div>
                 {displayImage && <img width={200} height={100} className='postImg' src={`${post.post_image}`} alt="postPicture" />}
             </div>
-        </>
+
+        </div>
     );
 };
 

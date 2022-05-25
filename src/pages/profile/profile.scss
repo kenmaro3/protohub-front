@@ -10,12 +10,16 @@
   }
 
   .profile {
-    width: 70%;
-    margin: 20px auto 20px auto;
+    width: 60%;
+    margin: 60px auto 20px auto;
     padding: 40px;
     background-color: white;
-    border-radius: 5px;
-    border: 1px solid rgba(211, 211, 211, 0.51);
+    border-radius: 20px;
+    border: none;
+    -moz-box-shadow: 0px 1px 7px -1px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0px 1px 7px -1px rgba(0, 0, 0, 0.15);
+    -ms-box-shadow: 0px 1px 7px -1px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 1px 7px -1px rgba(0, 0, 0, 0.15);
 
     .profileInfo {
       display: flex;
@@ -176,12 +180,15 @@
   }
 
   .userPosts {
-    width: 70%;
-    margin: 20px auto 0 auto;
+    width: 60%;
+    margin: 40px auto 0 auto;
     padding: 40px;
     background-color: white;
-    border-radius: 5px;
-    border: 1px solid rgba(211, 211, 211, 0.51);
+    border-radius: 20px;
+    -moz-box-shadow: 0px 1px 7px -1px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0px 1px 7px -1px rgba(0, 0, 0, 0.15);
+    -ms-box-shadow: 0px 1px 7px -1px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 1px 7px -1px rgba(0, 0, 0, 0.15);
 
     h3 {
       text-align: center;

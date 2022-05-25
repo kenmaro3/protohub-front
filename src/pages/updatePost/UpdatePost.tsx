@@ -98,7 +98,7 @@ const UpdatePost: FC = () => {
     };
 
     return (
-        <div className={'createPostContainer'}>
+        <div className={'updatePostContainer'}>
             {isError && <Card messages={errMessages} handleClick={cardClick} className="alertCard"></Card>}
             <div className="header">
                 <div className="actionContainer">
@@ -115,10 +115,14 @@ const UpdatePost: FC = () => {
                 </div>
 
             </div>
-            <FileUpload
-                displayImage={true}
-                handleFile={(file: File | undefined) => setFile(file)}
-            />
+
+            <div className="fileUploadButton">
+                <FileUpload
+                    displayImage={true}
+                    handleFile={(file: File | undefined) => setFile(file)}
+                />
+
+            </div>
 
             <div className="formGroup">
                 <div className="formGroupInfo">

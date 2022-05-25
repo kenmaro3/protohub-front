@@ -147,7 +147,7 @@ const Fork = () => {
             <div className={'forkBody'}>
                 <div className="forkBodyHeader">
                     <div className="title">Create a new fork</div>
-                    <div className="body"><span className='italic'>A fork</span> is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original post.</div>
+                    <div className="body"><span className='italic'>A fork</span> is a copy of a post. Forking a post allows you to freely experiment with changes without affecting the original post.</div>
                 </div>
                 <div className="forkBodyMain">
                     <div className="destinationContainer">

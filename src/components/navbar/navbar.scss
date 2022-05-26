@@ -32,13 +32,13 @@
     margin-left: auto;
 
     .loginButton {
-      border: 1px solid #fdfcff;
+      border: 0.6px solid #fdfcff;
       border-radius: 5px;
       background: none;
-      padding: 4px 10px;
-      font-size: 17px;
+      padding: 5px 12px;
+      font-size: 16px;
       color: #fdfcff;
-      font-weight: 500;
+      font-weight: 400;
       cursor: pointer;
       transition: 0.2s;
       margin-right: 20px;
@@ -51,56 +51,56 @@
 
 
     .signupButton {
-      border: 1px solid #fdfcff;
+      border: 0.6px solid #fdfcff;
       border-radius: 5px;
       background: none;
-      padding: 4px 10px;
-      font-size: 17px;
+      padding: 5px 12px;
+      font-size: 16px;
       color: #fdfcff;
-      font-weight: 500;
+      font-weight: 400;
       cursor: pointer;
       transition: 0.2s;
-      
+
       &:hover {
         background-color: #56535c;
         color: white;
       }
     }
 
+    .navbarProfileImageContainer {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      margin-left: auto;
+
+      .profileImage {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: 0.2s;
+
+        // &:hover{
+        //   width: 55px;
+        //   height: 55px;
+        // }
+      }
+
+      .caret.caret-reversed {
+        margin-right: 40px;
+        margin-left: 6px;
+        border-bottom: 8px solid #cacaca;
+        border-left: 4px solid rgba(0, 0, 0, 0);
+        border-right: 4px solid rgba(0, 0, 0, 0);
+        content: "";
+        display: inline-block;
+        height: 0;
+        vertical-align: top;
+        width: 0;
+        transform: rotate(180deg);
+      }
+
+    }
 
   }
-}
-
-.navbarProfileImageContainer {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-
-  .profileImage {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 0.2s;
-
-    // &:hover{
-    //   width: 55px;
-    //   height: 55px;
-    // }
-  }
-
-  .caret.caret-reversed {
-    margin-right: 100px;
-    margin-left: 6px;
-    border-bottom: 8px solid #cacaca;
-    border-left: 4px solid rgba(0, 0, 0, 0);
-    border-right: 4px solid rgba(0, 0, 0, 0);
-    content: "";
-    display: inline-block;
-    height: 0;
-    vertical-align: top;
-    width: 0;
-    transform: rotate(180deg);
-  }
-
 }

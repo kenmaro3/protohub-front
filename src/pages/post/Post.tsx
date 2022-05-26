@@ -7,7 +7,8 @@ import CommentForm from "../../components/commentForm/CommentForm";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import { useDispatch } from "react-redux";
-import { fetchPostById, likePost, unLikePost, setIsLiked } from "../../store/reducers/currentPost/action-creators";
+import { fetchPostById, likePost, unLikePost, setIsLiked, deleteComment, updateComment } from "../../store/reducers/currentPost/action-creators";
+import { deletePost } from '../../store/reducers/post/action-creators';
 import NotFound from "../404/NotFound";
 import Loader from "../../components/loader/Loader";
 import { useAppSelector, useTitle } from "../../hooks";
@@ -26,7 +27,8 @@ import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import PostInfo from '../../components/postInfo/PostInfo';
 import { IPost } from '../../types/post-type';
 import { IUser } from '../../types/user-type';
-import MDEditor from "@uiw/react-md-editor";
+import MDEditor, { ICommand } from "@uiw/react-md-editor";
+import { IComment } from '../../types/comment-type';
 
 import {
     FacebookIcon,
@@ -62,6 +64,9 @@ const Post = () => {
     const [childUser, setChildUser] = useState<IUser[]>()
 
     const [functionsForPostMenu, setFunctionsForPostMenu] = useState<Map<string, any>>(new Map([]))
+
+    const [isCommentUpdate, setIsCommentUpdate] = useState<boolean>(false)
+    const [commentForUpdate, setCommentForUpdate] = useState<IComment>()
 
     const navigate = useNavigate()
     useTitle(post.title)
@@ -111,12 +116,30 @@ const Post = () => {
     }, [post])
 
     const handleDelete = () => {
-        PostService.deleteById(Number(post_id))
+        //PostService.deleteById(Number(post_id))
+        dispatch(deletePost(Number(post_id)))
         navigate("/")
     }
 
     const handleEdit = () => {
         navigate(`/posts/${post_id}/edit`)
+    }
+
+    const commentDeleteHandler = (comment_id: number) => {
+        dispatch(deleteComment(comment_id))
+    
+    }
+
+    const commentUpdateHandler = (comment: IComment) => {
+        setIsCommentUpdate(true)
+        setCommentForUpdate(comment)
+
+        // const repr = comment.reproducibility ? "True" : "False" 
+        // dispatch(updateComment(
+        //     comment.text, repr, comment.time_cost, post.id,
+        //     comment.user.id, comment.id
+        // ))
+    
     }
 
     const configureCountForInfo = () => {
@@ -380,11 +403,16 @@ const Post = () => {
                     </div>
                     <div className={'postComments'}>
                         <h2>Comments</h2>
-                        <CommentForm />
+                        {!isCommentUpdate ?
+                            <CommentForm />
+                        :
+                            <CommentForm commentForUpdate={commentForUpdate}/>
+
+                        }
                         <div className={'commentsList'}>
                             {post.comments.length > 0
                                 ?
-                                post.comments.map(comment => <Comment key={comment.id} comment={comment} />)
+                                post.comments.map(comment => <Comment comment={comment} deleteFunction={commentDeleteHandler} updateFunction={commentUpdateHandler}/>)
                                 :
                                 <div className={'noComments'}>No comments yet</div>
                             }

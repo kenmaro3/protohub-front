@@ -65,6 +65,20 @@ export const updateLikes = (like: ILike): UpdateLikes => {
     return {type: PostActionsEnum.UPDATE_LIKES, payload: like}
 }
 
+export const deletePost = (post_id: number) => async(dispatch: AppDispatch) => {
+    dispatch(setStatus('loading'))
+    try{
+        PostService.deleteById(Number(post_id))
+        const response = await PostService.getAll()
+        dispatch(setStatus('succeeded'))
+        dispatch(setPosts(response.data))
+        dispatch(setSort(PostSortActions.SORT_BY_TIME))
+    }catch(e: any){
+        dispatch(setError(e.response.data.message))
+        dispatch(setStatus('failed'))
+    }
+}
+
 export const fetchAllPosts = (sortType: PostSortActions) => async(dispatch: AppDispatch) => {
     dispatch(setStatus('loading'))
     try{

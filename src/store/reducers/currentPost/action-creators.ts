@@ -1,4 +1,4 @@
-import {CurrentPostEnum, SetAddComment, SetCommentStatus, SetError, SetIsLiked, SetPost} from "./types";
+import {CurrentPostEnum, SetAddComment, SetUpdateComment, SetDeleteComment, SetCommentStatus, SetError, SetIsLiked, SetPost} from "./types";
 import {IPost} from "../../../types/post-type";
 import {AppDispatch, RootState} from "../../index";
 import PostService from "../../../services/post-service";
@@ -10,6 +10,14 @@ export const setError = (error: string): SetError => {
 }
 export const setAddComment = (comment: IComment): SetAddComment => {
     return {type: CurrentPostEnum.ADD_COMMENT, payload: comment}
+}
+
+export const setUpdateComment = (comment: IComment): SetUpdateComment => {
+    return {type: CurrentPostEnum.UPDATE_COMMENT, payload: comment}
+}
+
+export const setDeleteComment = (comment_id: number): SetDeleteComment => {
+    return {type: CurrentPostEnum.DELETE_COMMENT, payload: comment_id}
 }
 
 export const setCommentStatus = (status: 'default' | 'success' | 'failed'): SetCommentStatus => {
@@ -49,6 +57,39 @@ export const createComment = (text: string, reproducibility: string, time_cost: 
         const response = await PostService.createComment(text, reproducibility, time_cost, post_id, user_id)
         dispatch(setAddComment(response.data))
         dispatch(updateComments(response.data))
+        dispatch(setCommentStatus('success'))
+        setTimeout(() => {
+            dispatch(setCommentStatus('default'))
+        }, 2000)
+    }catch(e: any){
+        if(e.response){
+            dispatch(setCommentStatus('failed'))
+        }
+    }
+}
+
+export const updateComment = (text: string, reproducibility: string, time_cost: string, post_id: number, user_id: number, comment_id: number) => async (dispatch: AppDispatch) => {
+    dispatch(setCommentStatus('default'))
+    try{
+        const response = await PostService.updateComment(text, reproducibility, time_cost, post_id, user_id, comment_id)
+        dispatch(setUpdateComment(response.data))
+        dispatch(updateComments(response.data))
+        dispatch(setCommentStatus('success'))
+        setTimeout(() => {
+            dispatch(setCommentStatus('default'))
+        }, 2000)
+    }catch(e: any){
+        if(e.response){
+            dispatch(setCommentStatus('failed'))
+        }
+    }
+}
+
+export const deleteComment = (comment_id: number) => async (dispatch: AppDispatch) => {
+    dispatch(setCommentStatus('default'))
+    try{
+        await PostService.deleteCommentById(String(comment_id))
+        dispatch(setDeleteComment(comment_id))
         dispatch(setCommentStatus('success'))
         setTimeout(() => {
             dispatch(setCommentStatus('default'))

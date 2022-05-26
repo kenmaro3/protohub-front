@@ -10,6 +10,8 @@ import CommentMenu from '../commentMenu/CommentMenu';
 
 interface CommentProps {
     comment: IComment
+    deleteFunction: any;
+    updateFunction: any;
 }
 
 interface CommentPopUpProps {
@@ -17,19 +19,18 @@ interface CommentPopUpProps {
 }
 
 
-const Comment: FC<CommentProps> = ({ comment }) => {
+const Comment: FC<CommentProps> = ({ comment, deleteFunction, updateFunction }) => {
     const { user, isAuth } = useAppSelector(state => state.auth)
 
     const navigate = useNavigate()
 
     const handleEdit = () => {
         console.log("edit clicked of", comment.id)
+        updateFunction(comment)
     }
 
     const handleDelete = () => {
-        console.log("delete clicked of", comment.id)
-        PostService.deleteCommentById(String(comment.id))
-        navigate(`/posts/${comment.post.id}`)
+        deleteFunction(comment.id)
 
     }
 

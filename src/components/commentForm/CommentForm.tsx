@@ -1,12 +1,17 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import './commentform.scss'
 import Button from "../common/button/Button";
 import { useAppSelector } from "../../hooks";
 import { useDispatch } from "react-redux";
-import { createComment } from "../../store/reducers/currentPost/action-creators";
+import { createComment, updateComment} from "../../store/reducers/currentPost/action-creators";
 import Select from 'react-select'
+import { IComment } from '../../types/comment-type';
 
-const CommentForm: FC = () => {
+interface CommentFormProps{
+    commentForUpdate?: IComment
+}
+
+const CommentForm: FC<CommentFormProps> = ({commentForUpdate}) => {
     const reproducibilitiyOption = [
         { value: 'True', label: 'Reproducible' },
         { value: 'False', label: 'Not Reproducible' },
@@ -28,6 +33,18 @@ const CommentForm: FC = () => {
 
     const [reprSelected, setReprSelected] = useState<string>("null")
     const [timeCostSelected, setTimeCostSelected] = useState<string>("null")
+    const [isUpdate, setIsUpdate] = useState<boolean>(false)
+
+    useEffect(() => {
+        if(commentForUpdate != undefined){
+            setReprSelected(commentForUpdate.reproducibility ? "True" : "False")
+            setTimeCostSelected(commentForUpdate.time_cost)
+            setText(commentForUpdate.text)
+            setIsUpdate(true)
+        }
+
+    }, [commentForUpdate])
+
 
     const onReprChange = (value: any): void => {
         console.log("selected", value.value)
@@ -42,7 +59,19 @@ const CommentForm: FC = () => {
         if (text.length > 15) {
             setError('')
             setText('')
-            dispatch(createComment(text, reprSelected, timeCostSelected, post.id, user.id))
+
+            if (!isUpdate){
+                dispatch(createComment(text, reprSelected, timeCostSelected, post.id, user.id))
+            }
+            else{
+                if(commentForUpdate != undefined){
+                    dispatch(updateComment(text, reprSelected, timeCostSelected, post.id, user.id, commentForUpdate.id))
+                }
+                else{
+                    setError("cannot update comment")
+                }
+
+            }
         } else {
             setError('Comment must contain at least 15 characters')
         }
@@ -77,7 +106,13 @@ const CommentForm: FC = () => {
                 placeholder={isAuth ? 'Share your expressions...' : 'Please, log in.'}
                 className={'commentFormArea'}
             />
-            <div className={'sendButton'}><Button disabled={!isAuth} handleClick={onSubmit} text={'Send'} /></div>
+            { !isUpdate ?
+                <div className={'sendButton'}><Button disabled={!isAuth} handleClick={onSubmit} text={'Send'} /></div>
+            :
+                <div className={'sendButton'}><Button disabled={!isAuth} handleClick={onSubmit} text={'Update'} /></div>
+
+
+            }
         </div>
     );
 };

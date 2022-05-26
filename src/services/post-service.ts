@@ -70,6 +70,10 @@ export default class PostService{
     static async createComment(text: string, reproducibility: string, time_cost: string,  post_id: number, user_id: number): Promise<AxiosResponse<IComment>> {
         return api.post<IComment>('/comments', {text, reproducibility, time_cost, post_id, user_id})
     }
+
+    static async updateComment(text: string, reproducibility: string, time_cost: string,  post_id: number, user_id: number, comment_id: number): Promise<AxiosResponse<IComment>> {
+        return api.post<IComment>('/comments/update', {text, reproducibility, time_cost, post_id, user_id, comment_id})
+    }
     static async deleteCommentById(comment_id: string): Promise<void> {
         api.delete<IComment>(`/comments/comment/${comment_id}`)
     }

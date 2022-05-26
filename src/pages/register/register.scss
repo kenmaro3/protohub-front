@@ -1,17 +1,11 @@
-.login{
-  width: 500px;
-  background-color: white;
+.registerContainer {
+  width: 40%;
+  margin-left: 30%;
   //margin: 30px auto;
-  padding: 30px;
-  border-radius: 5px;
-  border: 1px solid rgba(211, 211, 211, 0.51);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  margin-top: 100px;
+  margin-bottom: 100px;
 
-  .registerError{
+  .registerError {
     width: max-content;
     margin: 10px auto 0 auto;
     font-size: 12px;
@@ -22,39 +16,56 @@
     border-radius: 5px;
   }
 
-  .loginTitle{
+  .loginTitle {
     font-size: 30px;
     text-align: center;
   }
 
-  .nameTitle {
-    margin-bottom: 10px;
-  }
+  .formContainer {
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+    width: 50%;
+    margin-left: 22%;
+    margin-top: 40px;
 
-  .emailTitle {
-    margin-bottom: 10px;
-  }
-
-  .passwordTitle {
-    margin-bottom: 10px;
-  }
-
-  .createAccButton {
-    height: 40px;
-    width: 500px;
-    border: 1px solid #000;
-    border-radius: 5px;
-    background: none;
-    cursor: pointer;
-    transition: 0.2s;
-    
-    &:hover {
-      background-color: #56535c;
-      color: white;
+    .nameTitle {
+      margin-bottom: 10px;
     }
+
+    .emailTitle {
+      margin-bottom: 10px;
+    }
+
+    .passwordTitle {
+      margin-bottom: 10px;
+    }
+
+    .createAccButton {
+      margin-bottom: 20px;
+      margin-top: 20px;
+      height: 40px;
+      width: 100%;
+      border: 1px solid #000;
+      border-radius: 5px;
+      background-color: var(--main-button-color);
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 18px;
+      color: var(--main-button-font-color);
+      font-weight: 500;
+      padding: 2px 0 4px 0;
+
+      &:hover {
+        background-color: var(--main-button-color-hover);
+        color: white;
+      }
+    }
+
+    .loginForm {
+      margin-top: 10px;
+    }
+
   }
 
-  .loginForm{
-    margin-top: 10px;
-  }
 }

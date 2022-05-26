@@ -1,58 +1,76 @@
-.login{
-  width: 500px;
-  background-color: white;
+.loginContainer {
+  width: 40%;
+  margin-left: 30%;
   //margin: 30px auto;
-  padding: 30px;
-  border-radius: 5px;
-  border: 1px solid rgba(211, 211, 211, 0.51);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  margin-top: 100px;
+  margin-bottom: 100px;
 
 
-  .loginTitle{
-    font-size: 30px;
+
+
+  .loginTitle {
+    font-size: 26px;
+    font-weight: 500;
     text-align: center;
   }
 
-  .loginForm{
-    margin-top: 30px;
+  .formContainer {
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+    width: 50%;
+    margin-left: 22%;
+    margin-top: 40px;
+    .loginForm {
+      margin-top: 10px;
 
-    .emailTitle {
-      margin-bottom: 10px;
-    }
+      .emailTitle {
+        margin-bottom: 20px;
+        color: var(--font-black);
+        font-size: 18px;
+        font-weight: 400;
+      }
 
-    .passwordTitle {
-      margin-bottom: 10px;
-    }
+      .passwordTitle {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        color: var(--font-black);
+        font-size: 18px;
+        font-weight: 400;
+      }
 
-    .loginButton {
-      margin-bottom: 20px;
-      height: 40px;
-      width: 500px;
-      border: 1px solid #000;
-      border-radius: 5px;
-      background: none;
-      cursor: pointer;
-      transition: 0.2s;
-      
-      &:hover {
-        background-color: #56535c;
-        color: white;
+      .loginButton {
+        margin-bottom: 20px;
+        margin-top: 20px;
+        height: 40px;
+        width: 100%;
+        border: 1px solid #000;
+        border-radius: 5px;
+        background-color: var(--main-button-color);
+        cursor: pointer;
+        transition: 0.2s;
+        font-size: 18px;
+        color: var(--main-button-font-color);
+        font-weight: 500;
+        padding: 2px 0 4px 0;
+
+        &:hover {
+          background-color: var(--main-button-color-hover);
+          color: white;
+        }
+      }
+
+      .forgotPass {
+        text-align: center;
+        text-decoration: none;
+        color: #000;
+
+        &:hover {
+          color: rgb(60, 122, 238);
+        }
       }
     }
 
-    .forgotPass {
-      text-align: center;
-      text-decoration: none;
-      color: #000;
-
-      &:hover {
-        color: rgb(60, 122, 238);
-      }
-    }
   }
-}
 
+}

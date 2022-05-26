@@ -8,6 +8,11 @@ html,body{
   margin: 0;
   padding: 0;
   --main-button-color: #f0a051;
+  --main-button-color-hover: #dc9a57;
+  --main-button-font-color: #fefefe;
+  --button-border-black: #343434;
+  --button-bg-whitegray: #fefefe;
+
   --main-bg-color: #ffd3a7;
   --sub-bg-color: #fff7ee;
   --surprize-color: #ffffba;
@@ -15,8 +20,6 @@ html,body{
   --font-black: #363636;
   --font-graywhite: #6a6a6a;
   --hline-gray: #6a6a6a;
-  --botton-border-black: #343434;
-  --botton-bg-whitegray: #fefefe;
 }
 
 .globalLink{

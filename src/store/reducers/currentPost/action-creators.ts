@@ -3,7 +3,7 @@ import {IPost} from "../../../types/post-type";
 import {AppDispatch, RootState} from "../../index";
 import PostService from "../../../services/post-service";
 import {IComment} from "../../../types/comment-type";
-import {updateComments, updateLikes} from "../post/action-creators";
+import {updateComments, updateLikes, updateUnLikes} from "../post/action-creators";
 
 export const setError = (error: string): SetError => {
     return {type: CurrentPostEnum.SET_ERROR, payload: error}
@@ -125,6 +125,7 @@ export const unLikePost = (user_id: number, like_id: number) => async(dispatch: 
         })
         currentPost.user_likes = updatedLikes
         dispatch(setPost(currentPost))
+        dispatch(updateUnLikes(like_id, currentPost.id))
         dispatch(setIsLiked(false))
     }catch(e: any){
         console.log('error response: ', e.response)

@@ -120,6 +120,20 @@ export default class PostService{
         })
     }
 
+    static updatePostByUnLike(like_id: number, post_id: number, posts: IPost[]): IPost[]{
+        return posts.map(post => {
+            if(post.id === post_id){
+                const newUserLikes = post.user_likes.filter((like) => (
+                    like.id != like_id
+
+                ))
+                post.user_likes = newUserLikes
+                return post
+            }
+            return post
+        })
+    }
+
     static orderByLikes(posts: IPost[]): IPost[]{
         return posts.sort((a,b) =>
             b.user_likes.length - a.user_likes.length)

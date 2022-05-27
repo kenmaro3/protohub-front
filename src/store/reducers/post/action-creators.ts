@@ -10,6 +10,7 @@ import {
     SetTodayPosts,
     UpdateComments,
     UpdateLikes,
+    UpdateUnLikes,
     UpdatePosts
 } from "./types";
 import {IPost} from "../../../types/post-type";
@@ -63,6 +64,10 @@ export const updateComments = (comment: IComment): UpdateComments => {
 }
 export const updateLikes = (like: ILike): UpdateLikes => {
     return {type: PostActionsEnum.UPDATE_LIKES, payload: like}
+}
+
+export const updateUnLikes = (like_id: number, post_id: number): UpdateUnLikes => {
+    return {type: PostActionsEnum.UPDATE_UNLIKES, payload1: like_id, payload2: post_id}
 }
 
 export const deletePost = (post_id: number) => async(dispatch: AppDispatch) => {

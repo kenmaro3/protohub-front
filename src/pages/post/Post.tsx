@@ -253,7 +253,6 @@ const Post = () => {
     }
 
     const addLike = () => {
-        console.log(user.id);
         if (!isAuth) {
             setShowModal(true)
         } else if (!isLiked) {

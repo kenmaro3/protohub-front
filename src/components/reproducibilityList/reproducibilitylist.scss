@@ -1,13 +1,31 @@
-.reproducibilityListContainer{
+.reproducibilityListContainer {
     margin-top: 20px;
     margin-left: 20px;
-    h3{
-        font-size: 22px;
-        margin-bottom: 20px;
-        margin-top: 30px;
-        color: var(--font-black);
+
+    .header {
+        display: flex;
+        margin-top: 50px;
+
+        h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: var(--font-black);
+        }
+        .infoMark{
+            cursor: pointer;
+            margin-left: 20px;
+
+            .MuiSvgIcon-root{
+                color: #4a4a4a;
+            }
+        }
+        .infoContent{
+            position: relative;
+
+            background-color: red;
+
+        }
+
     }
-    .secondH3{
-        margin-top: 40px;
-    }
+
 }

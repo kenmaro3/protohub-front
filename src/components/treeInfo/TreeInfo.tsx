@@ -3,6 +3,8 @@ import './treeinfo.scss'
 import { IPost } from '../../types/post-type';
 import { IUser } from '../../types/user-type';
 import { Link, useParams, useNavigate } from "react-router-dom";
+import InfoMenu from '../infoMenu/InfoMenu';
+import InfoIcon from '@mui/icons-material/Info';
 
 interface TreeInfoProps {
     owner: IUser;
@@ -12,11 +14,22 @@ interface TreeInfoProps {
 
 }
 
-const TreeInfo: FC<TreeInfoProps> = ({ parent, parentUser, owner, child}) => {
+const TreeInfo: FC<TreeInfoProps> = ({ parent, parentUser, owner, child }) => {
+    const infoContent = "Fork shows other user make new post from your post. <br/><br/>\n\
+        new forked post might have nice updates added by the user<br/><br/>\n\
+        Let's have a look!!\
+        "
     return (
         <div className="treeInfoContainer">
-            <h3>Fork Information</h3>
+            <div className="header">
+                <h3>Fork Information</h3>
+                <InfoMenu info={infoContent}>
+                    <div className="infoMark"><InfoIcon /></div>
 
+                </InfoMenu>
+
+
+            </div>
             <div className="parentInfo">
                 {(parent && parent != undefined) ?
 
@@ -34,11 +47,11 @@ const TreeInfo: FC<TreeInfoProps> = ({ parent, parentUser, owner, child}) => {
                     :
 
                     <>
-                    <span className='title'>original post</span>
-                    <span className='separation'>by</span>
-                    <Link to={`/profiles/${owner.id}`} className="globalLink">
-                        <span className='fromUser'>{owner.user_name}</span>
-                    </Link>
+                        <span className='title'>original post</span>
+                        <span className='separation'>by</span>
+                        <Link to={`/profiles/${owner.id}`} className="globalLink">
+                            <span className='fromUser'>{owner.user_name}</span>
+                        </Link>
 
                     </>
                 }

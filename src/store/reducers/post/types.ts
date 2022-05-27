@@ -28,12 +28,18 @@ export enum PostActionsEnum{
     SET_TODAY_POSTS = 'SET_TODAY_POSTS',
     UPDATE_POSTS = 'UPDATE_POSTS',
     UPDATE_COMMENTS = 'UPDATE_COMMENTS',
-    UPDATE_LIKES = 'UPDATE_LIKES'
+    UPDATE_LIKES = 'UPDATE_LIKES',
+    UPDATE_UNLIKES = 'UPDATE_UNLIKES'
 }
 
 export interface UpdateLikes{
     type: PostActionsEnum.UPDATE_LIKES,
     payload: ILike
+}
+export interface UpdateUnLikes{
+    type: PostActionsEnum.UPDATE_UNLIKES,
+    payload1: number,
+    payload2: number
 }
 
 export interface UpdatePosts{
@@ -89,4 +95,5 @@ export type PostsAction =
     SetTodayPosts |
     UpdatePosts |
     UpdateComments |
-    UpdateLikes
+    UpdateLikes |
+    UpdateUnLikes

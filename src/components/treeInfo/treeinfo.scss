@@ -4,6 +4,19 @@
     padding-bottom: 40px;
 
     border-bottom: 0.5px solid var(--hline-gray);
+    .header{
+        display: flex;
+        margin-top: 40px;
+
+        .infoMark{
+            cursor: pointer;
+            margin-left: 20px;
+
+            .MuiSvgIcon-root{
+                color: #4a4a4a;
+            }
+        }
+    }
     h3{
         font-size: 22px;
         columns: var(--font-black);

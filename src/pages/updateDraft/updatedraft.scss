@@ -1,12 +1,15 @@
 .createDraftContainer {
+  width: 90%;
+  margin-top: 40px;
+  margin-left: 5%;
   background-color: white;
-  border-radius: 5px;
-  border: 1px solid lightgray;
-  padding: 10px 40px 10px 40px;
+  padding: 40px 40px 40px 40px;
   box-sizing: border-box;
+  border-radius: 18px;
   // height: 100%;
   height: calc(100vh - 130px);
   overflow: auto;
+  margin-bottom: 40px;
 
   .header {
     display: flex;

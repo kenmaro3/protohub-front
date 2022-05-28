@@ -117,6 +117,8 @@ const Post = () => {
 
     const handleDelete = () => {
         //PostService.deleteById(Number(post_id))
+        console.log("called!!!")
+        console.log(post_id)
         dispatch(deletePost(Number(post_id)))
         navigate("/")
     }

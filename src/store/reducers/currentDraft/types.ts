@@ -9,6 +9,7 @@ export interface CurrentDraftState{
 export enum CurrentDraftEnum{
     SET_ERROR = 'SET_ERROR',
     SET_DRAFT = 'SET_DRAFT',
+    UNSET_DRAFT = 'UNSET_DRAFT',
 }
 
 
@@ -22,4 +23,9 @@ export interface SetDraft{
     payload: IDraft
 }
 
-export type CurrentDraftAction =  SetError | SetDraft 
+export interface UnSetDraft{
+    type: CurrentDraftEnum.UNSET_DRAFT,
+    payload: number
+}
+
+export type CurrentDraftAction =  SetError | SetDraft | UnSetDraft

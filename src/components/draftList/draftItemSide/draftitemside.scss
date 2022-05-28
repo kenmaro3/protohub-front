@@ -1,6 +1,6 @@
 .draftItemSideContainer {
-    background-color: #cecece;
     transition: 0.2s;
+    background-color: white;
     cursor: pointer;
     &:hover{
         transform: scale(1.01);
@@ -48,7 +48,7 @@
 }
 
 .draftItemSideContainerSelected {
-    background-color: #ededed;
+    background-color: var(--draft-item-list-bg-selected);
 
 
 }

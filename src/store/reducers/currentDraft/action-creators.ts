@@ -1,4 +1,4 @@
-import {CurrentDraftEnum, SetError, SetDraft} from "./types";
+import {CurrentDraftEnum, SetError, SetDraft, UnSetDraft} from "./types";
 import {IDraft} from "../../../types/draft-type";
 import {AppDispatch, RootState} from "../../index";
 import DraftService from "../../../services/draft-service";
@@ -8,6 +8,10 @@ export const setError = (error: string): SetError => {
 }
 export const setDraft = (draft: IDraft): SetDraft => {
     return {type: CurrentDraftEnum.SET_DRAFT, payload: draft}
+}
+
+export const unSetDraft = (draft_id: number): UnSetDraft => {
+    return {type: CurrentDraftEnum.UNSET_DRAFT, payload: draft_id}
 }
 
 

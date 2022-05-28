@@ -12,7 +12,7 @@ import {
 } from "./types";
 import {IDraft} from "../../../types/draft-type";
 import {IUser} from "../../../types/user-type";
-import {AppDispatch} from "../../index";
+import {AppDispatch, RootState} from "../../index";
 import DraftService from "../../../services/draft-service";
 
 
@@ -47,6 +47,26 @@ export const setAddDraft = (post: IDraft): SetAddDraft => {
 
 export const setUpdateDrafts = (user: IUser): UpdateDrafts => {
     return {type: DraftActionsEnum.UPDATE_DRAFTS, payload: user}
+}
+
+export const deleteDraft = (draft_id: number) => async(dispatch: AppDispatch, getState: () => RootState) => {
+    dispatch(setStatus('loading'))
+    try{
+        const user = getState().auth.user
+        await DraftService.deleteById(Number(draft_id))
+        const response = await DraftService.getMyAll(user.id)
+        console.log("\n\nhere")
+        console.log(response.data)
+        dispatch(setStatus('succeeded'))
+        dispatch(setDrafts(response.data))
+        dispatch(setSort(DraftSortActions.SORT_BY_TIME))
+
+    }catch(e: any){
+        dispatch(setError(e.response.data.message))
+        dispatch(setStatus('failed'))
+    }
+
+
 }
 
 export const fetchAllDrafts = (sortType: DraftSortActions) => async(dispatch: AppDispatch) => {

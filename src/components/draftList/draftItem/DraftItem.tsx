@@ -5,30 +5,36 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useAppSelector, useTitle } from "../../../hooks";
 import ModalWindow from "../../../components/modalWindow/ModalWindow";
 import DraftService from "../../../services/draft-service";
+import { RootState } from "../../../store";
 
 import 'highlight.js/styles/atom-one-dark.css';
 import PostMenu from '../../../components/postMenu/PostMenu';
 import MDEditor from "@uiw/react-md-editor";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchDraftById } from '../../../store/reducers/currentDraft/action-creators';
+import { deleteDraft } from '../../../store/reducers/draft/action-creators';
+import { unSetDraft } from '../../../store/reducers/currentDraft/action-creators';
 
 const DraftItem: FC = () => {
     const dispatch = useDispatch()
     const { user, isAuth } = useAppSelector(state => state.auth)
-    const { draft } = useAppSelector(state => state.currentDraft)
-    const { myDrafts } = useAppSelector(state => state.myDrafts)
+    const { draft } = useSelector((state: RootState) => state.currentDraft)
+    const { myDrafts } = useSelector((state: RootState) => state.myDrafts)
     const [showModal, setShowModal] = useState<boolean>(false)
 
     const [functionsForDraftMenu, setFunctionsForDraftMenu] = useState<Map<string, any>>(new Map([]))
 
     const navigate = useNavigate()
 
-    const handleDelete = () => {
-        DraftService.deleteById(draft.id)
+    const handleDelete = (draft_id: number) => {
+        // DraftService.deleteById(draft.id)
+        dispatch(deleteDraft(draft.id))
+        dispatch(unSetDraft(draft.id))
         navigate("/")
+
     }
 
-    const handleEdit = () => {
+    const handleEdit = (draft_id: number) => {
         navigate(`/drafts/${draft.id}/edit`)
     }
 
@@ -39,7 +45,7 @@ const DraftItem: FC = () => {
             setFunctionsForDraftMenu(functionsForDraftMenu.set("Delete Draft", handleDelete))
         })()
 
-    }, [])
+    }, [draft])
 
     useEffect(() => {
         console.log("myDrafts: ", myDrafts)

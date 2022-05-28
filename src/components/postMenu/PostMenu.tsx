@@ -27,7 +27,6 @@ const PostMenu: FC<PostMenuProps> = (props) => {
   }, [props])
 
   const itemClicked = (key: string) => {
-    console.log("here clicked")
     functions.get(key)()
   }
 

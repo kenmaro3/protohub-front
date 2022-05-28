@@ -1,9 +1,13 @@
 .draftItemContainer {
   background-color: white;
   height: 100%;
-  flex-basis: 72%;
+  width: 60%;
+  margin-left: 40px;
   // padding-bottom: 100px;
   overflow: scroll;
+  padding-bottom: 40px;
+  border-radius: 20px;
+
 
   .draftBody {
     margin-right: 0%;

@@ -122,49 +122,54 @@ const UpdateDraft: FC = () => {
                 </div>
 
             </div>
-            <FileUpload
-                displayImage={true}
-                handleFile={(file: File | undefined) => setFile(file)}
-            />
 
-            <div className="formGroup">
-                <div className="formGroupInfo">
-                    <label htmlFor={"title"}>Title</label>
-                    {errors["title"] && <p>{errors["title"].message}</p>}
+            <div className="postInner">
+                <h2>Edit Draft</h2>
+                <FileUpload
+                    displayImage={true}
+                    handleFile={(file: File | undefined) => setFile(file)}
+                />
+
+                <div className="formGroup">
+                    <div className="formGroupInfo">
+                        <label htmlFor={"title"}>Title</label>
+                        {errors["title"] && <p>{errors["title"].message}</p>}
+                    </div>
+                    <input
+                        {...register("title", {
+                            required: { value: true, message: 'Required field' },
+                            maxLength: 60,
+                        })}
+                    />
+
                 </div>
-                <input
-                    {...register("title", {
-                        required: { value: true, message: 'Required field' },
-                        maxLength: 60,
-                    })}
-                />
 
-            </div>
+                <div className="formGroup">
+                    <div className="formGroupInfo">
+                        <label htmlFor={"description"}>Description</label>
+                        {errors["title"] && <p>{errors["title"].message}</p>}
+                    </div>
+                    <input
+                        {...register("description", {
+                            required: { value: false, message: 'Required field' },
+                            maxLength: 100,
+                        })}
+                    />
 
-            <div className="formGroup">
-                <div className="formGroupInfo">
-                    <label htmlFor={"description"}>Description</label>
-                    {errors["title"] && <p>{errors["title"].message}</p>}
                 </div>
-                <input
-                    {...register("description", {
-                        required: { value: false, message: 'Required field' },
-                        maxLength: 100,
-                    })}
-                />
 
-            </div>
+                <div className="markDownEditorContainer">
+                    <MDEditor
+                        height={document.documentElement.clientHeight - 150}
+                        value={mdValue}
+                        onChange={(val) => { setMdValue(val!); }}
+                    // previewOptions={{
+                    //     rehypePlugins: [[rehypeSanitize]],
+                    // }}
 
-            <div className="markDownEditorContainer">
-                <MDEditor
-                    height={document.documentElement.clientHeight - 150}
-                    value={mdValue}
-                    onChange={(val) => { setMdValue(val!); }}
-                // previewOptions={{
-                //     rehypePlugins: [[rehypeSanitize]],
-                // }}
+                    />
+                </div>
 
-                />
             </div>
         </div>
     );

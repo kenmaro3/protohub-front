@@ -1,8 +1,12 @@
 .draftSidebarContainer {
-  flex-basis: 28%;
+  margin-left: 60px;
+  margin-bottom: 40px;
+  width: 25%;
   margin-right: 0px;
-  background-color: rgb(233, 233, 233);
+  background-color: white;
   overflow-y: scroll;
+  border-radius: 20px;
+  
   
   .inside {
     .headerContainer{
@@ -10,7 +14,7 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      background-color: rgb(233, 233, 233);
+      background-color: white;
     }
 
     .menu {

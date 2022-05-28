@@ -123,7 +123,7 @@ const PostList: FC<PostListProp> = ({ isMobile }) => {
     }
 
     return (
-        <div className={`${isMobile ? "postListContainerMobile" : "postListContainerMobile"}`}>
+        <div className={`${isMobile ? "postListContainerMobile" : "postListContainer"}`}>
             {contentInside(isMobile)}
 
         </div>

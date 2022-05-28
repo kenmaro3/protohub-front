@@ -4,6 +4,7 @@ import {AppDispatch, RootState} from "../../index";
 import PostService from "../../../services/post-service";
 import {IComment} from "../../../types/comment-type";
 import {updateComments, updateLikes} from "../post/action-creators";
+import { constants } from "os";
 
 export const setError = (error: string): SetError => {
     return {type: CurrentPostEnum.SET_ERROR, payload: error}
@@ -55,6 +56,7 @@ export const createComment = (text: string, reproducibility: string, time_cost: 
     dispatch(setCommentStatus('default'))
     try{
         const response = await PostService.createComment(text, reproducibility, time_cost, post_id, user_id)
+        console.log(response.data)
         dispatch(setAddComment(response.data))
         dispatch(updateComments(response.data))
         dispatch(setCommentStatus('success'))

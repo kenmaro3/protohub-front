@@ -14,7 +14,8 @@ interface CommentFormProps{
 const CommentForm: FC<CommentFormProps> = ({commentForUpdate}) => {
     const reproducibilitiyOption = [
         { value: 'True', label: 'Reproducible' },
-        { value: 'False', label: 'Not Reproducible' },
+        // { value: 'False', label: 'Not Reproducible' },
+        { value: '', label: 'Not Reproducible' },
     ]
 
     const timeCostOption = [
@@ -37,7 +38,8 @@ const CommentForm: FC<CommentFormProps> = ({commentForUpdate}) => {
 
     useEffect(() => {
         if(commentForUpdate != undefined){
-            setReprSelected(commentForUpdate.reproducibility ? "True" : "False")
+            // setReprSelected(commentForUpdate.reproducibility ? "True" : "False")
+            setReprSelected(commentForUpdate.reproducibility ? "True" : "")
             setTimeCostSelected(commentForUpdate.time_cost)
             setText(commentForUpdate.text)
             setIsUpdate(true)

@@ -16,7 +16,7 @@ interface PostItemProps {
 }
 
 const PostItem: FC<PostItemProps> = ({ post, displayImage }) => {
-
+    
     return (
         <div className="postItemContainer">
             <div className={'authorInfo'}>

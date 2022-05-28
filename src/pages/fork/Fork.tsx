@@ -3,8 +3,10 @@ import './fork.scss'
 import { Link, useParams, useNavigate } from "react-router-dom";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store";
 import { fetchPostById, likePost, setIsLiked } from "../../store/reducers/currentPost/action-creators";
+import { fetchTodayPosts, setAddPost } from "../../store/reducers/post/action-creators";
 import { useAppSelector, useTitle } from "../../hooks";
 import { formatDate } from "../../helpers";
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -40,6 +42,7 @@ const Fork = () => {
 
     useTitle(post.title)
 
+    const navigate = useNavigate()
 
     useEffect(() => {
 
@@ -67,15 +70,15 @@ const Fork = () => {
                 return
             }
 
-            console.log("clicked fork")
-            console.log("post.id", postShown.id)
-            console.log("post.user.id", postShown.user.id)
-            console.log("user.id", user.id)
             if (description == null) {
                 setDescription("")
             }
             const response = await PostService.createFork(postShown.id, postShown.user.id, user.id, title, description)
+            dispatch(setAddPost(response.data))
             console.log("response", response)
+            console.log(user.posts)
+
+            navigate(`/posts/${response.data.id}/edit`)
         } catch (e: any) {
         } finally {
         }

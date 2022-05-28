@@ -14,6 +14,7 @@ const Sidebar: FC = () => {
     const navigate = useNavigate()
     const [showModal, setShowModal] = useState<boolean>(false)
     const { posts } = useAppSelector(state => state.posts)
+    const myRecentPosts = posts.filter(post => post.user.id === user.id).slice(0,10);
     const handleClick = (path: string) => {
         if (isAuth) {
             return navigate(`/${path}`)
@@ -33,13 +34,19 @@ const Sidebar: FC = () => {
                 </div>
 
                 {
+                    myRecentPosts.map(post => 
+                        <div key={post.id} className={'userPostListItem'}>
+                            <PostItemSide post={post} />
+                        </div>
+                    )
+                }
+                {/* {
                     posts.map(post => post.user.id === user.id &&
                         <div key={post.id} className={'userPostListItem'}>
                             <PostItemSide post={post} />
                         </div>
                     )
-
-                }
+                } */}
             </div>
         </Sticky>
 

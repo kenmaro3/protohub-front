@@ -1,15 +1,53 @@
 .postListContainer {
-  flex-basis: 40%;
-  margin: 40px 40px;
-  width: 40%;
+  flex-basis: 55%;
+  margin: 40px 0px 40px 40px;
   // TODO
   height: calc(100vh - 210px);
-  
+
+  .selectBox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: fit-content;
+
+    background-color: white;
+    border-radius: 20px;
+    cursor: pointer;
+
+    .latestSelect {
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      padding: 10px 40px 10px 30px;
+      transition: 0.2s;
+
+    }
+
+    .mostLikedSelect {
+      padding: 10px 30px 10px 30px;
+      transition: 0.2s;
+    }
+
+    .mostCommentedSelect {
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      padding: 10px 30px 10px 30px;
+      transition: 0.2s;
+    }
+
+    .selected {
+      background-color: var(--main-bg-color);
+    }
+  }
+
   .postList {
-    padding: 40px 40px;
-    box-sizing: border-box;
+    margin-top: 40px;
+    padding: 0px 40px 40px 40px;
     overflow-y: scroll;
     height: 100%;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     .noPosts {
       font-size: 25px;

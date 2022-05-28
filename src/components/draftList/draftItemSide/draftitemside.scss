@@ -52,3 +52,56 @@
 
 
 }
+
+.draftItemSideContainerMobile {
+    width: 100%;
+    transition: 0.2s;
+    background-color: white;
+    cursor: pointer;
+    &:hover{
+        transform: scale(1.01);
+
+    }
+    .insideContainer {
+        width: 94%;
+        padding: 20px 12px;
+        margin-top: 4px;
+
+        .title {
+            width: 100%;
+            margin-top: 10px;
+            font-size: 20px;
+            font-weight: 600;
+            overflow: hidden;
+        }
+
+        .description {
+            font-size: 16px;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+
+        .text {
+            margin-top: 14px;
+            max-height: 100px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            color: #a7a7a7;
+        }
+
+        .timeContainer {
+            margin-top: 13px;
+
+            .title {
+                font-size: 16px;
+            }
+
+            .datetime {
+                margin-left: 0px;
+            }
+        }
+
+    }
+
+
+}

@@ -1,38 +1,33 @@
 import React, { FC, useState } from 'react';
 import './postlist.scss'
 import PostItem from "./postitem/PostItem";
+import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
 import { setSort } from "../../store/reducers/post/action-creators";
 import { PostSortActions } from "../../store/reducers/post/types";
 import Loader from "../loader/Loader";
 import { motion } from "framer-motion";
+import ModalWindow from "../modalWindow/ModalWindow";
 
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
-interface TabPanelProps {
-    children?: React.ReactNode;
-    index: number;
-    value: number;
+interface PostListProp {
+    isMobile: boolean
 }
 
 
-function a11yProps(index: number) {
-    return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
-    };
-}
-
-
-const PostList: FC = () => {
+const PostList: FC<PostListProp> = ({ isMobile }) => {
+    const { isAuth } = useSelector((state: RootState) => state.auth)
     const { posts, status } = useSelector((state: RootState) => state.posts)
     const [value, setValue] = React.useState(0);
     const dispatch = useDispatch()
     const [sortType, setSortType] = useState<string>("time")
+    const navigate = useNavigate()
+    const [showModal, setShowModal] = useState<boolean>(false)
     // const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     //     setValue(newValue);
     //     if (newValue == 0) {
@@ -62,59 +57,74 @@ const PostList: FC = () => {
         setSortType("comment")
     }
 
+    const handleClick = (path: string) => {
+        if (isAuth) {
+            return navigate(`/${path}`)
+        } else {
+            setShowModal(true)
+        }
+    }
+
+    const contentInside = (isMobile: boolean) => {
+        return (
+            <>
+                {isMobile &&
+                    <>
+                        <ModalWindow setShowModal={setShowModal} showModal={showModal} />
+                        <button onClick={() => handleClick('create')} className={'newPostButton'}>Create Post</button>
+
+                    </>
+
+                }
+                <div className="selectBox">
+                    {sortType === "time" ?
+                        <div className="latestSelect selected" onClick={latestSelected}>
+                            Latest
+                        </div>
+                        :
+                        <div className="latestSelect" onClick={latestSelected}>
+                            Latest
+                        </div>
+                    }
+                    {sortType === "like" ?
+                        <div className="mostLikedSelect selected" onClick={mostLikedSelected}>
+                            Most Liked
+
+                        </div>
+                        :
+                        <div className="mostLikedSelect" onClick={mostLikedSelected}>
+                            Most Liked
+
+                        </div>
+                    }
+                    {sortType === "comment" ?
+                        <div className="mostCommentedSelect selected" onClick={mostCommentedSeleted}>
+                            Most Commented
+
+                        </div>
+                        :
+                        <div className="mostCommentedSelect" onClick={mostCommentedSeleted}>
+                            Most Commented
+
+                        </div>
+                    }
+                </div>
+                <div className={'postList'}>
+                    {status !== 'succeeded' ? <Loader /> : posts.length === 0 ? <div className={'noPosts'}>No posts yet</div> :
+                        posts.map(post =>
+                            <motion.div key={post.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                                <PostItem displayImage={post.post_image ? true : false} post={post} isMobile={isMobile} />
+                            </motion.div>)
+                    }
+                </div>
+
+            </>
+        )
+    }
+
     return (
-        <div className="postListContainer">
-            {/* <Box sx={{ width: '100%' }}>
-                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                    <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                        <Tab label="Latest" {...a11yProps(0)} />
-                        <Tab label="Hot" {...a11yProps(1)} />
-                        <Tab label="Best" {...a11yProps(2)} />
-                    </Tabs>
-                </Box>
-            </Box> */}
-
-            <div className="selectBox">
-                {sortType === "time" ?
-                    <div className="latestSelect selected" onClick={latestSelected}>
-                        Latest
-                    </div>
-                    :
-                    <div className="latestSelect" onClick={latestSelected}>
-                        Latest
-                    </div>
-                }
-                {sortType === "like" ?
-                    <div className="mostLikedSelect selected" onClick={mostLikedSelected}>
-                        Most Liked
-
-                    </div>
-                    :
-                    <div className="mostLikedSelect" onClick={mostLikedSelected}>
-                        Most Liked
-
-                    </div>
-                }
-                {sortType === "comment" ?
-                    <div className="mostCommentedSelect selected" onClick={mostCommentedSeleted}>
-                        Most Commented
-
-                    </div>
-                    :
-                    <div className="mostCommentedSelect" onClick={mostCommentedSeleted}>
-                        Most Commented
-
-                    </div>
-                }
-            </div>
-            <div className={'postList'}>
-                {status !== 'succeeded' ? <Loader /> : posts.length === 0 ? <div className={'noPosts'}>No posts yet</div> :
-                    posts.map(post =>
-                        <motion.div key={post.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                            <PostItem displayImage={post.post_image ? true : false} post={post} />
-                        </motion.div>)
-                }
-            </div>
+        <div className={`${isMobile ? "postListContainerMobile" : "postListContainerMobile"}`}>
+            {contentInside(isMobile)}
 
         </div>
     );

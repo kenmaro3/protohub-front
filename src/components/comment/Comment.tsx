@@ -12,6 +12,7 @@ interface CommentProps {
     comment: IComment
     deleteFunction: any;
     updateFunction: any;
+    isMobile: boolean;
 }
 
 interface CommentPopUpProps {
@@ -19,7 +20,7 @@ interface CommentPopUpProps {
 }
 
 
-const Comment: FC<CommentProps> = ({ comment, deleteFunction, updateFunction }) => {
+const Comment: FC<CommentProps> = ({ comment, deleteFunction, updateFunction, isMobile}) => {
     const { user, isAuth } = useAppSelector(state => state.auth)
 
     const navigate = useNavigate()
@@ -42,7 +43,7 @@ const Comment: FC<CommentProps> = ({ comment, deleteFunction, updateFunction }) 
     }, [])
 
     return (
-        <div className="commentContainer">
+        <div className={`${isMobile? "commentContainerMobile" : "commentContainer"}`}>
 
 
             <div className={'comment'}>

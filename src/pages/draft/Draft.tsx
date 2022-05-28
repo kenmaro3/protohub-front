@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { fetchMyDrafts } from "../../store/reducers/draft/action-creators";
 import { useSelector } from "react-redux";
 import { useAppSelector } from "../../hooks";
+import MediaQuery from "react-responsive";
 
 
 
@@ -19,7 +20,7 @@ function Draft() {
 
     useEffect(() => {
         console.log('this is a user', user)
-        if(user){
+        if (user) {
             console.log("dispatch for mydrafts called")
             dispatch(fetchMyDrafts(user.id, DraftSortActions.SORT_BY_TIME_MY))
         }
@@ -29,7 +30,7 @@ function Draft() {
 
     useEffect(() => {
         console.log('this is a user', user)
-        if(user){
+        if (user) {
             console.log("dispatch for mydrafts called 2")
             dispatch(fetchMyDrafts(user.id, DraftSortActions.SORT_BY_TIME_MY))
         }
@@ -39,10 +40,24 @@ function Draft() {
 
 
     return (
-        <div className="draftContainer">
-            <DraftSidebar />
-            <DraftItem />
-        </div>
+        <>
+            <MediaQuery query="(min-width: 768px)">
+                <div className="draftContainer">
+                    <DraftSidebar isMobile={false}/>
+                    <DraftItem isMobile={false}/>
+                </div>
+            </MediaQuery>
+
+
+            <MediaQuery query="(max-width: 767px)">
+                <div className="draftContainerMobile">
+                    <DraftSidebar isMobile={true}/>
+                    <DraftItem isMobile={true}/>
+                </div>
+
+            </MediaQuery>
+
+        </>
     )
 }
 

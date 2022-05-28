@@ -10,6 +10,7 @@ import { Navigate } from "react-router-dom";
 import { useAppSelector, useTitle } from "../../hooks";
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom'
+import MediaQuery from "react-responsive";
 
 const Login: FC = () => {
     const { isLoading, error, isAuth } = useAppSelector(state => state.auth)
@@ -25,55 +26,77 @@ const Login: FC = () => {
         dispatch(login(data.Email, data.Password))
     }
 
+    const contentInside = () => {
+        return (
+            <>
+                {isAuth && <Navigate to={'/'} />}
+                <h2 className={'loginTitle'}>Sign in to ProtoHub</h2>
+
+                {error &&
+                    <div className={'registerError'}>
+                        {error}
+                    </div>
+                }
+
+                <div className="formContainer">
+                    <div className={'loginForm'}>
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <p className={"emailTitle"}>Email address</p>
+                            <FormGroup
+                                fieldName={'Email'}
+                                register={register}
+                                errors={errors}
+                                placeholder={'Enter email...'}
+                                isRequired={true}
+                            />
+                            <p className={"passwordTitle"}>Password</p>
+                            <FormGroup
+                                fieldName={'Password'}
+                                register={register}
+                                errors={errors}
+                                placeholder={'Enter password...'}
+                                isRequired={true}
+                                type={'password'}
+                            />
+                            <Button
+                                type={'submit'}
+                                progress={isLoading ?
+                                    <CircularProgress style={{ color: 'white' }} size={20} /> : null}
+                                text={'Log in'}
+                                className={"loginButton"}
+                            />
+                            <Link to={"#"} className={"forgotPass"}>
+                                <p>Forgot password?</p>
+                            </Link>
+                        </form>
+                    </div>
+
+                </div>
+            </>
+
+        )
+    }
+
 
     return (
-        <div className={'loginContainer'}>
-            {isAuth && <Navigate to={'/'} />}
-            <h2 className={'loginTitle'}>Sign in to ProtoHub</h2>
 
-            {error &&
-                <div className={'registerError'}>
-                    {error}
+        <>
+            <MediaQuery query="(min-width: 768px)">
+                <div className={'loginContainer'}>
+                    {contentInside()}
                 </div>
-            }
 
-            <div className="formContainer">
-            <div className={'loginForm'}>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <p className={"emailTitle"}>Email address</p>
-                    <FormGroup
-                        fieldName={'Email'}
-                        register={register}
-                        errors={errors}
-                        placeholder={'Enter email...'}
-                        isRequired={true}
-                    />
-                    <p className={"passwordTitle"}>Password</p>
-                    <FormGroup
-                        fieldName={'Password'}
-                        register={register}
-                        errors={errors}
-                        placeholder={'Enter password...'}
-                        isRequired={true}
-                        type={'password'}
-                    />
-                    <Button
-                        type={'submit'}
-                        progress={isLoading ?
-                            <CircularProgress style={{ color: 'white' }} size={20} /> : null}
-                        text={'Log in'}
-                        className={"loginButton"}
-                    />
-                    <Link to={"#"} className={"forgotPass"}>
-                        <p>Forgot password?</p>
-                    </Link>
-                </form>
-            </div>
-
-            </div>
+            </MediaQuery>
 
 
-        </div>
+            <MediaQuery query="(max-width: 767px)">
+                <div className={'loginContainerMobile'}>
+                    {contentInside()}
+                </div>
+
+            </MediaQuery>
+
+        </>
     );
 };
 

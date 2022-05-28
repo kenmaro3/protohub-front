@@ -13,12 +13,13 @@ TimeAgo.addLocale(en)
 interface PostItemProps {
     post: IPost;
     displayImage?: boolean;
+    isMobile: boolean;
 }
 
-const PostItem: FC<PostItemProps> = ({ post, displayImage }) => {
+const PostItem: FC<PostItemProps> = ({ post, displayImage, isMobile}) => {
 
     return (
-        <div className="postItemContainer">
+        <div className={`${isMobile? "postItemContainerMobile" : "postItemContainer"}`}>
             <div className={'authorInfo'}>
                 <img className='profileImage' src={post.user.profile_picture} alt="avatar" />
                 <div className={'authorDescription'}>

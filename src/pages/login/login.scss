@@ -74,3 +74,79 @@
   }
 
 }
+
+.loginContainerMobile{
+  width: 100%;
+  //margin: 30px auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+
+
+
+
+  .loginTitle {
+    font-size: 26px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .formContainer {
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+    width: 70%;
+    margin-left: 10%;
+    margin-top: 40px;
+    .loginForm {
+      margin-top: 10px;
+
+      .emailTitle {
+        margin-bottom: 20px;
+        color: var(--font-black);
+        font-size: 18px;
+        font-weight: 400;
+      }
+
+      .passwordTitle {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        color: var(--font-black);
+        font-size: 18px;
+        font-weight: 400;
+      }
+
+      .loginButton {
+        margin-bottom: 20px;
+        margin-top: 20px;
+        height: 40px;
+        width: 100%;
+        border: 1px solid var(--button-border-black);
+        border-radius: 5px;
+        background-color: var(--main-button-color);
+        cursor: pointer;
+        transition: 0.2s;
+        font-size: 18px;
+        color: var(--main-button-font-color);
+        font-weight: 500;
+        padding: 2px 0 4px 0;
+
+        &:hover {
+          background-color: var(--main-button-color-hover);
+          color: white;
+        }
+      }
+
+      .forgotPass {
+        text-align: center;
+        text-decoration: none;
+        color: #000;
+
+        &:hover {
+          color: rgb(60, 122, 238);
+        }
+      }
+    }
+
+  }
+
+}

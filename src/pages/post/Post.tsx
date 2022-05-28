@@ -29,6 +29,7 @@ import { IPost } from '../../types/post-type';
 import { IUser } from '../../types/user-type';
 import MDEditor, { ICommand } from "@uiw/react-md-editor";
 import { IComment } from '../../types/comment-type';
+import MediaQuery from "react-responsive";
 
 import {
     FacebookIcon,
@@ -129,7 +130,7 @@ const Post = () => {
 
     const commentDeleteHandler = (comment_id: number) => {
         dispatch(deleteComment(comment_id))
-    
+
     }
 
     const commentUpdateHandler = (comment: IComment) => {
@@ -141,7 +142,7 @@ const Post = () => {
         //     comment.text, repr, comment.time_cost, post.id,
         //     comment.user.id, comment.id
         // ))
-    
+
     }
 
     const configureCountForInfo = () => {
@@ -274,173 +275,357 @@ const Post = () => {
     }
 
 
+    const contentInside = () => {
+        return (
+            <>
+            </>
+        )
+    }
+
+
 
     return (
-        <div className={'postContainer'}>
-            <ModalWindow showModal={showModal} setShowModal={setShowModal} />
-            <div className="postHeader">
-                <div className="postHeaderLeft">
+        <>
+            <MediaQuery query="(min-width: 768px)">
+                <div className={'postContainer'}>
+                    <ModalWindow showModal={showModal} setShowModal={setShowModal} />
+                    <div className="postHeader">
+                        <div className="postHeaderLeft">
 
-                    <div className={'headerLeftTitle'}>
-                        <Link to={`/profiles/${post?.user?.id}`} className="globalLink">
-                            <div className="username no_hightlights">
-                                {post?.user?.user_name}
-                            </div>
-                        </Link>
-                        <div className="separation">
-                            /
-                        </div>
-                        <div className="title">
-                            【{post.title}】
-                        </div>
-                    </div>
-
-
-                    {isParentExist ?
-
-                        <div className="forkInfo">
-                            <span className='header'>forked from</span>
-                            <Link to={`/profiles/${parentUser?.id}`} className="globalLink">
-                                <span className='fromUser'>{parentUser?.user_name!}</span>
-                            </Link>
-                            <span className='separation'>/</span>
-                            <Link to={`/posts/${parent?.id}`} className="globalLink">
-                                <span className='fromPost'>{parent?.title!}</span>
-                            </Link>
-
-                        </div>
-
-                        :
-
-                        <div className="userInfo">
-                            <img className="image" src={post?.user.profile_picture} alt="postPicture" />
-                            <Link to={`/profiles/${post?.user.id}`} className="globalLink">
-                                <div className="username">
-                                    {post?.user?.user_name}
+                            <div className={'headerLeftTitle'}>
+                                <Link to={`/profiles/${post?.user?.id}`} className="globalLink">
+                                    <div className="username no_hightlights">
+                                        {post?.user?.user_name}
+                                    </div>
+                                </Link>
+                                <div className="separation">
+                                    /
                                 </div>
-                            </Link>
-
-                            <div className="postedDate">
-
-                                <span className={'date'}>posted at {formatDate(post.date_and_time_published)}</span>
-                            </div>
-
-                        </div>
-
-                    }
-
-                </div>
-
-                <div className="postHeaderRight">
-                    <div className={'postActionsInfo'}>
-                        <div className="postFork" onClick={forkClicked}>
-                            <AccountTreeIcon />
-                            <div className='actionTitle'>Fork</div>
-                            <span className='count'>0</span>
-
-                        </div>
-
-                        <div className={'postLike'} onClick={addLike}>
-                            {isLiked ? <FavoriteIcon className={'liked'} /> :
-                                <FavoriteBorderIcon className={'postActionsIcon like'} />
-                            }
-                            <span className='count'>{post.user_likes.length}</span>
-                        </div>
-                        <div className={'postComment'}>
-                            <ChatBubbleOutlineIcon className={'postActionsIcon'} />
-                            <span className='count'>{post.comments.length}</span>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-            <div className={'postBody'}>
-                <div className="postBodyLeft">
-                    <div className={'postBodyMain'}>
-                        {post.post_image && <img src={`${post.post_image}`} alt="postPicture" />}
-                        <div className={'postInfo'}>
-                            <h1 className="title">
-                                {post.title}
-                            </h1>
-                            <div className="postShareContainer">
-                                <div className="item">
-                                    <FacebookShareButton url={`https://protohub.tech/posts/${post.id}`} title={`Sharing the post 【${post.title}】from @protohub`}>
-                                        <FacebookIcon size={30} round />
-                                    </FacebookShareButton>
-                                </div>
-
-                                <div className="item">
-                                    <TwitterShareButton
-                                        url={`https://protohub.tech/posts/${post.id}`}
-                                        title={`Sharing the post 【${post.title}】from @protohub`}
-                                        via={post.user.user_name}
-                                    >
-                                        <TwitterIcon size={30} round />
-                                    </TwitterShareButton>
-
+                                <div className="title">
+                                    【{post.title}】
                                 </div>
                             </div>
-                            {user.id === post.user.id &&
-                                <div className="right">
-                                    <PostMenu user={user} functions={functionsForPostMenu}>
-                                        <div className="postAction">
-                                            <MoreVertIcon />
-                                        </div>
-                                    </PostMenu>
+
+
+                            {isParentExist ?
+
+                                <div className="forkInfo">
+                                    <span className='header'>forked from</span>
+                                    <Link to={`/profiles/${parentUser?.id}`} className="globalLink">
+                                        <span className='fromUser'>{parentUser?.user_name!}</span>
+                                    </Link>
+                                    <span className='separation'>/</span>
+                                    <Link to={`/posts/${parent?.id}`} className="globalLink">
+                                        <span className='fromPost'>{parent?.title!}</span>
+                                    </Link>
+
                                 </div>
-                            }
-                        </div>
 
-                        <MDEditor.Markdown
-                            style={{ padding: 40 }}
-                            source={post.text}
-                            linkTarget="_blank"
-                        // previewOptions={{
-                        //   linkTarget: "_blank"
-                        // }}
-                        />
-
-                    </div>
-                    <div className={'postComments'}>
-                        <h2>Comments</h2>
-                        {!isCommentUpdate ?
-                            <CommentForm />
-                        :
-                            <CommentForm commentForUpdate={commentForUpdate}/>
-
-                        }
-                        <div className={'commentsList'}>
-                            {post.comments.length > 0
-                                ?
-                                post.comments.map(comment => <Comment comment={comment} deleteFunction={commentDeleteHandler} updateFunction={commentUpdateHandler}/>)
                                 :
-                                <div className={'noComments'}>No comments yet</div>
+
+                                <div className="userInfo">
+                                    <img className="image" src={post?.user.profile_picture} alt="postPicture" />
+                                    <Link to={`/profiles/${post?.user.id}`} className="globalLink">
+                                        <div className="username">
+                                            {post?.user?.user_name}
+                                        </div>
+                                    </Link>
+
+                                    <div className="postedDate">
+
+                                        <span className={'date'}>posted at {formatDate(post.date_and_time_published)}</span>
+                                    </div>
+
+                                </div>
+
                             }
+
                         </div>
-                    </div>
 
+                        <div className="postHeaderRight">
+                            <div className={'postActionsInfo'}>
+                                <div className="postFork" onClick={forkClicked}>
+                                    <AccountTreeIcon />
+                                    <div className='actionTitle'>Fork</div>
+                                    <span className='count'>0</span>
+
+                                </div>
+
+                                <div className={'postLike'} onClick={addLike}>
+                                    {isLiked ? <FavoriteIcon className={'liked'} /> :
+                                        <FavoriteBorderIcon className={'postActionsIcon like'} />
+                                    }
+                                    <span className='count'>{post.user_likes.length}</span>
+                                </div>
+                                <div className={'postComment'}>
+                                    <ChatBubbleOutlineIcon className={'postActionsIcon'} />
+                                    <span className='count'>{post.comments.length}</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div className={'postBody'}>
+                        <div className="postBodyLeft">
+                            <div className={'postBodyMain'}>
+                                {post.post_image && <img src={`${post.post_image}`} alt="postPicture" />}
+                                <div className={'postInfo'}>
+                                    <h1 className="title">
+                                        {post.title}
+                                    </h1>
+                                    <div className="postShareContainer">
+                                        <div className="item">
+                                            <FacebookShareButton url={`https://protohub.tech/posts/${post.id}`} title={`Sharing the post 【${post.title}】from @protohub`}>
+                                                <FacebookIcon size={30} round />
+                                            </FacebookShareButton>
+                                        </div>
+
+                                        <div className="item">
+                                            <TwitterShareButton
+                                                url={`https://protohub.tech/posts/${post.id}`}
+                                                title={`Sharing the post 【${post.title}】from @protohub`}
+                                                via={post.user.user_name}
+                                            >
+                                                <TwitterIcon size={30} round />
+                                            </TwitterShareButton>
+
+                                        </div>
+                                    </div>
+                                    {user.id === post.user.id &&
+                                        <div className="right">
+                                            <PostMenu user={user} functions={functionsForPostMenu}>
+                                                <div className="postAction">
+                                                    <MoreVertIcon />
+                                                </div>
+                                            </PostMenu>
+                                        </div>
+                                    }
+                                </div>
+
+                                <MDEditor.Markdown
+                                    style={{ padding: 40 }}
+                                    source={post.text}
+                                    linkTarget="_blank"
+                                // previewOptions={{
+                                //   linkTarget: "_blank"
+                                // }}
+                                />
+
+                            </div>
+                            <div className={'postComments'}>
+                                <h2>Comments</h2>
+                                {!isCommentUpdate ?
+                                    <CommentForm isMobile={false} />
+                                    :
+                                    <CommentForm commentForUpdate={commentForUpdate} isMobile={false} />
+
+                                }
+                                <div className={'commentsList'}>
+                                    {post.comments.length > 0
+                                        ?
+                                        post.comments.map(comment => <Comment comment={comment} deleteFunction={commentDeleteHandler} updateFunction={commentUpdateHandler} isMobile={false} />)
+                                        :
+                                        <div className={'noComments'}>No comments yet</div>
+                                    }
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div className="postBodyRight">
+                            <div>
+                                {post.description ?
+                                    <PostInfo description={post.description} likesCount={likesCount} reproducedCount={reprCount} forksCount={forksCount} />
+                                    :
+                                    <PostInfo likesCount={likesCount} reproducedCount={reprCount} forksCount={forksCount} />
+                                }
+                                {(parent && parent !== undefined) && (parentUser && parentUser !== undefined) ?
+                                    <TreeInfo parent={parent} parentUser={parentUser} owner={post.user} child={child} />
+                                    :
+                                    <TreeInfo owner={post.user} child={child} />
+                                }
+                                <ReproducibilityList reprList={reprList} timeCostList={timeCostList} reprMapOkay={reprMapOkay} reprMapNotOkay={reprMapNotOkay} isMobile={false} />
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
 
-                <div className="postBodyRight">
-                    <div>
-                        {post.description ?
-                            <PostInfo description={post.description} likesCount={likesCount} reproducedCount={reprCount} forksCount={forksCount} />
-                            :
-                            <PostInfo likesCount={likesCount} reproducedCount={reprCount} forksCount={forksCount} />
-                        }
-                        {(parent && parent !== undefined) && (parentUser && parentUser !== undefined) ?
-                            <TreeInfo parent={parent} parentUser={parentUser} owner={post.user} child={child} />
-                            :
-                            <TreeInfo owner={post.user} child={child} />
-                        }
-                        <ReproducibilityList reprList={reprList} timeCostList={timeCostList} reprMapOkay={reprMapOkay} reprMapNotOkay={reprMapNotOkay} />
-                    </div>
+            </MediaQuery>
 
+
+
+            <MediaQuery query="(max-width: 767px)">
+                <div className={'postContainerMobile'}>
+                    <ModalWindow showModal={showModal} setShowModal={setShowModal} />
+                    <div className="postHeader">
+                        <div className="postHeaderLeft">
+
+                            <div className={'headerLeftTitle'}>
+                                <Link to={`/profiles/${post?.user?.id}`} className="globalLink">
+                                    <div className="username no_hightlights">
+                                        {post?.user?.user_name}
+                                    </div>
+                                </Link>
+                                <div className="separation">
+                                    /
+                                </div>
+                                <div className="title">
+                                    【{post.title}】
+                                </div>
+                            </div>
+
+
+                            {isParentExist ?
+
+                                <div className="forkInfo">
+                                    <span className='header'>forked from</span>
+                                    <Link to={`/profiles/${parentUser?.id}`} className="globalLink">
+                                        <span className='fromUser'>{parentUser?.user_name!}</span>
+                                    </Link>
+                                    <span className='separation'>/</span>
+                                    <Link to={`/posts/${parent?.id}`} className="globalLink">
+                                        <span className='fromPost'>{parent?.title!}</span>
+                                    </Link>
+
+                                </div>
+
+                                :
+
+                                <div className="userInfo">
+                                    <img className="image" src={post?.user.profile_picture} alt="postPicture" />
+                                    <Link to={`/profiles/${post?.user.id}`} className="globalLink">
+                                        <div className="username">
+                                            {post?.user?.user_name}
+                                        </div>
+                                    </Link>
+
+                                    <div className="postedDate">
+
+                                        <span className={'date'}>posted at {formatDate(post.date_and_time_published)}</span>
+                                    </div>
+
+                                </div>
+
+                            }
+
+                        </div>
+
+                        <div className="postHeaderRight">
+                            <div className={'postActionsInfo'}>
+                                <div className="postFork" onClick={forkClicked}>
+                                    <AccountTreeIcon />
+                                    <div className='actionTitle'>Fork</div>
+                                    <span className='count'>0</span>
+
+                                </div>
+
+                                <div className={'postLike'} onClick={addLike}>
+                                    {isLiked ? <FavoriteIcon className={'liked'} /> :
+                                        <FavoriteBorderIcon className={'postActionsIcon like'} />
+                                    }
+                                    <span className='count'>{post.user_likes.length}</span>
+                                </div>
+                                <div className={'postComment'}>
+                                    <ChatBubbleOutlineIcon className={'postActionsIcon'} />
+                                    <span className='count'>{post.comments.length}</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div className={'postBody'}>
+                        <div className="postBodyLeft">
+                            <div className={'postBodyMain'}>
+                                {post.post_image && <img src={`${post.post_image}`} alt="postPicture" />}
+                                <div className={'postInfo'}>
+                                    <h1 className="title">
+                                        {post.title}
+                                    </h1>
+                                    <div className="postShareContainer">
+                                        <div className="item">
+                                            <FacebookShareButton url={`https://protohub.tech/posts/${post.id}`} title={`Sharing the post 【${post.title}】from @protohub`}>
+                                                <FacebookIcon size={30} round />
+                                            </FacebookShareButton>
+                                        </div>
+
+                                        <div className="item">
+                                            <TwitterShareButton
+                                                url={`https://protohub.tech/posts/${post.id}`}
+                                                title={`Sharing the post 【${post.title}】from @protohub`}
+                                                via={post.user.user_name}
+                                            >
+                                                <TwitterIcon size={30} round />
+                                            </TwitterShareButton>
+
+                                        </div>
+                                        {user.id === post.user.id &&
+                                            <div className="right">
+                                                <PostMenu user={user} functions={functionsForPostMenu}>
+                                                    <div className="postAction">
+                                                        <MoreVertIcon />
+                                                    </div>
+                                                </PostMenu>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+
+                                <MDEditor.Markdown
+                                    style={{ padding: 40 }}
+                                    source={post.text}
+                                    linkTarget="_blank"
+                                // previewOptions={{
+                                //   linkTarget: "_blank"
+                                // }}
+                                />
+
+                            </div>
+                            <div className="postBodyRight">
+                                <div>
+                                    {post.description ?
+                                        <PostInfo description={post.description} likesCount={likesCount} reproducedCount={reprCount} forksCount={forksCount} />
+                                        :
+                                        <PostInfo likesCount={likesCount} reproducedCount={reprCount} forksCount={forksCount} />
+                                    }
+                                    {(parent && parent !== undefined) && (parentUser && parentUser !== undefined) ?
+                                        <TreeInfo parent={parent} parentUser={parentUser} owner={post.user} child={child} />
+                                        :
+                                        <TreeInfo owner={post.user} child={child} />
+                                    }
+                                    <ReproducibilityList reprList={reprList} timeCostList={timeCostList} reprMapOkay={reprMapOkay} reprMapNotOkay={reprMapNotOkay} isMobile={true} />
+                                </div>
+
+                            </div>
+
+                            <div className={'postComments'}>
+                                <h2>Comments</h2>
+                                {!isCommentUpdate ?
+                                    <CommentForm isMobile={true} />
+                                    :
+                                    <CommentForm commentForUpdate={commentForUpdate} isMobile={true} />
+
+                                }
+                                <div className={'commentsList'}>
+                                    {post.comments.length > 0
+                                        ?
+                                        post.comments.map(comment => <Comment comment={comment} deleteFunction={commentDeleteHandler} updateFunction={commentUpdateHandler} isMobile={true} />)
+                                        :
+                                        <div className={'noComments'}>No comments yet</div>
+                                    }
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
 
-            </div>
-        </div>
+            </MediaQuery>
+        </>
     );
 
 }

@@ -10,10 +10,11 @@ interface ReproducibilityListProps {
     timeCostList: number[];
     reprMapOkay: Map<string, number>;
     reprMapNotOkay: Map<string, number>;
+    isMobile: boolean;
 }
 
 
-const ReproducibilityList: FC<ReproducibilityListProps> = ({ reprList, timeCostList, reprMapOkay, reprMapNotOkay }) => {
+const ReproducibilityList: FC<ReproducibilityListProps> = ({ reprList, timeCostList, reprMapOkay, reprMapNotOkay, isMobile}) => {
     const reprOkayLabels = Array.from(reprMapOkay.keys())
     const reprOkayValues = Array.from(reprMapOkay.values())
     const reprNotOkayValues = Array.from(reprMapNotOkay.values())
@@ -69,7 +70,7 @@ const ReproducibilityList: FC<ReproducibilityListProps> = ({ reprList, timeCostL
     };
 
     return (
-        <div className="reproducibilityListContainer">
+        <div className={`${isMobile? "reproducibilityListContainerMobile" : "reproducibilityListContainer"}`}>
             <div className="header">
                 <h3>Reproducibility Information</h3>
                 <InfoMenu info={reprInfoContent}>

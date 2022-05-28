@@ -2,21 +2,22 @@ import React, { FC, useState } from "react";
 import "./searchbar.scss";
 import SearchIcon from '@mui/icons-material/Search';
 import { IconButton } from '@mui/material';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-interface SearchBarProps{
-    placeholder: string;
+interface SearchBarProps {
+  placeholder: string;
+  isMobile: boolean
 }
 
 
 
-const SearchBar: FC<SearchBarProps> = ({ placeholder }) => {
+const SearchBar: FC<SearchBarProps> = ({ placeholder, isMobile }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate()
 
-  const searchClicked = async() => {
-      navigate(`/search?q=${keyword}&type=posts`)
+  const searchClicked = async () => {
+    navigate(`/search?q=${keyword}&type=posts`)
   }
 
   const handleFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,31 +32,33 @@ const SearchBar: FC<SearchBarProps> = ({ placeholder }) => {
       setFilteredData([]);
     } else {
       setFilteredData([]);
-    //   setFilteredData(newFilter);
+      //   setFilteredData(newFilter);
     }
   };
 
 
   return (
-    <div>
+    <div className={`${isMobile ? "searchBarContainerMobile" : "searchBarContainer"}`}>
       <div className="searchInputs">
         <input
           type="text"
           placeholder={placeholder}
           value={keyword}
           onChange={handleFilter}
-          onKeyPress={e =>{
+          onKeyPress={e => {
             if (e.key == 'Enter') {
               e.preventDefault()
               searchClicked()
             }
           }
           }
-          
+
         />
-        <IconButton onClick={searchClicked} className="searchIcon">
+        {!isMobile &&
+          <IconButton onClick={searchClicked} className="searchIcon">
             <SearchIcon />
-        </IconButton>
+          </IconButton>
+        }
       </div>
     </div>
   );

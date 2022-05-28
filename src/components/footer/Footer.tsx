@@ -1,10 +1,13 @@
 import React, { FC } from 'react';
 import './footer.scss'
 
+interface FooterProps{
+    isMobile: boolean
+}
 
-const Footer: FC = () => {
+const Footer: FC<FooterProps> = ({isMobile}) => {
     return (
-        <div className={'footerContainer'}>
+        <div className={`${isMobile? "footerContainerMobile" : "footerContainer"}`}>
             <div className="logo">
                 Blog platform for all who loves prototyping.
 

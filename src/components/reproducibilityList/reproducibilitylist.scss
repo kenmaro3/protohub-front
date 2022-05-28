@@ -27,5 +27,36 @@
         }
 
     }
+}
+
+.reproducibilityListContainerMobile {
+    margin-top: 20px;
+    margin-left: 20px;
+
+    .header {
+        display: flex;
+        margin-top: 50px;
+
+        h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--font-black);
+        }
+        .infoMark{
+            cursor: pointer;
+            margin-left: 20px;
+
+            .MuiSvgIcon-root{
+                color: #4a4a4a;
+            }
+        }
+        .infoContent{
+            position: relative;
+
+            background-color: red;
+
+        }
+
+    }
 
 }

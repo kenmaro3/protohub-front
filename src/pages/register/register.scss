@@ -69,3 +69,75 @@
   }
 
 }
+
+.registerContainerMobile {
+  width: 80%;
+  margin-left: 10%;
+  //margin: 30px auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+
+  .registerError {
+    width: max-content;
+    margin: 10px auto 0 auto;
+    font-size: 12px;
+    text-align: center;
+    color: rgba(255, 0, 0, 0.71);
+    background-color: rgba(255, 0, 0, 0.18);
+    padding: 2px 7px 2px 7px;
+    border-radius: 5px;
+  }
+
+  .loginTitle {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .formContainer {
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+    width: 80%;
+
+    margin-top: 40px;
+
+    .nameTitle {
+      margin-bottom: 10px;
+    }
+
+    .emailTitle {
+      margin-bottom: 10px;
+    }
+
+    .passwordTitle {
+      margin-bottom: 10px;
+    }
+
+    .createAccButton {
+      margin-bottom: 20px;
+      margin-top: 20px;
+      height: 40px;
+      width: 100%;
+      border: 1px solid #000;
+      border-radius: 5px;
+      background-color: var(--main-button-color);
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 18px;
+      color: var(--main-button-font-color);
+      font-weight: 500;
+      padding: 2px 0 4px 0;
+
+      &:hover {
+        background-color: var(--main-button-color-hover);
+        color: white;
+      }
+    }
+
+    .loginForm {
+      margin-top: 10px;
+    }
+
+  }
+
+}

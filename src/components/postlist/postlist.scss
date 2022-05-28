@@ -62,3 +62,79 @@
   }
 
 }
+
+.postListContainerMobile{
+  margin: 20px 0px 220px 10px;
+  // TODO
+  height: calc(100vh - 210px);
+
+  .newPostButton{
+    margin-bottom: 20px;
+    margin-left: 78%;
+    padding: 5px 6px 5px 6px;
+    border-radius: 8px;
+    border: none;
+    font-size: 12px;
+  }
+
+  .selectBox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: fit-content;
+
+    background-color: white;
+    border-radius: 20px;
+    cursor: pointer;
+
+    .latestSelect {
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      padding: 10px 40px 10px 30px;
+      transition: 0.2s;
+      font-size: 12px;
+
+    }
+
+    .mostLikedSelect {
+      padding: 10px 30px 10px 30px;
+      transition: 0.2s;
+      font-size: 12px;
+    }
+
+    .mostCommentedSelect {
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      padding: 10px 30px 10px 30px;
+      transition: 0.2s;
+      font-size: 12px;
+    }
+
+    .selected {
+      background-color: var(--main-bg-color);
+    }
+  }
+
+  .postList {
+    margin-top: 40px;
+    padding: 0px 10px 40px 10px;
+    overflow-y: scroll;
+    height: 100%;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .noPosts {
+      font-size: 25px;
+      color: gray;
+      text-align: center;
+    }
+  }
+
+  .listLoader {
+    position: absolute;
+    top: 50%;
+  }
+
+}

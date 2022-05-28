@@ -14,6 +14,7 @@ import MDEditor from "@uiw/react-md-editor";
 import rehypeSanitize from "rehype-sanitize";
 import DraftService from '../../services/draft-service';
 import Card from "../../components/common/card/Card";
+import MediaQuery from "react-responsive";
 
 const UpdatePost: FC = () => {
     const { register, watch, handleSubmit, formState: { errors }, setValue } = useForm()
@@ -97,78 +98,98 @@ const UpdatePost: FC = () => {
         setIsError("");
     };
 
+    const contentInside = () => {
+        return (
+            <>
+                {isError && <Card messages={errMessages} handleClick={cardClick} className="alertCard"></Card>}
+                <div className="header">
+                    <div className="actionContainer">
+                        <div className={'buttonContainer'}>
+                            <button className='draftButton' onClick={handleSubmit(onDraftSubmit)}>
+                                Save as Draft{isLoading && <CircularProgress style={{ color: 'white' }} size={20} />}
+                            </button>
+                        </div>
+                        <div className={'buttonContainer'}>
+                            <button className='updateButton' onClick={handleSubmit(onSubmit)}>
+                                Update Post  {isLoading && <CircularProgress style={{ color: 'white' }} size={20} />}
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div className="postInner">
+                    <h2>Edit Post</h2>
+                    <div className="fileUploadButton">
+                        <FileUpload
+                            displayImage={true}
+                            handleFile={(file: File | undefined) => setFile(file)}
+                        />
+
+                    </div>
+
+                    <div className="formGroup">
+                        <div className="formGroupInfo">
+                            <label className="title" htmlFor={"title"}>Title</label>
+                            {errors["title"] && <p>{errors["title"].message}</p>}
+                        </div>
+                        <input
+                            {...register("title", {
+                                required: { value: true, message: 'Required field' },
+                                maxLength: 60,
+                            })}
+                        />
+
+                    </div>
+
+                    <div className="formGroup">
+                        <div className="formGroupInfo">
+                            <label className="title" htmlFor={"description"}>Description</label>
+                            {errors["title"] && <p>{errors["title"].message}</p>}
+                        </div>
+                        <input
+                            {...register("description", {
+                                required: { value: false, message: 'Required field' },
+                                maxLength: 100,
+                            })}
+                        />
+
+                    </div>
+
+                    <div className="markDownEditorContainer">
+                        <MDEditor
+                            height={document.documentElement.clientHeight - 150}
+                            value={mdValue}
+                            onChange={(val) => { setMdValue(val!); }}
+                        // previewOptions={{
+                        //     rehypePlugins: [[rehypeSanitize]],
+                        // }}
+
+                        />
+                    </div>
+
+                </div>
+
+            </>
+
+        )
+    }
+
     return (
-        <div className={'updatePostContainer'}>
-            {isError && <Card messages={errMessages} handleClick={cardClick} className="alertCard"></Card>}
-            <div className="header">
-                <div className="actionContainer">
-                    <div className={'buttonContainer'}>
-                        <button className='draftButton' onClick={handleSubmit(onDraftSubmit)}>
-                            Save as Draft{isLoading && <CircularProgress style={{ color: 'white' }} size={20} />}
-                        </button>
-                    </div>
-                    <div className={'buttonContainer'}>
-                        <button className='updateButton' onClick={handleSubmit(onSubmit)}>
-                            Update Post  {isLoading && <CircularProgress style={{ color: 'white' }} size={20} />}
-                        </button>
-                    </div>
+        <>
+            <MediaQuery query="(min-width: 768px)">
+                <div className={'updatePostContainer'}>
+                    {contentInside()}
                 </div>
+            </MediaQuery>
 
-            </div>
-
-            <div className="postInner">
-                <h2>Edit Post</h2>
-                <div className="fileUploadButton">
-                    <FileUpload
-                        displayImage={true}
-                        handleFile={(file: File | undefined) => setFile(file)}
-                    />
-
+            <MediaQuery query="(max-width: 767px)">
+                <div className={'updatePostContainerMobile'}>
+                    {contentInside()}
                 </div>
+            </MediaQuery>
+        </>
 
-                <div className="formGroup">
-                    <div className="formGroupInfo">
-                        <label htmlFor={"title"}>Title</label>
-                        {errors["title"] && <p>{errors["title"].message}</p>}
-                    </div>
-                    <input
-                        {...register("title", {
-                            required: { value: true, message: 'Required field' },
-                            maxLength: 60,
-                        })}
-                    />
-
-                </div>
-
-                <div className="formGroup">
-                    <div className="formGroupInfo">
-                        <label htmlFor={"description"}>Description</label>
-                        {errors["title"] && <p>{errors["title"].message}</p>}
-                    </div>
-                    <input
-                        {...register("description", {
-                            required: { value: false, message: 'Required field' },
-                            maxLength: 100,
-                        })}
-                    />
-
-                </div>
-
-                <div className="markDownEditorContainer">
-                    <MDEditor
-                        height={document.documentElement.clientHeight - 150}
-                        value={mdValue}
-                        onChange={(val) => { setMdValue(val!); }}
-                    // previewOptions={{
-                    //     rehypePlugins: [[rehypeSanitize]],
-                    // }}
-
-                    />
-                </div>
-
-            </div>
-
-        </div>
     );
 };
 

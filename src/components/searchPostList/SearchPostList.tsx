@@ -7,25 +7,27 @@ import { IPost } from '../../types/post-type';
 
 
 interface SearchPostListProps {
-    posts: IPost[];
+    propPosts: IPost[];
+    isMobile: boolean;
+    
 }
 
 
-const SearchPostList: FC<SearchPostListProps> = (props) => {
+const SearchPostList: FC<SearchPostListProps> = ({propPosts, isMobile}) => {
     const [posts, setPosts] = useState<IPost[]>([])
     const [postsCount, setPostsCount] = useState<number>(0)
 
     useEffect(() => {
-        if (props.posts != undefined) {
+        if (propPosts != undefined) {
 
-            setPosts(props.posts)
-            setPostsCount(props.posts.length)
-            console.log("posts from prop", props.posts)
+            setPosts(propPosts)
+            setPostsCount(propPosts.length)
+            console.log("posts from prop", propPosts)
         }
-    }, [props])
+    }, [propPosts])
 
     return (
-        <div className="searchPostListContainer">
+        <div className={`${isMobile? "searchPostListContainerMobile" : "searchPostListContainer"}`}>
             <div className="searchPostListHeader">
                 {postsCount} Posts Found
 
@@ -34,7 +36,7 @@ const SearchPostList: FC<SearchPostListProps> = (props) => {
                 {
                     posts.map(post =>
                         <motion.div key={post.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                            <PostItem displayImage={post.post_image ? true : false} post={post} />
+                            <PostItem displayImage={post.post_image ? true : false} post={post} isMobile={isMobile}/>
                         </motion.div>)
 
                 }

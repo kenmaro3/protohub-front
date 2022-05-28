@@ -59,3 +59,63 @@
     // }
 
 }
+
+.footerContainerMobile{
+    width: 100%;
+    background: white;
+
+
+    margin-top: 2px;
+    box-shadow: 0px -4px 14px -14px rgba(0,0,0,0.6);
+    padding-top: 40px;
+    padding-bottom: 50px;
+    
+
+    .logo{
+        flex: 1;
+        font-size: 14px;
+        color: #868686;
+        margin-left: 10%;
+    }
+
+    .links{
+        margin-top: 40px;
+        margin-right: 10%;
+        margin-left: 10%;
+
+        .contents{
+
+            .header{
+                font-size: 16px;
+                font-weight: 700;
+                color: #505050;
+                margin-bottom: 10px;
+                margin-top: 20px;
+            }
+
+            .content{
+                margin-top: 5px;
+                a{
+                    text-decoration: none;
+                    color: #666666;
+                    font-weight: 550;
+                    font-size: 15px;
+
+                }
+            }
+
+        }
+
+    }
+
+    // .content{
+    //     font-weight: 500;
+    //     margin: 0;
+    //     position: absolute;
+    //     top: 50%;
+    //     left: 50%;
+    //     -ms-transform: translate(-50%, -50%);
+    //     transform: translate(-50%, -50%);
+    // }
+
+}

@@ -19,6 +19,7 @@ import javascript from 'highlight.js/lib/languages/javascript';
 import 'highlight.js/styles/atom-one-dark.css';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import { IPost } from '../../types/post-type'
+import MediaQuery from "react-responsive";
 
 
 hljs.registerLanguage('javascript', javascript);
@@ -81,129 +82,149 @@ const Fork = () => {
         }
     }
 
-    return (
-        <div className={'forkContainer'}>
-            <ModalWindow showModal={showModal} setShowModal={setShowModal} />
-            <div className="forkHeader">
-                <div className="forkHeaderLeft">
+    const contentInside = () => {
+        return (
+            <>
+                <ModalWindow showModal={showModal} setShowModal={setShowModal} />
+                <div className="forkHeader">
+                    <div className="forkHeaderLeft">
 
-                    <div className={'headerLeftTitle'}>
-                        <div className="username">
-                            {postShown?.user?.user_name}
-                        </div>
-                        <div className="separation">
-                            /
-                        </div>
-                        <div className="title">
-                            {postShown?.title}
-                        </div>
-                    </div>
-
-                    <div className="userInfo">
-                        <img src={postShown?.user?.profile_picture} alt="forkPicture" />
-                        <div className="username">
-                            {post?.user?.user_name}
-                        </div>
-
-                        <div className="forkedDate">
-
-                            {postShown?.date_and_time_published != undefined ?
-
-                                <span className={'date'}>posted at {formatDate(postShown?.date_and_time_published!)}</span>
-                                :
-                                <></>
-
-                            }
-                        </div>
-
-                    </div>
-                </div>
-
-                <div className="forkHeaderRight">
-                    <div className={'forkActionsInfo'}>
-                        <div className="forkFork">
-                            <AccountTreeIcon />
-                            <div className='actionTitle'>Fork</div>
-                            <span className='count'>0</span>
-
-                        </div>
-                        <div className={'forkLike'}>
-                            {isLiked ? <FavoriteIcon className={'liked'} /> :
-                                <FavoriteBorderIcon onClick={addLike} className={'forkActionsIcon like'} />
-                            }
-                            <span className='count'>{postShown?.user_likes?.length}</span>
-                        </div>
-                        <div className={'forkComment'}>
-                            <ChatBubbleOutlineIcon className={'forkActionsIcon'} />
-                            <span className='count'>{postShown?.comments?.length}</span>
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-            <div className={'forkBody'}>
-                <div className="forkBodyHeader">
-                    <div className="title">Create a new fork</div>
-                    <div className="body"><span className='italic'>A fork</span> is a copy of a post. Forking a post allows you to freely experiment with changes without affecting the original post.</div>
-                </div>
-                <div className="forkBodyMain">
-                    <div className="destinationContainer">
-                        {/* <h2>To</h2> */}
-                        <div className="pathContainer">
-                            <div className="owner">
-                                <p>Owner</p>
-                                <div className="userInfo">
-                                    <img className='profileImage' src={user.profile_picture} alt="avatar" />
-                                    <div className="owner">{user.user_name}</div>
-                                </div>
+                        <div className={'headerLeftTitle'}>
+                            <div className="username">
+                                {postShown?.user?.user_name}
                             </div>
-                            <div className="seperation">/</div>
+                            <div className="separation">
+                                /
+                            </div>
                             <div className="title">
-                                <p>Title</p>
-                                {/* <div className="postName">{postShown?.title}</div> */}
-                                <input
-                                name={'title'}
-                                value={title}
-                                onChange={(event) => setTitle(event.target.value)}
-                                className="postName"
-                                required
-                            />
+                                {postShown?.title}
                             </div>
-                            
                         </div>
-                        <div className={"descriptionContainer"}>
-                            <p>Description</p>
-                            <input
-                                name={'description'}
-                                value={description}
-                                onChange={(event) => setDescription(event.target.value)}
-                                className="field__input"
-                            />
+
+                        <div className="userInfo">
+                            <img src={postShown?.user?.profile_picture} alt="forkPicture" />
+                            <div className="username">
+                                {post?.user?.user_name}
+                            </div>
+
+                            <div className="forkedDate">
+
+                                {postShown?.date_and_time_published != undefined ?
+
+                                    <span className={'date'}>posted at {formatDate(postShown?.date_and_time_published!)}</span>
+                                    :
+                                    <></>
+
+                                }
+                            </div>
+
                         </div>
-                        
                     </div>
-                    <div className="explanation">
-                        By default, forks are named the same as their parent post.
+
+                    <div className="forkHeaderRight">
+                        <div className={'forkActionsInfo'}>
+                            <div className="forkFork">
+                                <AccountTreeIcon />
+                                <div className='actionTitle'>Fork</div>
+                                <span className='count'>0</span>
+
+                            </div>
+                            <div className={'forkLike'}>
+                                {isLiked ? <FavoriteIcon className={'liked'} /> :
+                                    <FavoriteBorderIcon onClick={addLike} className={'forkActionsIcon like'} />
+                                }
+                                <span className='count'>{postShown?.user_likes?.length}</span>
+                            </div>
+                            <div className={'forkComment'}>
+                                <ChatBubbleOutlineIcon className={'forkActionsIcon'} />
+                                <span className='count'>{postShown?.comments?.length}</span>
+                            </div>
+
+
+                        </div>
+
                     </div>
 
                 </div>
-                <div className="forkBodyFooter">
-                    <Button
-                        className="button"
-                        handleClick={handleSubmit(onSubmit)}
-                        text={'Create Fork'}
-                        type="submit"
-                        progress={isLoading && <CircularProgress style={{ color: 'white' }} size={20} />}
-                    />
+                <div className={'forkBody'}>
+                    <div className="forkBodyHeader">
+                        <div className="title">Create a new fork</div>
+                        <div className="body"><span className='italic'>A fork</span> is a copy of a post. Forking a post allows you to freely experiment with changes without affecting the original post.</div>
+                    </div>
+                    <div className="forkBodyMain">
+                        <div className="destinationContainer">
+                            {/* <h2>To</h2> */}
+                            <div className="pathContainer">
+                                <div className="owner">
+                                    <p>Owner</p>
+                                    <div className="userInfo">
+                                        <img className='profileImage' src={user.profile_picture} alt="avatar" />
+                                        <div className="owner">{user.user_name}</div>
+                                    </div>
+                                </div>
+                                <div className="seperation">/</div>
+                                <div className="title">
+                                    <p>Title</p>
+                                    {/* <div className="postName">{postShown?.title}</div> */}
+                                    <input
+                                        name={'title'}
+                                        value={title}
+                                        onChange={(event) => setTitle(event.target.value)}
+                                        className="postName"
+                                        required
+                                    />
+                                </div>
 
+                            </div>
+                            <div className={"descriptionContainer"}>
+                                <p>Description</p>
+                                <input
+                                    name={'description'}
+                                    value={description}
+                                    onChange={(event) => setDescription(event.target.value)}
+                                    className="field__input"
+                                />
+                            </div>
+
+                        </div>
+                        <div className="explanation">
+                            By default, forks are named the same as their parent post.
+                        </div>
+
+                    </div>
+                    <div className="forkBodyFooter">
+                        <Button
+                            className="button"
+                            handleClick={handleSubmit(onSubmit)}
+                            text={'Create Fork'}
+                            type="submit"
+                            progress={isLoading && <CircularProgress style={{ color: 'white' }} size={20} />}
+                        />
+
+                    </div>
                 </div>
+
+            </>
+        )
+
+    }
+
+return (
+    <>
+        <MediaQuery query="(min-width: 768px)">
+            <div className={'forkContainer'}>
+                {contentInside()}
             </div>
-            {/* <LatestList /> */}
-        </div>
-    );
+        </MediaQuery>
+        <MediaQuery query="(max-width: 767px)">
+            <div className={'forkContainerMobile'}>
+                {contentInside()}
+            </div>
+
+        </MediaQuery>
+
+    </>
+);
 
 }
 

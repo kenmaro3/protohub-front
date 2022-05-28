@@ -6,22 +6,23 @@ import { IUser } from '../../types/user-type';
 import SearchUserItem from '../../components/searchUserItem/SearchUserItem'
 
 interface SearchUserListProps{
-    users: IUser[];
+    propUsers: IUser[];
+    isMobile: boolean;
 }
 
-const SearchUserList: FC<SearchUserListProps> = (props) => {
+const SearchUserList: FC<SearchUserListProps> = ({propUsers, isMobile}) => {
     const [users, setUsers] = useState<IUser[]>([])
     const [usersCount, setUsersCount] = useState<number>(0)
 
     useEffect(() => {
-        if (props.users != undefined) {
-            setUsers(props.users)
-            setUsersCount(props.users.length)
+        if (propUsers != undefined) {
+            setUsers(propUsers)
+            setUsersCount(propUsers.length)
         }
-    }, [props])
+    }, [propUsers])
 
     return (
-        <div className="searchUserListContainer">
+        <div className={`${isMobile? "searchUserListContainerMobile" : "searchUserListContainer"}`}>
             <div className="searchUserListHeader">
                 {usersCount} Users Found
 

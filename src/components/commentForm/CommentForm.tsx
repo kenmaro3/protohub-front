@@ -9,9 +9,10 @@ import { IComment } from '../../types/comment-type';
 
 interface CommentFormProps{
     commentForUpdate?: IComment
+    isMobile: boolean
 }
 
-const CommentForm: FC<CommentFormProps> = ({commentForUpdate}) => {
+const CommentForm: FC<CommentFormProps> = ({commentForUpdate, isMobile}) => {
     const reproducibilitiyOption = [
         { value: 'True', label: 'Reproducible' },
         { value: 'False', label: 'Not Reproducible' },
@@ -79,7 +80,7 @@ const CommentForm: FC<CommentFormProps> = ({commentForUpdate}) => {
     }
 
     return (
-        <div className={'commentForm'}>
+        <div className={`${isMobile? "commentFormMobile" : "commentForm"}`}>
             {addCommentStatus === 'success' && <div className={'commentValidationSuccess'}>Comment posted!</div>}
             {error && <div className={'commentValidationError'}>{error}</div>}
 

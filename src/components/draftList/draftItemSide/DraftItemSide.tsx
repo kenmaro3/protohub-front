@@ -10,13 +10,14 @@ TimeAgo.addDefaultLocale(en)
 interface DraftItemProps {
   draftItem: IDraft;
   displayImage?: boolean;
+  isMobile: boolean;
 }
 
-const DraftItemSide: FC<DraftItemProps> = ({ draftItem, displayImage }) => {
+const DraftItemSide: FC<DraftItemProps> = ({ draftItem, displayImage, isMobile}) => {
   const { draft } = useAppSelector(state => state.currentDraft)
 
   return (
-    <div className={`draftItemSideContainer ${draft.id === draftItem.id ? "draftItemSideContainerSelected" : ""}`}>
+    <div className={`draftItemSideContainer ${draft.id === draftItem.id ? "draftItemSideContainerSelected" : ""} ${isMobile? "draftItemSideContainerMobile" : "draftItemSideContainer"}`}>
       <div className="insideContainer">
         <div className="title">
           {draftItem.title}

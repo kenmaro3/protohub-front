@@ -10,8 +10,12 @@ import DraftItemSide from "../draftList/draftItemSide/DraftItemSide";
 import { IDraft } from "../../types/draft-type";
 import { fetchDraftById } from "../../store/reducers/currentDraft/action-creators"
 
+interface DraftSidebarProp{
+    isMobile: boolean
+}
 
-const DraftSidebar: FC = () => {
+
+const DraftSidebar: FC<DraftSidebarProp> = ({isMobile}) => {
     const { isAuth } = useSelector((state: RootState) => state.auth)
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -31,7 +35,7 @@ const DraftSidebar: FC = () => {
     }
 
     return (
-        <Sticky className='draftSidebarContainer'>
+        <Sticky className={`${isMobile? "draftSidebarContainerMobile" : "draftSidebarContainer"}`}>
             <div className="inside">
                 <ModalWindow setShowModal={setShowModal} showModal={showModal} />
                 <div className="headerContainer">
@@ -45,7 +49,7 @@ const DraftSidebar: FC = () => {
                 
                 {myDrafts.map(draft =>
                     <div onClick={() => itemClickHandler(draft)} key={draft.id} className={'userDraftListItem'}>
-                        <DraftItemSide draftItem={draft} />
+                        <DraftItemSide draftItem={draft} isMobile={isMobile}/>
                     </div>
                 )}
 

@@ -15,7 +15,11 @@ import { fetchDraftById } from '../../../store/reducers/currentDraft/action-crea
 import { deleteDraft } from '../../../store/reducers/draft/action-creators';
 import { unSetDraft } from '../../../store/reducers/currentDraft/action-creators';
 
-const DraftItem: FC = () => {
+interface DraftItemProp {
+    isMobile: boolean;
+}
+
+const DraftItem: FC<DraftItemProp> = ({ isMobile }) => {
     const dispatch = useDispatch()
     const { user, isAuth } = useAppSelector(state => state.auth)
     const { draft } = useSelector((state: RootState) => state.currentDraft)
@@ -57,7 +61,7 @@ const DraftItem: FC = () => {
 
 
     return (
-        <div className={'draftItemContainer'}>
+        <div className={`${isMobile ? "draftItemContainerMobile" : "draftItemContainer"}`}>
             <ModalWindow showModal={showModal} setShowModal={setShowModal} />
             <div className={'draftBody'}>
                 <div className={'draftBodyMain'}>
@@ -76,14 +80,22 @@ const DraftItem: FC = () => {
                         </div>
                     </div>
 
-                    <MDEditor.Markdown
-                        style={{ padding: 40 }}
-                        source={draft?.text}
-                        linkTarget="_blank"
-                    // previewOptions={{
-                    //   linkTarget: "_blank"
-                    // }}
-                    />
+                    {!isMobile ?
+                        <MDEditor.Markdown
+                            style={{ padding: 40 }}
+                            source={draft?.text}
+                            linkTarget="_blank"
+                            className='editor'
+                        />
+                        :
+                        <MDEditor.Markdown
+                            style={{ padding: 10}}
+                            source={draft?.text}
+                            linkTarget="_blank"
+                            className='editor'
+                        />
+
+                    }
 
                 </div>
 

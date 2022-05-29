@@ -290,7 +290,8 @@ const Post = () => {
                             /
                         </div>
                         <div className="title">
-                            【{post.title}】
+                            {/* 【{post.title}】 */}
+                            {post.title}
                         </div>
                     </div>
 

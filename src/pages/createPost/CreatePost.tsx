@@ -34,6 +34,7 @@ const CreatePost: FC = () => {
         setIsLoading(true)
         try {
             //const response = await PostService.createPost(file, data['Title'], stringFromHtml, user.id, data['Description'])
+            console.log(typeof data)
             const response = await PostService.createPost(file, data['title'], mdValue, user.id, data['description'])
             dispatch(setAddPost(response.data))
             dispatch(fetchTodayPosts(5))
@@ -99,21 +100,28 @@ const CreatePost: FC = () => {
                     handleFile={(file: File | undefined) => setFile(file)}
                 />
                 <div className="formGroup">
-                    <div className="formGroupInfo">
+                    {/* <div className="formGroupInfo">
                         <label htmlFor={"title"}>Title</label>
                         {errors["title"] && <p>{errors["title"].message}</p>}
-                    </div>
-                    <input
+                    </div> */}
+                    <textarea
+                        {...register("title", {
+                            required: { value: false, message: 'Required field' },
+                            maxLength: 60,
+                        })}
+                        className="formGroupTitle"
+                    />
+                    {/* <input
                         {...register("title", {
                             required: { value: true, message: 'Required field' },
                             maxLength: 60,
                         })}
-                    />
+                    /> */}
 
                 </div>
 
                 <div className="formGroup">
-                    <div className="formGroupInfo">
+                    {/* <div className="formGroupInfo">
                         <label htmlFor={"description"}>Description</label>
                         {errors["title"] && <p>{errors["title"].message}</p>}
                     </div>
@@ -126,6 +134,17 @@ const CreatePost: FC = () => {
                                     parseInt(value.length) < 100 || 'Must be less than 100 characters',
                             },
                         })}
+                    /> */}
+                    <textarea
+                        {...register("description", {
+                            required: { value: false, message: 'Required field' },
+                            maxLength: 100,
+                            validate: {
+                                lessThanTen: (value) =>
+                                    parseInt(value.length) < 100 || 'Must be less than 100 characters',
+                            },
+                        })}
+                        className="formGroupDescription"
                     />
 
                 </div>

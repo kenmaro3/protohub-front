@@ -14,6 +14,7 @@ import MDEditor from "@uiw/react-md-editor";
 import rehypeSanitize from "rehype-sanitize";
 import DraftService from '../../services/draft-service';
 import Card from "../../components/common/card/Card";
+import { valueTernary } from 'react-select/dist/declarations/src/utils';
 
 const UpdatePost: FC = () => {
     const { register, watch, handleSubmit, formState: { errors }, setValue } = useForm()
@@ -125,29 +126,27 @@ const UpdatePost: FC = () => {
             </div>
 
             <div className="formGroup">
-                <div className="formGroupInfo">
-                    <label htmlFor={"title"}>Title</label>
-                    {errors["title"] && <p>{errors["title"].message}</p>}
-                </div>
-                <input
+                <textarea
                     {...register("title", {
-                        required: { value: true, message: 'Required field' },
+                        required: { value: false, message: 'Required field' },
                         maxLength: 60,
                     })}
+                    className="formGroupTitle"
                 />
 
             </div>
 
             <div className="formGroup">
-                <div className="formGroupInfo">
-                    <label htmlFor={"description"}>Description</label>
-                    {errors["title"] && <p>{errors["title"].message}</p>}
-                </div>
-                <input
+                <textarea
                     {...register("description", {
                         required: { value: false, message: 'Required field' },
                         maxLength: 100,
+                        validate: {
+                            lessThanTen: (value) =>
+                                parseInt(value.length) < 100 || 'Must be less than 100 characters',
+                        },
                     })}
+                    className="formGroupDescription"
                 />
 
             </div>

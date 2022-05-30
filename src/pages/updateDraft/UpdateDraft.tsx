@@ -32,6 +32,7 @@ const UpdateDraft: FC = () => {
 
 
     const { draft_id } = useParams()
+    const [userId, setUserId] = useState<number>(-1);
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -45,7 +46,10 @@ const UpdateDraft: FC = () => {
             setValue("title", response.data.title)
             setValue("description", response.data.description)
             setMdValue(response.data.text)
-
+            console.log("==================")
+            console.log(response.data)
+            console.log("==================")
+            setUserId(response.data.user.id)
         })();
 
     }, [])
@@ -102,6 +106,14 @@ const UpdateDraft: FC = () => {
     const cardClick = () => {
         setIsError("");
     };
+
+    const isEditPermission = () => {
+        return userId === user.id
+    };
+
+    if (!isEditPermission()) {
+        navigate(`/drafts`);
+    }
 
     return (
         <div className={'createDraftContainer'}>

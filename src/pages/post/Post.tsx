@@ -146,7 +146,7 @@ const Post = () => {
         if (post.user_likes != undefined && post.comments != undefined) {
             setLikesCount(post.user_likes.length)
             setReprCount(post.comments.length)
-            setForksCount(1)
+            setForksCount(child?.length)
         }
 
     }
@@ -336,8 +336,7 @@ const Post = () => {
                         <div className="postFork" onClick={forkClicked}>
                             <AccountTreeIcon />
                             <div className='actionTitle'>Fork</div>
-                            <span className='count'>0</span>
-
+                            {<span className='count'>{child?.length}</span>}
                         </div>
 
                         <div className={'postLike'} onClick={addLike}>

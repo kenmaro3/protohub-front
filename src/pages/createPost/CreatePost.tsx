@@ -110,6 +110,7 @@ const CreatePost: FC = () => {
                             maxLength: 60,
                         })}
                         className="formGroupTitle"
+                        placeholder='Title'
                     />
                     {/* <input
                         {...register("title", {
@@ -145,6 +146,7 @@ const CreatePost: FC = () => {
                             },
                         })}
                         className="formGroupDescription"
+                        placeholder='Description'
                     />
 
                 </div>

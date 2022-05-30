@@ -15,23 +15,12 @@ const Sidebar: FC = () => {
     const [showModal, setShowModal] = useState<boolean>(false)
     const { posts } = useAppSelector(state => state.posts)
     const myRecentPosts = posts.filter(post => post.user.id === user.id).slice(0,10);
-    const handleClick = (path: string) => {
-        if (isAuth) {
-            return navigate(`/${path}`)
-        } else {
-            setShowModal(true)
-        }
-    }
 
     return (
         <Sticky className='sidebarContainer'>
             <ModalWindow setShowModal={setShowModal} showModal={showModal} />
             <div className="inside">
-                <div className='menu menuFlex'>
-                    <h4>My Recent Posts</h4>
-
-                    <button onClick={() => handleClick('create')} className={'newPostButton'}>New Post</button>
-                </div>
+                <h4 className="menu">My Recent Posts</h4>
 
                 {
                     myRecentPosts.map(post => 

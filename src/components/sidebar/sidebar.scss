@@ -1,18 +1,25 @@
 .sidebarContainer {
   width: 20%;
-  margin-right: 20px;
-  // background-color: var(--main-bg-color);
-  height: 100vh;
+  margin-left: 20px;
+  background-color: white;
+  // TODO
+  height: calc(100vh - 210px);
+  margin-top: 40px;
+  border-radius: 8px;
+
+  -moz-box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 4px 7px -1px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.1);
+  border: none;
 
   .inside {
     margin-left: 20px;
 
     .menu {
-      margin: 40px 24px;
-
-      h4 {
-        margin-bottom: 15px;
-      }
+      margin: 20px 0;
+      font-size: 24px;
+      color: rgb(74, 74, 74);
 
       li {
         margin-bottom: 10px;
@@ -38,34 +45,13 @@
       }
     }
 
-    .menuFlex {
+    .userPostListItem {
+      height: calc((100vh - 300px)/10);
+      box-sizing: border-box;
+      white-space: nowrap;
       display: flex;
       align-items: center;
 
-      .newPostButton {
-        height: var(--button-send-create-fork-height);
-        width: var(--button-send-create-fork-width);
-        border: 1px solid var(--button-send-create-fork-border-color);
-        background: var(--button-send-create-fork-bg-color);
-        color: var(--button-send-create-fork-font-color);
-        padding-top: var(--button-send-create-fork-padding-top);
-        padding-right: var(--button-send-create-fork-padding-right);
-        padding-bottom: var(--button-send-create-fork-padding-bottom);
-        padding-left: var(--button-send-create-fork-padding-left);
-        font-size: var(--button-send-create-fork-font-size);
-        border-radius: var(--button-send-create-fork-border-radius);
-
-        font-weight: 500;
-        cursor: pointer;
-        transition: 0.2s;
-
-        margin-left: auto;
-
-        &:hover {
-          background-color: var(--main-button-color-hover);
-          color: white;
-        }
-      }
     }
 
   }

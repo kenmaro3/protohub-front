@@ -4,13 +4,16 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import PostList from "../../components/postlist/PostList";
 import SidebarRight from "../../components/sidebarRight/SidebarRight"
 import MediaQuery from "react-responsive";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 const Home: FC = () => {
+    const { isAuth } = useSelector((state: RootState) => state.auth)
     return (
         <>
             <MediaQuery query="(min-width: 768px)">
                 <div className={'homeContainer'}>
-                    <Sidebar />
+                    {isAuth && <Sidebar/>}
                     <PostList isMobile={false}/>
                     <SidebarRight />
                 </div>

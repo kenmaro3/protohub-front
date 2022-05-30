@@ -12,6 +12,7 @@ import logoPng from "../../images/nav_logo.png";
 import MediaQuery from "react-responsive";
 import SearchIcon from '@mui/icons-material/Search';
 import { IconButton } from '@mui/material';
+import ModalWindow from "../modalWindow/ModalWindow";
 
 interface NavBarProp {
     isMobile: boolean
@@ -20,6 +21,7 @@ interface NavBarProp {
 const Navbar: FC<NavBarProp> = ({ isMobile }) => {
     const navigate = useNavigate()
     const { isAuth, user } = useAppSelector(state => state.auth)
+    const [showModal, setShowModal] = useState<boolean>(false)
     const dispatch = useDispatch()
 
     const [functionsForProfileMenu, setFunctionsForProfileMenu] = useState<Map<string, any>>(new Map([]))
@@ -48,10 +50,19 @@ const Navbar: FC<NavBarProp> = ({ isMobile }) => {
         setFunctionsForProfileMenu(functionsForProfileMenu.set("Sign out", handleLogout))
     }, [])
 
+    const handleClick = (path: string) => {
+        if (isAuth) {
+            return navigate(`/${path}`)
+        } else {
+            setShowModal(true)
+        }
+    }
+
     return (
         <>
             <MediaQuery query="(min-width: 768px)">
                 <div className={'navbar'}>
+                    <ModalWindow setShowModal={setShowModal} showModal={showModal} />
                     <div className={'left'}>
                         <Link to={'/'} className={'globalLink'}>
                             <img src={logoPng} alt="" width="100px" />
@@ -61,12 +72,15 @@ const Navbar: FC<NavBarProp> = ({ isMobile }) => {
                     </div>
                     <div className={'right'}>
                         {isAuth ?
-                            <ProfileMenu user={user} functions={functionsForProfileMenu} isMobile={false}>
-                                <div className="navbarProfileImageContainer">
-                                    <img className='profileImage' src={user.profile_picture} alt="avatar" />
-                                    <span className="caret caret-reversed"></span>
-                                </div>
-                            </ProfileMenu>
+                            <div className='rightMenu'>
+                                <ProfileMenu user={user} functions={functionsForProfileMenu} isMobile={true}>
+                                    <div className="navbarProfileImageContainer">
+                                        <img className='profileImage' src={user.profile_picture} alt="avatar" />
+                                        <span className="caret caret-reversed"></span>
+                                    </div>
+                                </ProfileMenu>
+                                <button onClick={() => handleClick('create')} className={'newPostButton'}>New Post</button>
+                            </div>
                             :
                             <>
                                 <Link to={'/login'}>

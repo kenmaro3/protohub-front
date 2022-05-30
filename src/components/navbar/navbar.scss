@@ -32,6 +32,63 @@
     gap: 10px;
     margin-left: auto;
 
+    .rightMenu{
+      display: flex;
+      .newPostButton {
+        border: none;
+        border-radius: 5px;
+        background: var(--main-button-color);
+        padding: 5px 10px;
+        font-size: 17px;
+        color: white;
+        font-weight: 500;
+        cursor: pointer;
+        transition: 0.2s;
+
+        margin-left: auto;
+
+        &:hover {
+          background-color: var(--main-button-color-hover);
+          color: white;
+        }
+      }
+
+      .navbarProfileImageContainer {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin-left: auto;
+
+        .profileImage {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          cursor: pointer;
+          transition: 0.2s;
+
+          // &:hover{
+          //   width: 55px;
+          //   height: 55px;
+          // }
+        }
+
+        .caret.caret-reversed {
+          margin-right: 40px;
+          margin-left: 6px;
+          border-bottom: 8px solid #cacaca;
+          border-left: 4px solid rgba(0, 0, 0, 0);
+          border-right: 4px solid rgba(0, 0, 0, 0);
+          content: "";
+          display: inline-block;
+          height: 0;
+          vertical-align: top;
+          width: 0;
+          transform: rotate(180deg);
+        }
+
+      }
+    }
+
     .loginButton {
       border: none;
       border-radius: 5px;

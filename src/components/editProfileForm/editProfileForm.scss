@@ -24,18 +24,18 @@
         margin-left: auto;
 
         .button {
-          border-color: #bbbbbb;
           font-size: 18px;
           font-weight: 500;
           padding: 10px 12px 10px 12px;
           border-radius: 6px;
-          border: 0.5px solid;
-          background-color: #fcfcfc;
+          border: none;
+          background-color: var(--main-button-color);
+          color: white;
           transition: 0.2s;
           cursor: pointer;
 
           &:hover {
-            background-color: #f7f7f7;
+            background-color: var(--main-button-color-hover);
           }
         }
 

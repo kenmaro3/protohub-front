@@ -83,14 +83,15 @@
   .sendButton>button {
     height: 40px;
     width: 100px;
-    border: 1px solid #000;
+    border: none;
     border-radius: 5px;
-    background: none;
+    background: var(--main-button-color);
+    color: white;
     cursor: pointer;
     transition: 0.2s;
 
     &:hover {
-      background-color: #56535c;
+      background-color: var(--main-button-color-hover);
       color: white;
     }
   }

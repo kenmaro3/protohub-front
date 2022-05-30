@@ -4,6 +4,7 @@ import "./profileedit.scss"
 
 function ProfileEdit() {
   // const [file, setFile] = useState<any>(null)
+
   return (
       <div className="profileEditContainer">
           <EditProfileForm/>

@@ -12,6 +12,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -26,6 +27,17 @@ function a11yProps(index: number) {
         'aria-controls': `simple-tabpanel-${index}`,
     };
 }
+
+const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#f0a051"
+      },
+    //   secondary: {
+    //     main: "#00bcd4"
+    //   }
+    }
+});
 
 
 const PostList: FC = () => {
@@ -47,26 +59,28 @@ const PostList: FC = () => {
     };
 
     return (
-        <div className="postListContainer">
-            <Box sx={{ width: '100%' }}>
-                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                    <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                        <Tab label="Latest" {...a11yProps(0)} />
-                        <Tab label="Hot" {...a11yProps(1)} />
-                        <Tab label="Best" {...a11yProps(2)} />
-                    </Tabs>
+        <ThemeProvider theme={theme}> 
+            <div className="postListContainer">
+                <Box sx={{ width: '100%' }}>
+                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                            <Tab label="Latest" {...a11yProps(0)} />
+                            <Tab label="Hot" {...a11yProps(1)} />
+                            <Tab label="Best" {...a11yProps(2)} />
+                        </Tabs>
+                    </Box>
                 </Box>
-            </Box>
-            <div className={'postList'}>
-                {status !== 'succeeded' ? <Loader /> : posts.length === 0 ? <div className={'noPosts'}>No posts yet</div> :
-                    posts.map(post =>
-                        <motion.div key={post.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                            <PostItem displayImage={post.post_image ? true : false} post={post} />
-                        </motion.div>)
-                }
-            </div>
+                <div className={'postList'}>
+                    {status !== 'succeeded' ? <Loader /> : posts.length === 0 ? <div className={'noPosts'}>No posts yet</div> :
+                        posts.map(post =>
+                            <motion.div key={post.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                                <PostItem displayImage={post.post_image ? true : false} post={post} />
+                            </motion.div>)
+                    }
+                </div>
 
-        </div>
+            </div>
+        </ThemeProvider>
     );
 };
 

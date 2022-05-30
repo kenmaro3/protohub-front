@@ -164,14 +164,15 @@
         margin-left: auto;
         button{
           padding: 6px 12px 6px 12px;
-          border: 1px solid #808080;
-          background: none;
+          border: none;
+          background: var(--main-button-color);
+          color: white;
           border-radius: 8px;
           box-shadow: 1 1 1 1 #808080;
           cursor: pointer;
           transition: 0.2s;
           &:hover{
-            background-color: #e2e2e2;
+            background-color: var(--main-button-color-hover);
 
           }
         }

@@ -42,12 +42,12 @@
       align-items: center;
 
       .newPostButton {
-        border: 1px solid #56535c;
+        border: none;
         border-radius: 5px;
-        background: none;
+        background: var(--main-button-color);
         padding: 5px 10px;
         font-size: 17px;
-        color: #56535c;
+        color: white;
         font-weight: 500;
         cursor: pointer;
         transition: 0.2s;
@@ -55,7 +55,7 @@
         margin-left: auto;
 
         &:hover {
-          background-color: #56535c;
+          background-color: var(--main-button-color-hover);
           color: white;
         }
       }

@@ -33,9 +33,9 @@
     margin-left: auto;
 
     .loginButton {
-      border: 0.6px solid #fdfcff;
+      border: none;
       border-radius: 5px;
-      background: none;
+      background: var(--main-button-color);
       padding: 5px 12px;
       font-size: 16px;
       color: #fdfcff;
@@ -45,16 +45,16 @@
       margin-right: 20px;
 
       &:hover {
-        background-color: #56535c;
+        background-color: var(--main-button-color-hover);
         color: white;
       }
     }
 
 
     .signupButton {
-      border: 0.6px solid #fdfcff;
+      border: none;
       border-radius: 5px;
-      background: none;
+      background: var(--main-button-color);
       padding: 5px 12px;
       font-size: 16px;
       color: #fdfcff;
@@ -63,7 +63,7 @@
       transition: 0.2s;
 
       &:hover {
-        background-color: #56535c;
+        background-color: var(--main-button-color-hover);
         color: white;
       }
     }

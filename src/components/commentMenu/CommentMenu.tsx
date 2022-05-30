@@ -27,7 +27,6 @@ const CommentMenu: FC<CommentMenuProps> = (props) => {
   }, [props])
 
   const itemClicked = (key: string) => {
-    console.log("here clicked")
     functions.get(key)()
   }
 

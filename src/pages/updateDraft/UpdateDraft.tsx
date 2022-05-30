@@ -29,8 +29,7 @@ const UpdateDraft: FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const [mdValue, setMdValue] = useState<string>("")
-    const { draft } = useAppSelector(state => state.currentDraft)
-
+    const { myDrafts } = useAppSelector(state => state.myDrafts)
 
     const { draft_id } = useParams()
 
@@ -38,25 +37,26 @@ const UpdateDraft: FC = () => {
     const navigate = useNavigate()
     useTitle('Edit Draft')
 
-
     useEffect(() => {
-        (async () => {
-            console.log("draft Id", draft_id)
-            const response = await DraftService.getById(Number(draft_id))
-            setValue("title", response.data.title)
-            setValue("description", response.data.description)
-            setMdValue(response.data.text)
+        const loadDraftForUpdate = async () => {
+            const isEditPermission = () => {
+                const result = myDrafts.filter(draft => draft.id === Number(draft_id));
+                return result.length > 0;
+            };
 
-        })();
+            if (!isEditPermission()) {
+                navigate(`/`);
+            }
+            else {
+                const result = myDrafts.filter(draft => draft.id === Number(draft_id));
+                setValue("title", result[0].title)
+                setValue("description", result[0].description)
+                setMdValue(result[0].text)
+            }
+        }
+        loadDraftForUpdate()
 
-    }, [])
-
-    useEffect(() => {
-        setValue("title", draft.title)
-        setValue("description", draft.description)
-        setMdValue(draft.text)
-
-    }, [draft])
+    }, [draft_id, user, myDrafts])
 
 
     const onSubmit = async (data: any) => {
@@ -71,7 +71,6 @@ const UpdateDraft: FC = () => {
             const response = e.response.data.message
             if (Array.isArray(response)) setIsError(response[0])
             else setIsError(response)
-            console.log(e.response)
             setErrMessages(e.response.data.message);
         } finally {
             setIsLoading(false)
@@ -82,12 +81,8 @@ const UpdateDraft: FC = () => {
         // const stringFromHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()))
         setIsLoading(true)
         try {
-            console.log("will update draft", draft_id)
             const response = await DraftService.updateDraft(draft_id!, data['title'], mdValue, user.id, data["description"])
             dispatch(fetchMyDrafts(user.id, DraftSortActions.SORT_BY_TIME_MY))
-            // dispatch(setAddDraft(response.data))
-            // dispatch(fetchTodayDrafts(5))
-            // navigate(`/drafts/${response.data.id}`)
             navigate(`/drafts`)
         } catch (e: any) {
             const response = e.response.data.message

@@ -11,10 +11,11 @@ interface TreeInfoProps {
     parent?: IPost;
     parentUser?: IUser;
     child?: IPost[];
+    isMobile: boolean;
 
 }
 
-const TreeInfo: FC<TreeInfoProps> = ({ parent, parentUser, owner, child }) => {
+const TreeInfo: FC<TreeInfoProps> = ({ parent, parentUser, owner, child, isMobile}) => {
     const infoContent = "Fork shows other user make new post from your post. <br/><br/>\n\
         new forked post might have nice updates added by the user<br/><br/>\n\
         Let's have a look!!\
@@ -23,7 +24,7 @@ const TreeInfo: FC<TreeInfoProps> = ({ parent, parentUser, owner, child }) => {
         <div className="treeInfoContainer">
             <div className="header">
                 <h3>Fork Information</h3>
-                <InfoMenu info={infoContent}>
+                <InfoMenu info={infoContent} isMobile={isMobile}>
                     <div className="infoMark"><InfoIcon /></div>
 
                 </InfoMenu>

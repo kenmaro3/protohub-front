@@ -15,6 +15,7 @@ import rehypeSanitize from "rehype-sanitize";
 import DraftService from '../../services/draft-service';
 import Card from "../../components/common/card/Card";
 import MediaQuery from "react-responsive";
+import {useAppSelector} from "../../hooks";
 
 const UpdatePost: FC = () => {
     const { register, watch, handleSubmit, formState: { errors }, setValue } = useForm()
@@ -26,6 +27,8 @@ const UpdatePost: FC = () => {
 
     const [mdValue, setMdValue] = useState<string>("")
 
+    const {posts} = useAppSelector(state => state.posts)
+
 
     const { post_id } = useParams()
 
@@ -36,21 +39,35 @@ const UpdatePost: FC = () => {
 
     useEffect(() => {
         (async () => {
-            console.log("post Id", post_id)
-            const response = await PostService.getById(Number(post_id))
-            setValue("title", response.data.title)
-            setValue("description", response.data.description)
-            setMdValue(response.data.text)
+            const isEditPermission = () => {
+                const result = posts.filter(post => post.id === Number(post_id));
+                if(result.length === 0){
+                    return false
+                }
+                else{
+                    return result[0].user.id === user.id
+                }
+            };
+
+            if (!isEditPermission()) {
+                navigate(`/posts/${post_id}`);
+            }
+            else {
+                const response = await PostService.getById(Number(post_id))
+                setValue("title", response.data.title)
+                setValue("description", response.data.description)
+                setMdValue(response.data.text)
+
+            }
 
         })();
 
-    }, [post_id])
+    }, [post_id, posts])
 
 
     const onSubmit = async (data: any) => {
         setIsLoading(true)
         try {
-            console.log(typeof user.id);
             const response = await PostService.updatePost(file, String(post_id), data['title'], mdValue, user.id, data["description"])
             dispatch(setAddPost(response.data))
             dispatch(fetchTodayPosts(5))
@@ -59,7 +76,6 @@ const UpdatePost: FC = () => {
             const response = e.response.data.message
             if (Array.isArray(response)) setIsError(response[0])
             else setIsError(response)
-            console.log(e.response)
             setErrMessages(e.response.data.message);
         } finally {
             setIsLoading(false)
@@ -75,24 +91,12 @@ const UpdatePost: FC = () => {
             const response = e.response.data.message
             if (Array.isArray(response)) setIsError(response[0])
             else setIsError(response)
-            console.log(e.response)
             setErrMessages(e.response.data.message);
         } finally {
             setIsLoading(false)
         }
     }
 
-    const isEditPermission = () => {
-        if (user.posts === undefined) {
-            return false;
-        }
-        const result = user.posts.filter(post => post.id === Number(post_id));
-        return result.length > 0;
-    };
-
-    if (!isEditPermission()) {
-        navigate(`/posts/${post_id}`);
-    }
 
     const cardClick = () => {
         setIsError("");

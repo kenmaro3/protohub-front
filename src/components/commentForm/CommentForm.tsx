@@ -50,11 +50,9 @@ const CommentForm: FC<CommentFormProps> = ({commentForUpdate, isMobile}) => {
 
 
     const onReprChange = (value: any): void => {
-        console.log("selected", value.value)
         setReprSelected(value.value)
     }
     const onTimeCostChange = (value: any): void => {
-        console.log("selectedTime", value.value)
         setTimeCostSelected(value.value)
     }
 

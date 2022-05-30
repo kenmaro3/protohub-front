@@ -13,7 +13,6 @@ export default class PostService{
         formData.append('text', text)
         formData.append('description', description)
         formData.append('user_id', user_id.toString())
-        console.log("formData3", formData)
         return api.post<IPost>('/posts/create', formData)
     }
     

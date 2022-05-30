@@ -52,26 +52,14 @@ const EditProfileForm: FC<EditProfileFormProps> = ({ isMobile }) => {
         setUserInfo({ ...userInfo, [e.target.name]: e.target.value })
     }
 
-    const handleImageUpload = (file: File | undefined) => {
-        console.log("here called upload")
-        // setFile(file)
-    }
-
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log("yo1")
         const fileUploaded = event.target.files?.[0]
         if (fileUploaded) {
-            console.log(URL.createObjectURL(fileUploaded))
-            console.log("yo2")
             setFile(fileUploaded)
         }
-        console.log("yo3")
-        console.log(fileUploaded)
-        // handleFile(fileUploaded)
     }
 
     const handleClick = () => {
-        console.log("here1")
         hiddenFileInput.current?.click()
     }
 

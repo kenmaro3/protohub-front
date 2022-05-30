@@ -160,7 +160,9 @@ const Profile: FC = () => {
                             <div className="profileRight">
                                 <div className="mainContainer">
                                     <div className="name">
-                                        {userShown.user_name}
+                                        <div className="text">
+                                            {userShown.user_name}
+                                        </div>
 
                                         {isCurrentUser &&
 
@@ -229,7 +231,16 @@ const Profile: FC = () => {
                     </div>
                     <div className={'userPosts'}>
                         <h3>Published posts</h3>
-                        {Object.keys(userShown).length > 0 && <UserPostList user={userShown} isMobile={true}/>}
+                        {Object.keys(userShown).length > 0 ?
+                        <UserPostList user={userShown} isMobile={true}/>
+
+                        :
+
+                        <div className="noPostContainer">
+                            <div className="text">No Posts yet</div>
+                        </div>
+                    
+                    }
                     </div>
                 </div>
 

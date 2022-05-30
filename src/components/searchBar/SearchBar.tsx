@@ -23,16 +23,11 @@ const SearchBar: FC<SearchBarProps> = ({ placeholder, isMobile }) => {
   const handleFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
     const searchWord = event.target.value;
     setKeyword(searchWord);
-    console.log("input", keyword)
-    // const newFilter = data.filter((value) => {
-    //   return value.title.toLowerCase().includes(searchWord.toLowerCase());
-    // });
 
     if (searchWord === "") {
       setFilteredData([]);
     } else {
       setFilteredData([]);
-      //   setFilteredData(newFilter);
     }
   };
 

@@ -61,7 +61,7 @@ const Navbar: FC<NavBarProp> = ({ isMobile }) => {
                     </div>
                     <div className={'right'}>
                         {isAuth ?
-                            <ProfileMenu user={user} functions={functionsForProfileMenu}>
+                            <ProfileMenu user={user} functions={functionsForProfileMenu} isMobile={false}>
                                 <div className="navbarProfileImageContainer">
                                     <img className='profileImage' src={user.profile_picture} alt="avatar" />
                                     <span className="caret caret-reversed"></span>
@@ -75,7 +75,7 @@ const Navbar: FC<NavBarProp> = ({ isMobile }) => {
                                 </Link>
                                 <Link to={'/register'}>
                                     {/* <Button variant="outlined">Create account</Button> */}
-                                    <button className={'signupButton'}>Create account</button>
+                                    <button className={'signupButton'}>Sign up</button>
                                 </Link>
                             </>
                         }
@@ -99,7 +99,7 @@ const Navbar: FC<NavBarProp> = ({ isMobile }) => {
                                 <SearchIcon />
                             </IconButton>
                             {isAuth ?
-                                <ProfileMenu user={user} functions={functionsForProfileMenu}>
+                                <ProfileMenu user={user} functions={functionsForProfileMenu} isMobile={true}>
                                     <div className="navbarProfileImageContainer">
                                         <img className='profileImage' src={user.profile_picture} alt="avatar" />
                                         <span className="caret caret-reversed"></span>
@@ -113,7 +113,7 @@ const Navbar: FC<NavBarProp> = ({ isMobile }) => {
                                     </Link>
                                     <Link to={'/register'}>
                                         {/* <Button variant="outlined">Create account</Button> */}
-                                        <button className={'signupButton'}>Create account</button>
+                                        <button className={'signupButton'}>Sign up</button>
                                     </Link>
                                 </>
                             }

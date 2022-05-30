@@ -26,7 +26,6 @@ const Comment: FC<CommentProps> = ({ comment, deleteFunction, updateFunction, is
     const navigate = useNavigate()
 
     const handleEdit = () => {
-        console.log("edit clicked of", comment.id)
         updateFunction(comment)
     }
 
@@ -55,7 +54,6 @@ const Comment: FC<CommentProps> = ({ comment, deleteFunction, updateFunction, is
                         <span className='title'>Reproducibility</span>
                         <>
                             {(() => {
-                                console.log(comment.reproducibility)
                                 if(comment.reproducibility === undefined || comment.reproducibility === null){
                                     return(
                                         <span className='value null'>not mentioned</span>
@@ -78,7 +76,6 @@ const Comment: FC<CommentProps> = ({ comment, deleteFunction, updateFunction, is
                         <span className='title'>Time Cost</span>
                         <>
                             {(() => {
-                                console.log("here", comment.time_cost)
                                 if(comment.time_cost === undefined || comment.time_cost === null){
                                     return(
                                         <span className='value null'>not mentioned</span>

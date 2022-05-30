@@ -22,7 +22,6 @@ const SearchPostList: FC<SearchPostListProps> = ({propPosts, isMobile}) => {
 
             setPosts(propPosts)
             setPostsCount(propPosts.length)
-            console.log("posts from prop", propPosts)
         }
     }, [propPosts])
 

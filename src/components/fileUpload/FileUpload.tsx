@@ -12,7 +12,6 @@ const FileUpload: FC<FileUploadProps> = ({ handleFile, displayImage }) => {
     const hiddenFileInput = useRef<HTMLInputElement>(null)
 
     const handleClick = () => {
-        console.log("here1")
         hiddenFileInput.current?.click()
     }
 

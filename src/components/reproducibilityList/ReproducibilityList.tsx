@@ -73,7 +73,7 @@ const ReproducibilityList: FC<ReproducibilityListProps> = ({ reprList, timeCostL
         <div className={`${isMobile? "reproducibilityListContainerMobile" : "reproducibilityListContainer"}`}>
             <div className="header">
                 <h3>Reproducibility Information</h3>
-                <InfoMenu info={reprInfoContent}>
+                <InfoMenu info={reprInfoContent} isMobile={isMobile}>
                     <div className="infoMark"><InfoIcon /></div>
 
                 </InfoMenu>
@@ -82,7 +82,7 @@ const ReproducibilityList: FC<ReproducibilityListProps> = ({ reprList, timeCostL
             <BarChart data={reprDataForBar} />
             <div className="header">
                 <h3 className="secondH3">Time Cost Information</h3>
-                <InfoMenu info={timeInfoContent}>
+                <InfoMenu info={timeInfoContent} isMobile={isMobile}>
                     <div className="infoMark"><InfoIcon /></div>
 
                 </InfoMenu>

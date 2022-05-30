@@ -7,6 +7,7 @@ interface ProfileMenuProps {
   children?: ReactNode;
   functions: Map<string, any>;
   user: IUser;
+  isMobile: boolean;
 }
 
 const ProfileMenu: FC<ProfileMenuProps> = (props) => {
@@ -30,8 +31,28 @@ const ProfileMenu: FC<ProfileMenuProps> = (props) => {
     functions.get(key)()
   }
 
+  const getClassName = () => {
+    if(isOpen){
+      if(props.isMobile){
+        return "profileMenuMobile -active"
+      }
+      else{
+        return "profileMenu -active"
+      }
+    }
+    else{
+      if(props.isMobile){
+        return "profileMenuMobile"
+      }
+      else{
+        return "profileMenu"
+      }
+
+    }
+  }
+
   return (
-    <div ref={menuRef} className={isOpen ? "profileMenu -active" : "profileMenu "}>
+    <div ref={menuRef} className={getClassName()}>
       <div onClick={toggle}>
         {props.children}
       </div>

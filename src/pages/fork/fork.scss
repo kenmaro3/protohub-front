@@ -79,7 +79,7 @@
                     transition: 0.2s;
 
                     &:hover {
-                        background-color: var(--botton-bg-whitegray);
+                        background-color: var(--button-bg-whitegray);
                     }
 
 
@@ -102,7 +102,7 @@
                     transition: 0.2s;
 
                     &:hover {
-                        background-color: var(--botton-bg-whitegray);
+                        background-color: var(--button-bg-whitegray);
                     }
 
 
@@ -126,7 +126,7 @@
                     transition: 0.2s;
 
                     &:hover {
-                        background-color: var(--botton-bg-whitegray);
+                        background-color: var(--button-bg-whitegray);
                     }
 
 
@@ -326,11 +326,18 @@
             margin-bottom: 20px;
 
             .button {
-                height: 40px;
-                width: 100px;
-                border: 1px solid #000;
-                border-radius: 5px;
-                background: none;
+                height: var(--button-send-create-fork-height);
+                width: var(--button-send-create-fork-width);
+                border: 1px solid var(--button-send-create-fork-border-color);
+                background: var(--button-send-create-fork-bg-color);
+                color: var(--button-send-create-fork-font-color);
+                padding-top: var(--button-send-create-fork-padding-top);
+                padding-right: var(--button-send-create-fork-padding-right);
+                padding-bottom: var(--button-send-create-fork-padding-bottom);
+                padding-left: var(--button-send-create-fork-padding-left);
+                font-size: var(--button-send-create-fork-font-size);
+                border-radius: var(--button-send-create-fork-border-radius);
+
                 cursor: pointer;
                 transition: 0.2s;
 
@@ -345,7 +352,7 @@
 }
 
 
-.forkContainerMobile{
+.forkContainerMobile {
     background-color: var(--main-bg-color);
     // height: calc(100vh);
     // TODO
@@ -427,7 +434,7 @@
                     transition: 0.2s;
 
                     &:hover {
-                        background-color: var(--botton-bg-whitegray);
+                        background-color: var(--button-bg-whitegray);
                     }
 
 
@@ -450,7 +457,7 @@
                     transition: 0.2s;
 
                     &:hover {
-                        background-color: var(--botton-bg-whitegray);
+                        background-color: var(--button-bg-whitegray);
                     }
 
 
@@ -474,7 +481,7 @@
                     transition: 0.2s;
 
                     &:hover {
-                        background-color: var(--botton-bg-whitegray);
+                        background-color: var(--button-bg-whitegray);
                     }
 
 

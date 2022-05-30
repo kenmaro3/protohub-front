@@ -55,7 +55,6 @@ export const createComment = (text: string, reproducibility: string, time_cost: 
     dispatch(setCommentStatus('default'))
     try{
         const response = await PostService.createComment(text, reproducibility, time_cost, post_id, user_id)
-        console.log(response.data)
         dispatch(setAddComment(response.data))
         dispatch(updateComments(response.data))
         dispatch(setCommentStatus('success'))

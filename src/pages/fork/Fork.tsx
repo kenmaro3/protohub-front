@@ -76,9 +76,6 @@ const Fork = () => {
             }
             const response = await PostService.createFork(postShown.id, postShown.user.id, user.id, title, description)
             dispatch(setAddPost(response.data))
-            console.log("response", response)
-            console.log(user.posts)
-
             navigate(`/posts/${response.data.id}/edit`)
         } catch (e: any) {
         } finally {
@@ -199,7 +196,7 @@ const Fork = () => {
                         <Button
                             className="button"
                             handleClick={handleSubmit(onSubmit)}
-                            text={'Create Fork'}
+                            text={'Create'}
                             type="submit"
                             progress={isLoading && <CircularProgress style={{ color: 'white' }} size={20} />}
                         />

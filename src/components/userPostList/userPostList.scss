@@ -1,19 +1,43 @@
 .userPostList{
   padding: 0 80px 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   .userPostListItem{
     // border-radius: 5px;
     // -webkit-box-shadow: 5px 5px 15px 1px #D6D6D6;
     // box-shadow: 5px 5px 15px 1px #D6D6D6;
   }
+
+  .noPostContainer{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    .text{
+      font-size: 18px;
+      font-weight: 550;
+      color: var(--font-graywhite);
+    }
+  }
 }
 
 .userPostListMobile{
   padding: 0 14px 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   .userPostListItem{
     // border-radius: 5px;
     // -webkit-box-shadow: 5px 5px 15px 1px #D6D6D6;
     // box-shadow: 5px 5px 15px 1px #D6D6D6;
+  }
+  .noPostContainer{
+    margin-bottom: 20px;
+    .text{
+      font-size: 18px;
+      font-weight: 550;
+      color: var(--font-graywhite);
+    }
   }
 }

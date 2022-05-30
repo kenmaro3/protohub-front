@@ -43,8 +43,6 @@ const CreatePost: FC = () => {
             const response = e.response.data.message
             if (Array.isArray(response)) setIsError(response[0])
             else setIsError(response)
-            console.log(e.response)
-            console.log(e.response.data.message)
             setErrMessages(e.response.data.message);
         } finally {
             setIsLoading(false)

@@ -1,4 +1,5 @@
 import {IPost} from "./post-type";
+import { IDraft } from "./draft-type";
 
 export interface IUser{
     id: number;
@@ -10,5 +11,4 @@ export interface IUser{
     github: string;
     twitter: string;
     website: string;
-    posts: IPost[];
 }

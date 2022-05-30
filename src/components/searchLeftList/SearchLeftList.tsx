@@ -23,7 +23,6 @@ const SearchLeftList: FC<SearchLeftListProps> = (props) => {
 
 
   const rowClicked = (key: string) => {
-    console.log("clicked", key)
     functions.get(key)()
 
   }
@@ -32,7 +31,6 @@ const SearchLeftList: FC<SearchLeftListProps> = (props) => {
     <div className="searchLeftListContainer">
       <>
         {Array.from(contents.keys()).map(key => {
-          console.log("test")
           return (
             <>
               <div className="listRowContainer">

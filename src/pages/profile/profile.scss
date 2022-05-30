@@ -160,9 +160,10 @@
 
       }
 
-      .editButtonContainer{
+      .editButtonContainer {
         margin-left: auto;
-        button{
+
+        button {
           padding: 6px 12px 6px 12px;
           border: 1px solid #808080;
           background: none;
@@ -170,7 +171,8 @@
           box-shadow: 1 1 1 1 #808080;
           cursor: pointer;
           transition: 0.2s;
-          &:hover{
+
+          &:hover {
             background-color: #e2e2e2;
 
           }
@@ -190,9 +192,20 @@
     -ms-box-shadow: 0px 1px 7px -1px rgba(0, 0, 0, 0.15);
     box-shadow: 0px 1px 7px -1px rgba(0, 0, 0, 0.15);
 
+    .noPostContainer {
+      .text {
+        font-size: 24px;
+        font-weight: 400;
+        color: #808080;
+      }
+    }
+
     h3 {
       text-align: center;
       margin-bottom: 40px;
+      font-size: 22px;
+      font-weight: 550;
+      color: var(--font-black)
     }
   }
 }
@@ -250,13 +263,39 @@
       .profileRight {
         margin-left: 20px;
         color: #2c2c2c;
+        width: 100%;
 
 
         .mainContainer {
           .name {
-            font-size: 20px;
-            font-weight: 600;
+            width: 90%;
             display: flex;
+
+            .text {
+              font-size: 20px;
+              font-weight: 600;
+
+            }
+
+            .editButtonContainer {
+              margin-left: auto;
+
+              button {
+                padding: 4px 8px 4px 8px;
+                border: 1px solid #808080;
+                background: none;
+                border-radius: 8px;
+                box-shadow: 1 1 1 1 #808080;
+                cursor: pointer;
+                transition: 0.2s;
+                font-size: 12px;
+
+                &:hover {
+                  background-color: #e2e2e2;
+
+                }
+              }
+            }
 
           }
 
@@ -356,22 +395,6 @@
 
       }
 
-      .editButtonContainer{
-        margin-left: auto;
-        button{
-          padding: 6px 12px 6px 12px;
-          border: 1px solid #808080;
-          background: none;
-          border-radius: 8px;
-          box-shadow: 1 1 1 1 #808080;
-          cursor: pointer;
-          transition: 0.2s;
-          &:hover{
-            background-color: #e2e2e2;
-
-          }
-        }
-      }
     }
   }
 

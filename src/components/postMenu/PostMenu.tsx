@@ -7,6 +7,7 @@ interface PostMenuProps {
   children?: ReactNode;
   functions: Map<string, any>;
   user: IUser;
+  isMobile: boolean;
 }
 
 const PostMenu: FC<PostMenuProps> = (props) => {
@@ -30,8 +31,28 @@ const PostMenu: FC<PostMenuProps> = (props) => {
     functions.get(key)()
   }
 
+  const getClassName = () => {
+    if(isOpen){
+      if(props.isMobile){
+        return "postMenuMobile -active"
+      }
+      else{
+        return "postMenu -active"
+      }
+    }
+    else{
+      if(props.isMobile){
+        return "postMenuMobile"
+      }
+      else{
+        return "postMenu"
+      }
+
+    }
+  }
+
   return (
-    <div ref={menuRef} className={isOpen ? "postMenu -active" : "postMenu "}>
+    <div ref={menuRef} className={getClassName()}>
       <div onClick={toggle}>
         {props.children}
       </div>

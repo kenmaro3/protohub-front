@@ -21,12 +21,9 @@ const App: FC = () => {
   const {user} = useAppSelector(state => state.auth)
 
   useEffect(() => {
-    console.log("dispatch called")
-    console.log(`auth: ${isAuth}, user: ${user}`)
     dispatch(fetchAllPosts(PostSortActions.SORT_BY_TIME))
 
     if(isAuth && user){
-      console.log("dispatch for mydrafts called")
       dispatch(fetchMyDrafts(user.id, DraftSortActions.SORT_BY_TIME_MY))
     }
 

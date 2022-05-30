@@ -77,21 +77,27 @@
 
   .sendButton {
     margin-top: 10px;
-    width: 100px;
   }
 
   .sendButton>button {
-    height: 40px;
-    width: 100px;
-    border: 1px solid #000;
-    border-radius: 5px;
-    background: none;
-    cursor: pointer;
+    height: var(--button-send-create-fork-height);
+    width: var(--button-send-create-fork-width);
+    border: 1px solid var(--button-send-create-fork-border-color);
+    background: var(--button-send-create-fork-bg-color);
+    color: var(--button-send-create-fork-font-color);
+    padding-top: var(--button-send-create-fork-padding-top);
+    padding-right: var(--button-send-create-fork-padding-right);
+    padding-bottom: var(--button-send-create-fork-padding-bottom);
+    padding-left: var(--button-send-create-fork-padding-left);
+    font-size: var(--button-send-create-fork-font-size);
+    border-radius: var(--button-send-create-fork-border-radius);
+
     transition: 0.2s;
+    cursor: pointer;
 
     &:hover {
-      background-color: #56535c;
-      color: white;
+      background-color: var(--button-send-create-fork-bg-color-hover);
+      color: var(--button-send-create-fork-font-color-hover)
     }
   }
 
@@ -180,11 +186,18 @@
   }
 
   .sendButton>button {
-    height: 40px;
-    width: 100px;
-    border: 1px solid #000;
-    border-radius: 5px;
-    background: none;
+    height: var(--button-send-create-fork-height-mobile);
+    width: var(--button-send-create-fork-width-mobile);
+    border: 1px solid var(--button-send-create-fork-border-color-mobile);
+    background: var(--button-send-create-fork-bg-color-mobile);
+    color: var(--button-send-create-fork-font-color-mobile);
+    padding-top: var(--button-send-create-fork-padding-top-mobile);
+    padding-right: var(--button-send-create-fork-padding-right-mobile);
+    padding-bottom: var(--button-send-create-fork-padding-bottom-mobile);
+    padding-left: var(--button-send-create-fork-padding-left-mobile);
+    font-size: var(--button-send-create-fork-font-size-mobile);
+    border-radius: var(--button-send-create-fork-border-radius-mobile);
+
     cursor: pointer;
     transition: 0.2s;
 

@@ -6,15 +6,28 @@
   background-color: white;
   overflow-y: scroll;
   border-radius: 20px;
-  
-  
+
+
   .inside {
-    .headerContainer{
+    .headerContainer {
       border-bottom: 1px solid #cecece;
       position: sticky;
       top: 0;
       z-index: 10;
       background-color: white;
+    }
+
+    .noDraftContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 40px;
+
+      .text{
+        font-size: 24px;
+        color: #b1b1b1;
+      }
+
     }
 
     .menu {
@@ -84,15 +97,22 @@
   background-color: white;
   overflow-y: scroll;
   border-radius: 20px;
-  
-  
+
+
   .inside {
-    .headerContainer{
+    .headerContainer {
       border-bottom: 1px solid #cecece;
       position: sticky;
       top: 0;
       z-index: 10;
       background-color: white;
+    }
+
+    .noDraftContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
     }
 
     .menu {

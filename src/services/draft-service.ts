@@ -12,7 +12,6 @@ export default class DraftService{
         // formData.append('text', text)
         // formData.append('description', description)
         // formData.append('user_id', user_id.toString())
-        // console.log("here===============", formData)
         return api.post<IDraft>('/drafts/create', {title, text, user_id, description})
     }
     
@@ -63,8 +62,6 @@ export default class DraftService{
     }
 
     static orderByTime(drafts: IDraft[]): IDraft[]{
-        console.log("called!!!!")
-        console.log('before', drafts)
         const tmp = drafts.sort((a, b) =>
             // new Date(b.date_and_time_edited ? b.date_and_time_edited : b.date_and_time_published).getTime() -
             // new Date(a.date_and_time_edited ? a.date_and_time_edited : a.date_and_time_published).getTime())
@@ -78,7 +75,6 @@ export default class DraftService{
             new Date(b.date_and_time_published).getTime()-
             new Date(a.date_and_time_published).getTime())
         
-        console.log("after", tmp)
         return tmp
     }
 

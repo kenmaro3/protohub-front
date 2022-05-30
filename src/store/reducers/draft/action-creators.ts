@@ -55,8 +55,6 @@ export const deleteDraft = (draft_id: number) => async(dispatch: AppDispatch, ge
         const user = getState().auth.user
         await DraftService.deleteById(Number(draft_id))
         const response = await DraftService.getMyAll(user.id)
-        console.log("\n\nhere")
-        console.log(response.data)
         dispatch(setStatus('succeeded'))
         dispatch(setDrafts(response.data))
         dispatch(setSort(DraftSortActions.SORT_BY_TIME))

@@ -3,7 +3,6 @@ import './formGroup.scss'
 
 const FormGroup = (props: any) => {
     const { fieldName, register, errors, placeholder, isRequired, type} = props
-    console.log("fieldName", fieldName)
     return (
         <div className={'formGroup'}>
                 

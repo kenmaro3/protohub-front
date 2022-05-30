@@ -60,13 +60,11 @@ const Search: FC = () => {
     }, [search])
 
     useEffect(() => {
-        console.log("posts", posts)
         setContentsToLeftList(contentsToLeftList.set("posts", posts.length))
 
     }, [posts])
 
     useEffect(() => {
-        console.log("users", users)
         setContentsToLeftList(contentsToLeftList.set("users", users.length))
 
     }, [users])

@@ -30,21 +30,20 @@ const DraftItem: FC<DraftItemProp> = ({ isMobile }) => {
 
     const navigate = useNavigate()
 
-    const handleDelete = (draft_id: number) => {
-        // DraftService.deleteById(draft.id)
-        dispatch(deleteDraft(draft.id))
-        dispatch(unSetDraft(draft.id))
-        navigate("/")
-
-    }
-
-    const handleEdit = (draft_id: number) => {
-        navigate(`/drafts/${draft.id}/edit`)
-    }
 
     useEffect(() => {
 
         (async () => {
+            const handleDelete = () => {
+                dispatch(deleteDraft(draft.id))
+                dispatch(unSetDraft(draft.id))
+                navigate("/")
+
+            }
+
+            const handleEdit = () => {
+                navigate(`/drafts/${draft.id}/edit`)
+            }
             setFunctionsForDraftMenu(functionsForDraftMenu.set("Edit Draft", handleEdit))
             setFunctionsForDraftMenu(functionsForDraftMenu.set("Delete Draft", handleDelete))
         })()
@@ -52,7 +51,6 @@ const DraftItem: FC<DraftItemProp> = ({ isMobile }) => {
     }, [draft])
 
     useEffect(() => {
-        console.log("myDrafts: ", myDrafts)
         if (myDrafts.length > 0) {
             dispatch(fetchDraftById(myDrafts[0].id))
         }
@@ -70,7 +68,7 @@ const DraftItem: FC<DraftItemProp> = ({ isMobile }) => {
                             {draft?.title}
                         </h1>
                         <div className="right">
-                            <PostMenu user={user} functions={functionsForDraftMenu}>
+                            <PostMenu user={user} functions={functionsForDraftMenu} isMobile={isMobile}>
                                 <div className="draftAction">
                                     <MoreVertIcon />
                                 </div>
@@ -89,7 +87,7 @@ const DraftItem: FC<DraftItemProp> = ({ isMobile }) => {
                         />
                         :
                         <MDEditor.Markdown
-                            style={{ padding: 10}}
+                            style={{ padding: 10 }}
                             source={draft?.text}
                             linkTarget="_blank"
                             className='editor'
@@ -98,8 +96,6 @@ const DraftItem: FC<DraftItemProp> = ({ isMobile }) => {
                     }
 
                 </div>
-
-
             </div>
         </div>
     );

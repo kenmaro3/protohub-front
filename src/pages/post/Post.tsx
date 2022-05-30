@@ -85,12 +85,12 @@ const Post = () => {
                 setParentUser(retrievedParent.data.user)
 
             }
-            console.log("parentTree", parentTree)
 
             const childTree = await PostService.getChildTreeById(Number(post_id))
             if (childTree.data.children) {
                 setIsChildExist(true)
                 setChild(childTree.data.children)
+                setForksCount(childTree.data.children.length)
                 const retrievedChild = childTree.data.children.map(async (child) => {
                     const res = await PostService.getById(child.id)
                     return res.data
@@ -100,8 +100,6 @@ const Post = () => {
                     return tmp
 
                 })
-                console.log("childTree", childTree)
-
             }
 
         })()
@@ -117,9 +115,6 @@ const Post = () => {
     }, [post])
 
     const handleDelete = () => {
-        //PostService.deleteById(Number(post_id))
-        console.log("called!!!")
-        console.log(post_id)
         dispatch(deletePost(Number(post_id)))
         navigate("/")
     }
@@ -347,7 +342,7 @@ const Post = () => {
                                 <div className="postFork" onClick={forkClicked}>
                                     <AccountTreeIcon />
                                     <div className='actionTitle'>Fork</div>
-                                    <span className='count'>0</span>
+                                    <span className='count'>{forksCount}</span>
 
                                 </div>
 
@@ -376,12 +371,6 @@ const Post = () => {
                                     </h1>
                                     <div className="postShareContainer">
                                         <div className="item">
-                                            <FacebookShareButton url={`https://protohub.tech/posts/${post.id}`} title={`Sharing the post 【${post.title}】from @protohub`}>
-                                                <FacebookIcon size={30} round />
-                                            </FacebookShareButton>
-                                        </div>
-
-                                        <div className="item">
                                             <TwitterShareButton
                                                 url={`https://protohub.tech/posts/${post.id}`}
                                                 title={`Sharing the post 【${post.title}】from @protohub`}
@@ -389,12 +378,18 @@ const Post = () => {
                                             >
                                                 <TwitterIcon size={30} round />
                                             </TwitterShareButton>
-
                                         </div>
+
+                                        <div className="item">
+                                            <FacebookShareButton url={`https://protohub.tech/posts/${post.id}`} title={`Sharing the post 【${post.title}】from @protohub`}>
+                                                <FacebookIcon size={30} round />
+                                            </FacebookShareButton>
+                                        </div>
+
                                     </div>
                                     {user.id === post.user.id &&
                                         <div className="right">
-                                            <PostMenu user={user} functions={functionsForPostMenu}>
+                                            <PostMenu user={user} functions={functionsForPostMenu} isMobile={false}>
                                                 <div className="postAction">
                                                     <MoreVertIcon />
                                                 </div>
@@ -441,9 +436,9 @@ const Post = () => {
                                     <PostInfo likesCount={likesCount} reproducedCount={reprCount} forksCount={forksCount} />
                                 }
                                 {(parent && parent !== undefined) && (parentUser && parentUser !== undefined) ?
-                                    <TreeInfo parent={parent} parentUser={parentUser} owner={post.user} child={child} />
+                                    <TreeInfo parent={parent} parentUser={parentUser} owner={post.user} child={child} isMobile={false} />
                                     :
-                                    <TreeInfo owner={post.user} child={child} />
+                                    <TreeInfo owner={post.user} child={child} isMobile={false} />
                                 }
                                 <ReproducibilityList reprList={reprList} timeCostList={timeCostList} reprMapOkay={reprMapOkay} reprMapNotOkay={reprMapNotOkay} isMobile={false} />
                             </div>
@@ -518,7 +513,7 @@ const Post = () => {
                                 <div className="postFork" onClick={forkClicked}>
                                     <AccountTreeIcon />
                                     <div className='actionTitle'>Fork</div>
-                                    <span className='count'>0</span>
+                                    <span className='count'>{forksCount}</span>
 
                                 </div>
 
@@ -538,6 +533,37 @@ const Post = () => {
 
                     </div>
                     <div className={'postBody'}>
+                        <div className="snsAndActionContainer">
+                            <div className="postShareContainer">
+                                <div className="item">
+                                    <TwitterShareButton
+                                        url={`https://protohub.tech/posts/${post.id}`}
+                                        title={`Sharing the post 【${post.title}】from @protohub`}
+                                        via={post.user.user_name}
+                                    >
+                                        <TwitterIcon size={30} round />
+                                    </TwitterShareButton>
+
+                                </div>
+
+                                <div className="item">
+                                    <FacebookShareButton url={`https://protohub.tech/posts/${post.id}`} title={`Sharing the post 【${post.title}】from @protohub`}>
+                                        <FacebookIcon size={30} round />
+                                    </FacebookShareButton>
+                                </div>
+                            </div>
+                            {user.id === post.user.id &&
+                                <div className="postMenuContainer">
+                                    <PostMenu user={user} functions={functionsForPostMenu} isMobile={true}>
+                                        <div className="postAction">
+                                            <MoreVertIcon />
+                                        </div>
+                                    </PostMenu>
+
+                                </div>
+                            }
+
+                        </div>
                         <div className="postBodyLeft">
                             <div className={'postBodyMain'}>
                                 {post.post_image && <img src={`${post.post_image}`} alt="postPicture" />}
@@ -545,33 +571,6 @@ const Post = () => {
                                     <h1 className="title">
                                         {post.title}
                                     </h1>
-                                    <div className="postShareContainer">
-                                        <div className="item">
-                                            <FacebookShareButton url={`https://protohub.tech/posts/${post.id}`} title={`Sharing the post 【${post.title}】from @protohub`}>
-                                                <FacebookIcon size={30} round />
-                                            </FacebookShareButton>
-                                        </div>
-
-                                        <div className="item">
-                                            <TwitterShareButton
-                                                url={`https://protohub.tech/posts/${post.id}`}
-                                                title={`Sharing the post 【${post.title}】from @protohub`}
-                                                via={post.user.user_name}
-                                            >
-                                                <TwitterIcon size={30} round />
-                                            </TwitterShareButton>
-
-                                        </div>
-                                        {user.id === post.user.id &&
-                                            <div className="right">
-                                                <PostMenu user={user} functions={functionsForPostMenu}>
-                                                    <div className="postAction">
-                                                        <MoreVertIcon />
-                                                    </div>
-                                                </PostMenu>
-                                            </div>
-                                        }
-                                    </div>
                                 </div>
 
                                 <MDEditor.Markdown
@@ -592,9 +591,9 @@ const Post = () => {
                                         <PostInfo likesCount={likesCount} reproducedCount={reprCount} forksCount={forksCount} />
                                     }
                                     {(parent && parent !== undefined) && (parentUser && parentUser !== undefined) ?
-                                        <TreeInfo parent={parent} parentUser={parentUser} owner={post.user} child={child} />
+                                        <TreeInfo parent={parent} parentUser={parentUser} owner={post.user} child={child} isMobile={true} />
                                         :
-                                        <TreeInfo owner={post.user} child={child} />
+                                        <TreeInfo owner={post.user} child={child} isMobile={true} />
                                     }
                                     <ReproducibilityList reprList={reprList} timeCostList={timeCostList} reprMapOkay={reprMapOkay} reprMapNotOkay={reprMapNotOkay} isMobile={true} />
                                 </div>

@@ -10,12 +10,12 @@ import DraftItemSide from "../draftList/draftItemSide/DraftItemSide";
 import { IDraft } from "../../types/draft-type";
 import { fetchDraftById } from "../../store/reducers/currentDraft/action-creators"
 
-interface DraftSidebarProp{
+interface DraftSidebarProp {
     isMobile: boolean
 }
 
 
-const DraftSidebar: FC<DraftSidebarProp> = ({isMobile}) => {
+const DraftSidebar: FC<DraftSidebarProp> = ({ isMobile }) => {
     const { isAuth } = useSelector((state: RootState) => state.auth)
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -29,13 +29,12 @@ const DraftSidebar: FC<DraftSidebarProp> = ({isMobile}) => {
         }
     }
     const itemClickHandler = (draft: IDraft) => {
-        console.log(`dispatch draft: ${draft.id} / ${draft.title}`)
         dispatch(fetchDraftById(draft.id))
 
     }
 
     return (
-        <Sticky className={`${isMobile? "draftSidebarContainerMobile" : "draftSidebarContainer"}`}>
+        <Sticky className={`${isMobile ? "draftSidebarContainerMobile" : "draftSidebarContainer"}`}>
             <div className="inside">
                 <ModalWindow setShowModal={setShowModal} showModal={showModal} />
                 <div className="headerContainer">
@@ -46,10 +45,17 @@ const DraftSidebar: FC<DraftSidebarProp> = ({isMobile}) => {
                         <button onClick={() => handleClick('create')} className={'newPostButton'}>New Post</button>
                     </div>
                 </div>
-                
+
+                {myDrafts.length == 0 &&
+                    <div className="noDraftContainer">
+                        <h2 className="text">No Draft</h2>
+                    </div>
+
+                }
+
                 {myDrafts.map(draft =>
                     <div onClick={() => itemClickHandler(draft)} key={draft.id} className={'userDraftListItem'}>
-                        <DraftItemSide draftItem={draft} isMobile={isMobile}/>
+                        <DraftItemSide draftItem={draft} isMobile={isMobile} />
                     </div>
                 )}
 

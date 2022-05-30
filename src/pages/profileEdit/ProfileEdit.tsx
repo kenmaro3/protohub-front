@@ -5,6 +5,7 @@ import MediaQuery from "react-responsive";
 
 function ProfileEdit() {
   // const [file, setFile] = useState<any>(null)
+
   return (
     <>
       <MediaQuery query="(min-width: 768px)">

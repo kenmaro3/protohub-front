@@ -29,13 +29,13 @@
           align-items: center;
           gap: 20px;
           text-align: center;
-          background-color: #4f4f4f;
-          color: #ffffff;
+          background-color: var(--main-button-color);
+          color: var(--main-button-font-color);
           border-radius: 8px;
           border: none;
           font-size: 16px;
           font-weight: 600;
-          box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+          // box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 
           padding: 10px 18px;
           cursor: pointer;
@@ -43,7 +43,7 @@
           transition: 0.2s;
 
           &:hover {
-            background-color: #9b9b9b;
+            background-color: var(--main-button-color-hover);
           }
 
         }
@@ -54,13 +54,13 @@
           align-items: center;
           gap: 20px;
           text-align: center;
-          background-color: #4f4f4f;
-          color: #ffffff;
+          background-color: var(--main-button-color);
+          color: var(--main-button-font-color);
           border-radius: 8px;
           border: none;
           font-size: 16px;
           font-weight: 600;
-          box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+          // box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 
           padding: 10px 18px;
           cursor: pointer;
@@ -68,7 +68,7 @@
           transition: 0.2s;
 
           &:hover {
-            background-color: #9b9b9b;
+            background-color: var(--main-button-color-hover);
 
           }
 
@@ -237,6 +237,35 @@
       padding: 0 10px 0 10px;
       resize: block;
       font-size: 15px;
+    }
+  }
+
+  .postInner {
+    .formGroup {
+      margin: 0;
+      .formGroupTitle {
+        border: none;
+        font-weight: 600;
+        font-size: 24px;
+        outline: none;
+        resize: none;
+        padding: 7px;
+        width: 100%;
+        height: 56px;
+        box-sizing: border-box;
+      }
+      .formGroupDescription {
+        border: none;
+        font-weight: 600;
+        font-size: 24px;
+        outline: none;
+        resize: none;
+        padding: 7px;
+        width: 100%;
+        height: 56px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+      }
     }
   }
 

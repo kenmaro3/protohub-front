@@ -144,7 +144,7 @@ const Post = () => {
         if (post.user_likes != undefined && post.comments != undefined) {
             setLikesCount(post.user_likes.length)
             setReprCount(post.comments.length)
-            setForksCount(1)
+            setForksCount(child?.length)
         }
 
     }

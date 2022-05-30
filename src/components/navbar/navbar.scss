@@ -7,10 +7,11 @@
   align-items: center;
   height: 80px;
   background-color: var(--main-header-color);
-  -moz-box-shadow: 0px 1px 7px -1px rgba(0, 0, 0, 0.15);
-  -webkit-box-shadow: 0px 1px 7px -1px rgba(0, 0, 0, 0.15);
-  -ms-box-shadow: 0px 1px 7px -1px rgba(0, 0, 0, 0.15);
-  box-shadow: 0px 1px 7px -1px rgba(0, 0, 0, 0.15);
+  
+  // -moz-box-shadow: 0px 1px 7px -1px rgba(0, 0, 0, 0.15);
+  // -webkit-box-shadow: 0px 1px 7px -1px rgba(0, 0, 0, 0.15);
+  // -ms-box-shadow: 0px 1px 7px -1px rgba(0, 0, 0, 0.15);
+  // box-shadow: 0px 1px 7px -1px rgba(0, 0, 0, 0.15);
 
   .left {
     display: flex;
@@ -32,9 +33,9 @@
     margin-left: auto;
 
     .loginButton {
-      border: 0.6px solid #fdfcff;
+      border: none;
       border-radius: 5px;
-      background: none;
+      background: var(--main-button-color);
       padding: 5px 12px;
       font-size: 16px;
       color: #fdfcff;
@@ -44,17 +45,16 @@
       margin-right: 20px;
 
       &:hover {
-        background-color: #56535c;
+        background-color: var(--main-button-color-hover);
         color: white;
       }
     }
 
 
     .signupButton {
-      border: 0.6px solid #fdfcff;
-      margin-right: 6px;
+      border: none;
       border-radius: 5px;
-      background: none;
+      background: var(--main-button-color);
       padding: 5px 12px;
       font-size: 16px;
       color: #fdfcff;
@@ -63,7 +63,7 @@
       transition: 0.2s;
 
       &:hover {
-        background-color: #56535c;
+        background-color: var(--main-button-color-hover);
         color: white;
       }
     }

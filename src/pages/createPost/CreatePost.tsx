@@ -35,6 +35,7 @@ const CreatePost: FC = () => {
         setIsLoading(true)
         try {
             //const response = await PostService.createPost(file, data['Title'], stringFromHtml, user.id, data['Description'])
+            console.log(typeof data)
             const response = await PostService.createPost(file, data['title'], mdValue, user.id, data['description'])
             dispatch(setAddPost(response.data))
             dispatch(fetchTodayPosts(5))

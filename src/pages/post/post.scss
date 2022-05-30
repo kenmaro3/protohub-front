@@ -1,14 +1,10 @@
 .postContainer {
-  background-color: var(--main-bg-color);
-  // height: fit-content;
-  // height: calc(100vh - 130px);
+  background-color: var(--sub-bg-color);
 
   .postHeader {
     display: flex;
     height: 160px;
     background-color: var(--sub-bg-color);
-    border-bottom: 1px solid #bfbfbf;
-    box-shadow: 0.5px 0.3px 0.5px 0.5px rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
 
     .postHeaderLeft {

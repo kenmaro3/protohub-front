@@ -32,6 +32,7 @@ const UpdateDraft: FC = () => {
     const { myDrafts } = useAppSelector(state => state.myDrafts)
 
     const { draft_id } = useParams()
+    const [userId, setUserId] = useState<number>(-1);
 
     const dispatch = useDispatch()
     const navigate = useNavigate()

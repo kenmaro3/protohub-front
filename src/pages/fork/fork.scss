@@ -1,5 +1,5 @@
 .forkContainer {
-    background-color: var(--main-bg-color);
+    // background-color: var(--main-bg-color);
     // height: calc(100vh);
     // TODO
     padding-bottom: 100px;
@@ -7,8 +7,8 @@
     .forkHeader {
         display: flex;
         height: 160px;
-        border-bottom: 1px solid #bfbfbf;
-        box-shadow: 0.5px 0.3px 0.5px 0.5px rgba(0, 0, 0, 0.2);
+        // border-bottom: 1px solid #bfbfbf;
+        // box-shadow: 0.5px 0.3px 0.5px 0.5px rgba(0, 0, 0, 0.2);
         margin-bottom: 20px;
         background-color: var(--sub-bg-color);
 
@@ -342,7 +342,7 @@
                 transition: 0.2s;
 
                 &:hover {
-                    background-color: #56535c;
+                    background-color: var(--main-button-color-hover);
                     color: white;
                 }
             }

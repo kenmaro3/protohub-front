@@ -14,6 +14,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 interface PostListProp {
     isMobile: boolean
@@ -126,7 +127,7 @@ const PostList: FC<PostListProp> = ({ isMobile }) => {
         <div className={`${isMobile ? "postListContainerMobile" : "postListContainer"}`}>
             {contentInside(isMobile)}
 
-        </div>
+            </div>
     );
 };
 

@@ -133,29 +133,29 @@ const UpdatePost: FC = () => {
                     </div>
 
                     <div className="formGroup">
-                        <div className="formGroupInfo">
-                            <label className="title" htmlFor={"title"}>Title</label>
-                            {errors["title"] && <p>{errors["title"].message}</p>}
-                        </div>
-                        <input
+                        <textarea
                             {...register("title", {
-                                required: { value: true, message: 'Required field' },
+                                required: { value: false, message: 'Required field' },
                                 maxLength: 60,
                             })}
+                            className="formGroupTitle"
+                            placeholder='Title'
                         />
 
                     </div>
 
                     <div className="formGroup">
-                        <div className="formGroupInfo">
-                            <label className="title" htmlFor={"description"}>Description</label>
-                            {errors["title"] && <p>{errors["title"].message}</p>}
-                        </div>
-                        <input
+                        <textarea
                             {...register("description", {
                                 required: { value: false, message: 'Required field' },
                                 maxLength: 100,
+                                validate: {
+                                    lessThanTen: (value) =>
+                                        parseInt(value.length) < 100 || 'Must be less than 100 characters',
+                                },
                             })}
+                            className="formGroupDescription"
+                            placeholder='Description'
                         />
 
                     </div>

@@ -49,7 +49,7 @@
         }
 
         .updateButton {
-          
+
           display: flex;
           align-items: center;
           gap: 20px;
@@ -95,7 +95,39 @@
 
   }
 
-  .fileUploadButton{
+  .postInner {
+    .formGroup {
+      margin: 0;
+
+      .formGroupTitle {
+        border: none;
+        font-weight: 600;
+        font-size: 24px;
+        outline: none;
+        resize: none;
+        padding: 7px;
+        width: 100%;
+        height: 56px;
+        box-sizing: border-box;
+      }
+
+      .formGroupDescription {
+        border: none;
+        font-weight: 600;
+        font-size: 24px;
+        outline: none;
+        resize: none;
+        padding: 7px;
+        width: 100%;
+        height: 56px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+
+  .fileUploadButton {
     margin-top: 60px;
   }
 
@@ -206,24 +238,6 @@
 
 
   }
-  .postInner{
-    margin-top: 20px;
-
-    h2{
-      font-size: 20px;
-      font-weight: 650;
-    }
-
-    .formGroup{
-      .formGroupInfo{
-        .title{
-          font-size: 16px;
-          font-weight: 600;
-        }
-
-      }
-    }
-  }
 
   .editor {
     .toolbarClassName {
@@ -243,6 +257,7 @@
   .postInner {
     .formGroup {
       margin: 0;
+
       .formGroupTitle {
         border: none;
         font-weight: 600;
@@ -254,6 +269,7 @@
         height: 56px;
         box-sizing: border-box;
       }
+
       .formGroupDescription {
         border: none;
         font-weight: 600;

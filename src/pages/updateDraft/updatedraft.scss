@@ -10,6 +10,36 @@
   height: calc(100vh - 130px);
   overflow: auto;
   margin-bottom: 40px;
+  .postInner {
+    .formGroup {
+      margin: 0;
+
+      .formGroupTitle {
+        border: none;
+        font-weight: 600;
+        font-size: 24px;
+        outline: none;
+        resize: none;
+        padding: 7px;
+        width: 100%;
+        height: 56px;
+        box-sizing: border-box;
+      }
+
+      .formGroupDescription {
+        border: none;
+        font-weight: 600;
+        font-size: 24px;
+        outline: none;
+        resize: none;
+        padding: 7px;
+        width: 100%;
+        height: 56px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+      }
+    }
+  }
 
   .header {
     display: flex;
@@ -227,18 +257,33 @@
 
   }
 
-  .postInner{
-    h2{
-      font-size: 16px;
-      font-weight: 600;
-    }
+  .postInner {
+    .formGroup {
+      margin: 0;
 
-    .formGroup{
-      .formGroupInfo{
-        .title{
-          font-size: 16px;
-          font-weight: 600;
-        }
+      .formGroupTitle {
+        border: none;
+        font-weight: 600;
+        font-size: 24px;
+        outline: none;
+        resize: none;
+        padding: 7px;
+        width: 100%;
+        height: 56px;
+        box-sizing: border-box;
+      }
+
+      .formGroupDescription {
+        border: none;
+        font-weight: 600;
+        font-size: 24px;
+        outline: none;
+        resize: none;
+        padding: 7px;
+        width: 100%;
+        height: 56px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
       }
     }
   }

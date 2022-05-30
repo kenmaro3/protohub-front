@@ -353,13 +353,13 @@
 
 
 .forkContainerMobile {
-    background-color: var(--main-bg-color);
+    // background-color: var(--main-bg-color);
     // height: calc(100vh);
     // TODO
     padding-bottom: 60px;
 
     .forkHeader {
-        border-bottom: 1px solid #bfbfbf;
+        // border-bottom: 1px solid #bfbfbf;
         background-color: var(--sub-bg-color);
 
         .forkHeaderLeft {
@@ -685,14 +685,15 @@
             .button {
                 height: 40px;
                 width: 100px;
-                border: 1px solid #000;
+                border: none;
                 border-radius: 5px;
-                background: none;
+                background: var(--main-button-color);
+                color: var(--main-button-font-color);
                 cursor: pointer;
                 transition: 0.2s;
 
                 &:hover {
-                    background-color: #56535c;
+                    background-color: var(--main-button-color-hover);
                     color: white;
                 }
             }

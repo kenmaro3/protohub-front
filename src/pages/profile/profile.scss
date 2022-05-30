@@ -283,17 +283,17 @@
 
               button {
                 padding: 4px 8px 4px 8px;
-                border: 1px solid #808080;
-                background: none;
-                border-radius: 8px;
-                box-shadow: 1 1 1 1 #808080;
+                border: none;
+                background: var(--main-button-color);
+                border-radius: 5px;
+                // box-shadow: 1 1 1 1 #808080;
                 cursor: pointer;
                 transition: 0.2s;
                 font-size: 12px;
+                color: var(--main-button-font-color);
 
                 &:hover {
-                  background-color: #e2e2e2;
-
+                  background-color: var(--main-button-color-hover);
                 }
               }
             }

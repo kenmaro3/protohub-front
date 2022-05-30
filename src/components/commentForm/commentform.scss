@@ -188,9 +188,9 @@
   .sendButton>button {
     height: var(--button-send-create-fork-height-mobile);
     width: var(--button-send-create-fork-width-mobile);
-    border: 1px solid var(--button-send-create-fork-border-color-mobile);
-    background: var(--button-send-create-fork-bg-color-mobile);
-    color: var(--button-send-create-fork-font-color-mobile);
+    border: none;
+    background: var(--main-button-color);
+    color: var(--main-button-font-color);
     padding-top: var(--button-send-create-fork-padding-top-mobile);
     padding-right: var(--button-send-create-fork-padding-right-mobile);
     padding-bottom: var(--button-send-create-fork-padding-bottom-mobile);

@@ -75,6 +75,13 @@
     border-radius: 8px;
     border: none;
     font-size: 12px;
+    background: var(--main-button-color);
+    color: var(--main-button-font-color);
+
+    &:hover {
+      background-color: var(--main-button-color-hover);
+      color: white;
+    }
   }
 
   .selectBox {

@@ -68,7 +68,7 @@ const Navbar: FC<NavBarProp> = ({ isMobile }) => {
                             <img src={logoPng} alt="" width="100px" />
                         </Link>
                         {/* <h1 className={'title'}>ProtoHub</h1> */}
-                        <SearchBar placeholder='Search or jump to...' isMobile={false}/>
+                        <SearchBar placeholder='Search or jump to...' isMobile={false} />
                     </div>
                     <div className={'right'}>
                         {isAuth ?
@@ -107,38 +107,75 @@ const Navbar: FC<NavBarProp> = ({ isMobile }) => {
                                 <img src={logoPng} alt="" width="80px" />
                             </Link>
                             {/* <h1 className={'title'}>ProtoHub</h1> */}
-                        </div>
-                        <div className={'right'}>
                             <IconButton onClick={searchClicked} className="searchIconTop">
                                 <SearchIcon />
                             </IconButton>
-                            {isAuth ?
-                                <ProfileMenu user={user} functions={functionsForProfileMenu} isMobile={true}>
-                                    <div className="navbarProfileImageContainer">
-                                        <img className='profileImage' src={user.profile_picture} alt="avatar" />
-                                        <span className="caret caret-reversed"></span>
-                                    </div>
-                                </ProfileMenu>
-                                :
-                                <>
-                                    <Link to={'/login'}>
-                                        {/* <Button variant="outlined">Log in</Button> */}
-                                        <button className={'loginButton'}>Log in</button>
-                                    </Link>
-                                    <Link to={'/register'}>
-                                        {/* <Button variant="outlined">Create account</Button> */}
-                                        <button className={'signupButton'}>Sign up</button>
-                                    </Link>
-                                </>
+                        </div>
+                        <div className={'right'}>
+                            {
+                                (() => {
+                                    if (isAuth) {
+                                        if (isSearchShow) {
+                                            return (
+                                                <>
+                                                    <div className="searchContainer">
+                                                        <SearchBar placeholder='Search or jump to...' isMobile={true} />
+                                                    </div>
+                                                    <ProfileMenu user={user} functions={functionsForProfileMenu} isMobile={true}>
+                                                        <div className="navbarProfileImageContainer">
+                                                            <img className='profileImage' src={user.profile_picture} alt="avatar" />
+                                                            <span className="caret caret-reversed"></span>
+                                                        </div>
+                                                    </ProfileMenu>
+                                                </>
+                                            )
+                                        }
+                                        else {
+                                            return (
+                                                <ProfileMenu user={user} functions={functionsForProfileMenu} isMobile={true}>
+                                                    <div className="navbarProfileImageContainer">
+                                                        <img className='profileImage' src={user.profile_picture} alt="avatar" />
+                                                        <span className="caret caret-reversed"></span>
+                                                    </div>
+                                                </ProfileMenu>
+
+                                            )
+
+                                        }
+                                    }
+                                    else {
+                                        if (isSearchShow) {
+                                            return (
+                                                <div className="searchContainer">
+                                                    <SearchBar placeholder='Search or jump to...' isMobile={true} />
+                                                </div>
+                                            )
+                                        }
+                                        else {
+                                            return (
+                                                <div className="buttonContainer">
+                                                    <Link className='link' to={'/login'}>
+                                                        {/* <Button variant="outlined">Log in</Button> */}
+                                                        <button className={'loginButton'}>Log in</button>
+                                                    </Link>
+                                                    <Link className="link" to={'/register'}>
+                                                        {/* <Button variant="outlined">Create account</Button> */}
+                                                        <button className={'signupButton'}>Sign up</button>
+                                                    </Link>
+
+                                                </div>
+
+
+                                            )
+                                        }
+
+                                    }
+
+                                })()
+
                             }
 
                         </div>
-
-                    </div>
-                    <div className="bottom">
-                        {isSearchShow &&
-                            <SearchBar placeholder='Search or jump to...' isMobile={true}/>
-                        }
 
                     </div>
                 </div>

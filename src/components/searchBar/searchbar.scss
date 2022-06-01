@@ -67,7 +67,7 @@
             font-size: 13px;
             padding: 8px;
             height: 8px;
-            width: 80%;
+            width: 70%;
             color: #fdfcff;
             background-color: transparent;
             transition: 0.2s;
@@ -79,7 +79,7 @@
 
             &:focus {
                 background-color: #fdfcff;
-                width: 100%;
+                width: 80%;
                 color: black;
 
                 &::placeholder {

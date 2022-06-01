@@ -49,11 +49,11 @@ const SearchBar: FC<SearchBarProps> = ({ placeholder, isMobile }) => {
           }
 
         />
-        {!isMobile &&
+        {/* {!isMobile &&
           <IconButton onClick={searchClicked} className="searchIcon">
             <SearchIcon />
           </IconButton>
-        }
+        } */}
       </div>
     </div>
   );

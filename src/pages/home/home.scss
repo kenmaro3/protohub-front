@@ -1,4 +1,8 @@
 .homeContainer{
-  display: flex;
   width: 100%;
+
+  .innerContainer{
+    display: flex;
+    width: 100%;
+  }
 }

@@ -34,7 +34,7 @@ const Navbar: FC<NavBarProp> = ({ isMobile }) => {
     const handleLogout = () => {
         dispatch(logout())
         dispatch(setIsAuth(false))
-        navigate('/login')
+        navigate('/')
     }
     const jumpToProfile = () => {
         navigate(`/profile`)

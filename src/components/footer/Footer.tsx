@@ -32,17 +32,17 @@ const Footer: FC<FooterProps> = ({isMobile}) => {
                 <div className="contents">
                     <div className="header">Legal</div>
                     <div className="content">
-                        <a href="" target="_blank" rel="noopener noreferrer">Term of use</a>
+                        <a href="https://docs.google.com/document/d/e/2PACX-1vQ_UsqIWxb9jA1hfOOrJDLBleqo9Y6TDpRWzyljth4fZ9-c8FPhrFjlneHyauS71MZe_NpNkiUp68sa/pub" target="_blank" rel="noopener noreferrer">Term of use (in Japanese)</a>
                     </div>
                     <div className="content">
-                        <a href="" target="_blank" rel="noopener noreferrer">Privacy policy</a>
+                        <a href="https://docs.google.com/document/d/e/2PACX-1vQFLDSkXYztURT9pfMdSsiMdYMCJfp7u1Tj3-HgagzmgxnZkd-tdho0_QEOyH8gQWHOol-KJS4eknXo/pub" target="_blank" rel="noopener noreferrer">Privacy policy (in Japanese)</a>
                     </div>
 
                 </div>
                 <div className="contents">
                     <div className="header">Links</div>
                     <div className="content">
-                        <a href="" target="_blank" rel="noopener noreferrer">Twitter</a>
+                        <a href="https://twitter.com/protohub_tech" target="_blank" rel="noopener noreferrer">Twitter</a>
                     </div>
 
                 </div>

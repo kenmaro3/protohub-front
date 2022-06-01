@@ -23,9 +23,7 @@ const News: FC<NewsProp> = ({isMobile}) => {
 
                         </div>
                         <div className="title">
-                            Coming
-                            
-
+                            Comming
                         </div>
                         <div className="description">
                             

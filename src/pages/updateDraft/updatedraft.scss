@@ -269,8 +269,18 @@
     .formGroup {
       margin: 0;
 
-      .formGroupTitle {
-        border: none;
+      .formGroupInfo {
+        margin-top: 20px;
+
+        .title {
+          font-weight: 600;
+          font-size: 24px;
+
+        }
+      }
+
+      input{
+        border: 1px solid #aeaeae;
         font-weight: 600;
         font-size: 24px;
         outline: none;
@@ -281,18 +291,10 @@
         box-sizing: border-box;
       }
 
-      .formGroupDescription {
-        border: none;
-        font-weight: 600;
-        font-size: 24px;
-        outline: none;
-        resize: none;
-        padding: 7px;
-        width: 100%;
-        height: 56px;
-        box-sizing: border-box;
-        margin-bottom: 10px;
-      }
+    }
+
+    .markDownEditorContainer{
+      margin-top: 40px;
     }
   }
 

@@ -102,6 +102,10 @@ const CreatePost: FC = () => {
 
                 </div>
                 <div className={'postInner'}>
+                    <div className="warning">
+                        Warning: Now auto post saving is under construction. So, please make sure you are saving your post draft from time to time.
+                        Not uploaded post is not saved automatically!
+                    </div>
                     <h2>Create New Post</h2>
                     {/* <FileUpload
                         displayImage={true}

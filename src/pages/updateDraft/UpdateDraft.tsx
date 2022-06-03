@@ -61,6 +61,10 @@ const UpdateDraft: FC = () => {
 
 
     const onSubmit = async (data: any) => {
+        const res = window.confirm("Are you sure to post?")
+        if(!res){
+            return
+        }
         // const stringFromHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()))
         setIsLoading(true)
         try {
@@ -79,6 +83,10 @@ const UpdateDraft: FC = () => {
     }
 
     const onDraftSubmit = async (data: any) => {
+        const res = window.confirm("Are you sure to update this draft?")
+        if(!res){
+            return
+        }
         // const stringFromHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()))
         setIsLoading(true)
         try {
@@ -123,10 +131,10 @@ const UpdateDraft: FC = () => {
 
                 <div className="postInner">
                     <h2>Edit Draft</h2>
-                    <FileUpload
+                    {/* <FileUpload
                         displayImage={true}
                         handleFile={(file: File | undefined) => setFile(file)}
-                    />
+                    /> */}
 
                     <div className="formGroup">
                         <div className="formGroupInfo">
@@ -177,12 +185,12 @@ const UpdateDraft: FC = () => {
     return (
         <>
             <MediaQuery query="(min-width: 768px)">
-                <div className={'createDraftContainer'}>
+                <div className={'updateDraftContainer'}>
                     {contentInside()}
                 </div>
             </MediaQuery>
             <MediaQuery query="(max-width: 767px)">
-                <div className={'createDraftContainerMobile'}>
+                <div className={'updateDraftContainerMobile'}>
                     {contentInside()}
                 </div>
             </MediaQuery>

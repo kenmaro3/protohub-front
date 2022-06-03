@@ -1,4 +1,4 @@
-.createDraftContainer {
+.updateDraftContainer {
   width: 90%;
   margin-top: 40px;
   margin-left: 5%;
@@ -10,12 +10,23 @@
   height: calc(100vh - 130px);
   overflow: auto;
   margin-bottom: 40px;
+
   .postInner {
     .formGroup {
       margin: 0;
 
-      .formGroupTitle {
-        border: none;
+      .formGroupInfo {
+        margin-top: 20px;
+
+        .title {
+          font-weight: 600;
+          font-size: 24px;
+
+        }
+      }
+
+      input{
+        border: 1px solid #aeaeae;
         font-weight: 600;
         font-size: 24px;
         outline: none;
@@ -26,18 +37,10 @@
         box-sizing: border-box;
       }
 
-      .formGroupDescription {
-        border: none;
-        font-weight: 600;
-        font-size: 24px;
-        outline: none;
-        resize: none;
-        padding: 7px;
-        width: 100%;
-        height: 56px;
-        box-sizing: border-box;
-        margin-bottom: 10px;
-      }
+    }
+
+    .markDownEditorContainer{
+      margin-top: 40px;
     }
   }
 
@@ -49,9 +52,11 @@
       margin-left: auto;
       display: flex;
       align-items: center;
+
       .buttonContainer {
         margin-left: 14px;
-        .draftButton{
+
+        .draftButton {
           display: flex;
           align-items: center;
           gap: 20px;
@@ -64,17 +69,18 @@
           font-size: 16px;
           font-weight: 600;
           // box-shadow: 1px 1px 1px rgba(0,0,0,0.3); 
-          
+
           padding: 10px 18px;
           cursor: pointer;
 
           transition: 0.2s;
 
-          &:hover{
+          &:hover {
             background-color: var(--main-button-color-hover);
           }
 
         }
+
         .updateButton {
           display: flex;
           align-items: center;
@@ -88,13 +94,13 @@
           font-size: 16px;
           font-weight: 600;
           // box-shadow: 1px 1px 1px rgba(0,0,0,0.3); 
-          
+
           padding: 10px 18px;
           cursor: pointer;
 
           transition: 0.2s;
 
-          &:hover{
+          &:hover {
             background-color: var(--main-button-color-hover);
 
           }
@@ -140,6 +146,7 @@
 
   .formGroup {
     margin: 0;
+
     .formGroupTitle {
       border: none;
       font-weight: 600;
@@ -151,6 +158,7 @@
       height: 56px;
       box-sizing: border-box;
     }
+
     .formGroupDescription {
       border: none;
       font-weight: 600;
@@ -167,7 +175,7 @@
 
 }
 
-.createDraftContainerMobile{
+.updateDraftContainerMobile {
   width: 96%;
   margin-top: 20px;
   margin-left: 1%;
@@ -288,7 +296,7 @@
     }
   }
 
-  .fileUploadButton{
+  .fileUploadButton {
     margin-top: 10px;
   }
 

@@ -66,6 +66,10 @@ const UpdatePost: FC = () => {
 
 
     const onSubmit = async (data: any) => {
+        const res = window.confirm("Are you sure to update this post?")
+        if(!res){
+            return
+        }
         setIsLoading(true)
         try {
             const response = await PostService.updatePost(file, String(post_id), data['title'], mdValue, user.id, data["description"])
@@ -83,6 +87,10 @@ const UpdatePost: FC = () => {
     }
 
     const onDraftSubmit = async (data: any) => {
+        const res = window.confirm("Are you sure to write this post to draft?")
+        if(!res){
+            return
+        }
         setIsLoading(true)
         try {
             const response = await DraftService.createDraft(data['title'], mdValue, user.id, data["description"])
@@ -124,38 +132,39 @@ const UpdatePost: FC = () => {
 
                 <div className="postInner">
                     <h2>Edit Post</h2>
-                    <div className="fileUploadButton">
+                    {/* <div className="fileUploadButton">
                         <FileUpload
                             displayImage={true}
                             handleFile={(file: File | undefined) => setFile(file)}
                         />
 
-                    </div>
+                    </div> */}
 
+                    
                     <div className="formGroup">
-                        <textarea
+                        <div className="formGroupInfo">
+                            <label className='title' htmlFor={"title"}>Title</label>
+                            {errors["title"] && <p>{errors["title"].message}</p>}
+                        </div>
+                        <input
                             {...register("title", {
-                                required: { value: false, message: 'Required field' },
-                                maxLength: 60,
+                                required: { value: true, message: 'Required field' },
+                                // maxLength: 60,
                             })}
-                            className="formGroupTitle"
-                            placeholder='Title'
                         />
 
                     </div>
 
                     <div className="formGroup">
-                        <textarea
+                        <div className="formGroupInfo">
+                            <label className='title' htmlFor={"description"}>Description</label>
+                            {errors["description"] && <p>{errors["description"].message}</p>}
+                        </div>
+                        <input
                             {...register("description", {
                                 required: { value: false, message: 'Required field' },
-                                maxLength: 100,
-                                validate: {
-                                    lessThanTen: (value) =>
-                                        parseInt(value.length) < 100 || 'Must be less than 100 characters',
-                                },
+                                // maxLength: 100,
                             })}
-                            className="formGroupDescription"
-                            placeholder='Description'
                         />
 
                     </div>

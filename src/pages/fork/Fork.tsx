@@ -66,6 +66,10 @@ const Fork = () => {
     }
 
     const onSubmit = async (data: any) => {
+        const res = window.confirm("Are you sure to fork this post?")
+        if(!res){
+            return
+        }
         try {
             if (postShown == undefined) {
                 return

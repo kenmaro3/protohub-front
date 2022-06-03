@@ -31,6 +31,10 @@ const CreatePost: FC = () => {
 
 
     const onSubmit = async (data: any) => {
+        const res = window.confirm("Are you sure to post?")
+        if(!res){
+            return
+        }
         // const stringFromHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()))
         setIsLoading(true)
         try {
@@ -51,6 +55,10 @@ const CreatePost: FC = () => {
     }
 
     const onDraftSubmit = async (data: any) => {
+        const res = window.confirm("Are you sure to draft thi post?")
+        if(!res){
+            return
+        }
         // const stringFromHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()))
         setIsLoading(true)
         try {
@@ -95,10 +103,10 @@ const CreatePost: FC = () => {
                 </div>
                 <div className={'postInner'}>
                     <h2>Create New Post</h2>
-                    <FileUpload
+                    {/* <FileUpload
                         displayImage={true}
                         handleFile={(file: File | undefined) => setFile(file)}
-                    />
+                    /> */}
                     <div className="formGroup">
                         <textarea
                             {...register("title", {

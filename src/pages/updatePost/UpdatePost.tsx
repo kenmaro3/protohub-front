@@ -143,7 +143,7 @@ const UpdatePost: FC = () => {
                     <div className="formGroup">
                         <div className="formGroupInfo">
                             <label className='title' htmlFor={"title"}>Title</label>
-                            {errors["title"] && <p>{errors["title"].message}</p>}
+                            {/* {errors["title"] && <p>{errors["title"].message}</p>} */}
                         </div>
                         <input
                             {...register("title", {
@@ -157,7 +157,7 @@ const UpdatePost: FC = () => {
                     <div className="formGroup">
                         <div className="formGroupInfo">
                             <label className='title' htmlFor={"description"}>Description</label>
-                            {errors["description"] && <p>{errors["description"].message}</p>}
+                            {/* {errors["description"] && <p>{errors["description"].message}</p>} */}
                         </div>
                         <input
                             {...register("description", {

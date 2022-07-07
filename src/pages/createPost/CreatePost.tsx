@@ -12,7 +12,6 @@ import { setAddDraft } from "../../store/reducers/draft/action-creators";
 import { CircularProgress } from "@mui/material";
 import { useTitle } from "../../hooks";
 import MDEditor from "@uiw/react-md-editor";
-import rehypeSanitize from "rehype-sanitize";
 import Card from "../../components/common/card/Card";
 import MediaQuery from "react-responsive";
 

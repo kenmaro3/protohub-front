@@ -11,7 +11,6 @@ import { fetchTodayPosts, setAddPost } from "../../store/reducers/post/action-cr
 import { CircularProgress } from "@mui/material";
 import { useTitle } from "../../hooks";
 import MDEditor from "@uiw/react-md-editor";
-import rehypeSanitize from "rehype-sanitize";
 import DraftService from '../../services/draft-service';
 import Card from "../../components/common/card/Card";
 import MediaQuery from "react-responsive";

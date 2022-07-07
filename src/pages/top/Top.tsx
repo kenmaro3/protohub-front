@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import './home.scss'
+import './top.scss'
 import Sidebar from "../../components/sidebar/Sidebar";
 import PostList from "../../components/postlist/PostList";
 import SidebarRight from "../../components/sidebarRight/SidebarRight"
@@ -8,27 +8,36 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import Top from "../../components/top/Top";
 
-const Home: FC = () => {
+const TopPage: FC = () => {
     const { isAuth } = useSelector((state: RootState) => state.auth)
     return (
         <>
             <MediaQuery query="(min-width: 768px)">
                 <div className={'homeContainer'}>
-                    <div className='innerContainer'>
-                        <Sidebar />
-                        <PostList isMobile={false} />
-                        <SidebarRight />
+                    {!isAuth ?
+                        <Top />
 
-                    </div>
+                        :
+                        <div className='innerContainer'>
+                            <Sidebar />
+                            <PostList isMobile={false} />
+                            <SidebarRight />
+
+                        </div>
+                    }
                 </div>
             </MediaQuery>
 
             <MediaQuery query="(max-width: 767px)">
                 <div className={'homeContainer'}>
-                    <div className='innerContainer'>
-                        <PostList isMobile={true} />
+                    {!isAuth ?
+                        <Top />
+                        :
+                        <div className='innerContainer'>
+                            <PostList isMobile={true} />
 
-                    </div>
+                        </div>
+                    }
                 </div>
 
             </MediaQuery>
@@ -36,4 +45,4 @@ const Home: FC = () => {
     );
 };
 
-export default Home;
+export default TopPage;

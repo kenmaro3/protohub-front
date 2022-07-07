@@ -24,8 +24,8 @@ const Banner: FC<BannerProp> = ({ isMobile }) => {
                     </div>
                     <div className="signUp">
                         {/* <input type="text" placeholder='Email adress'/> */}
-                        <Link className='link' to="/register">
-                            Sign Up for ProtoHub
+                        <Link className='link' to="/home">
+                            Go To ProtoHub
                         </Link>
 
                     </div>

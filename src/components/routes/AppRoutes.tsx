@@ -15,6 +15,7 @@ import Search from '../../pages/search/Search';
 import Fork from '../../pages/fork/Fork';
 import Draft from '../../pages/draft/Draft';
 import ProfileEdit from "../../pages/profileEdit/ProfileEdit";
+import TopPage from '../../pages/top/Top';
 
 const AppRoutes: FC = () => {
     const { pathname } = useLocation()
@@ -24,7 +25,8 @@ const AppRoutes: FC = () => {
     return (
         <Routes>
             <Route path={'/'}>
-                <Route index element={<Home />} />
+                <Route index element={<TopPage />} />
+                <Route path={'home'} element={<Home />} />
                 <Route path={'login'} element={<Login />} />
                 <Route path={'register'} element={<Register />} />
                 <Route path={'search'} element={<Search />} />
